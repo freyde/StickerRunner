@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "cvsu";
 $db = "stickerrunner";
 
 // Create connection
