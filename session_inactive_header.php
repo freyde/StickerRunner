@@ -11,7 +11,7 @@ include_once("includes/functions.inc.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TopBuds Clothing</title>
+    <title>Sticker Runner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="page.css">
@@ -27,7 +27,7 @@ include_once("includes/functions.inc.php");
     <!----Header----->
     <div class="header" id="myHeader">
         <ul class="list-group list-group-horizontal-sm" style="padding-top: 20px; padding-left: 100px; list-style: none;">
-            <li><a href="homepage.php"><h2 style="color: white; padding-top: 7px;">TopBuds</h2></a></li>
+            <li><a href="homepage.php"><h2 style="color: white; padding-top: 7px;">Sticker Runner</h2></a></li>
             <li style="padding-bottom: -90px; padding-left: 250px;">
                 <nav class="navbar navbar-light">
                     <div class="container-fluid" style="padding-left: 400px;">

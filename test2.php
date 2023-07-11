@@ -51,7 +51,7 @@ include("header.php");
       <div class="footer">
         <div class="footer_row">
             <div class="footer_column">
-                <h4 style="color: white;">About TopBuds</h1>
+                <h4 style="color: white;">About Sticker Runner</h1>
                     <h6>About Us</h6>
                     <h6>Privacy Policy</h6>
                     <h6>Terms of Use</h6>
@@ -71,13 +71,13 @@ include("header.php");
                     <h6>Return Item</h6>
             </div>
             <div class="footer_column">
-                <h4 style="color: white;">TopBuds Clothing</h1>
+                <h4 style="color: white;">Sticker Runner</h1>
             </div>
           </div>
 
           <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
 
-          <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Topbuds Clothing. All Rights Reserved</h6>
+          <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Sticker Runner. All Rights Reserved</h6>
       </div>
 </div>
     

@@ -48,7 +48,7 @@ include("header.php");
       </div> <!---for row--->
     </div>
 
-    <div class="btn-group">
+    <!-- <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     Harvey
   </button>
@@ -57,14 +57,14 @@ include("header.php");
     <li><button class="dropdown-item" type="button">Another action</button></li>
     <li><button class="dropdown-item" type="button">Something else here</button></li>
   </ul>
-</div>
+</div> -->
 
 
       <!----Footer Section----->
       <div class="footer">
         <div class="footer_row">
             <div class="footer_column">
-                <h4 style="color: white;">About TopBuds</h1>
+                <h4 style="color: white;">About Sticker Runner</h1>
                     <h6><a href="aboutus.php">About Us</a></h6>
                     <h6><a href="">Privacy Policy</a></h6>
                     <h6><a href="">Terms of Use</a></h6>
@@ -84,12 +84,12 @@ include("header.php");
                     <h6><a href="">Return Item</a></h6>
             </div>
             <div class="footer_column">
-                <h4 style="color: white;">TopBuds Clothing</h1>
+                <h4 style="color: white;">Sticker Runner</h1>
             </div>
           </div>
 
           <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
-          <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Topbuds Clothing. All Rights Reserved</h6>
+          <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Sticker Runner. All Rights Reserved</h6>
       </div>
     
 

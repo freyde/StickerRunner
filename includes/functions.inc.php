@@ -1,52 +1,52 @@
 <?php
 
     function emptyInputSignup($first_name, $last_name, $email_add, $userPassword, $repeatPass){
-    $result;
+    $result = "";
         if(empty($first_name) || empty($last_name) || empty($email_add) || empty($userPassword) || empty($repeatPass)){
             $result = true;
         } else {
             $result = false;
         }
-        return $result;
+        return $result = "";
     } 
 
     function invalidFirstName($first_name){
-        $result;
+        $result = "";
         if(!preg_match("/^[a-zA-Z]*$/", $first_name)){
             $result = true;
         } else {
             $result = false;
         }
-        return $result;
+        return $result = "";
     }
 
     function invalidLastName($last_name){
-        $result;
+        $result = "";
         if(!preg_match("/^[a-zA-Z\s]*$/", $last_name)){
             $result = true;
         } else {
             $result = false;
         }
-        return $result;
+        return $result = "";
     }
     function invalidEmail($email_add){
-        $result;
+        $result = "";
         if(!filter_var($email_add, FILTER_VALIDATE_EMAIL)){
             $result = true;
         } else {
             $result = false;
         }
-        return $result;
+        return $result = "";
     }
 
     function checkPasswordMatch($userPassword, $repeatPass){
-        $result;
+        $result = "";
         if($userPassword !== $repeatPass){
             $result = true;
         } else {
             $result = false;
         }
-        return $result;
+        return $result = "";
     }
 
     function userExists($conn, $email_add){
@@ -67,7 +67,7 @@
             return $row; /** fetch row of data of existing user in the db**/
         } else {
             $result = false;
-            return $result;
+            return $result = "";
         }
         mysqli_stmt_close($stmt);
     }
@@ -104,13 +104,13 @@
 
     
     function emptyInputLogin($email_add, $userPassword){
-        $result;
+        $result = "";
             if(empty($email_add) || empty($userPassword)){
                 $result = true;
             } else {
                 $result = false;
             }
-            return $result;
+            return $result = "";
     }
     
     function loginUser($conn, $email_add, $userPassword){
@@ -212,9 +212,9 @@
                         $num_sold = $row["num_sold"];
 
                         // displaying items in the HTML homepage
+                        // <h6 style='padding-left: 15px; margin-bottom: -10px;'>$num_sold sold</h6>
                         echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
                         <figure class='figure' style='width: 210px;'>
-                            <h6 style='padding-left: 15px; margin-bottom: -10px;'>$num_sold sold</h6>
                             <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
                             <figcaption class='item_name'>$item_name</figcaption>
                             <figcaption class='item_price'>₱$item_price.00</figcaption>
