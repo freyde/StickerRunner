@@ -2,7 +2,7 @@
 include("header.php");
 include_once("includes/functions.inc.php");
 ?>
-   
+
 <body>
 <div class="content">
     <div class="row pt-4">

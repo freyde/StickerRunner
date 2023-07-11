@@ -1,0 +1,28 @@
+{
+    "Cavite": ["Alfonso",
+                "Amadeo", 
+                "Bacoor", 
+                "Carmona", 
+                "Cavite City", 
+                "Dasmarinas", 
+                "GEA",
+                "GMAS",
+                "General Trias", 
+                "Imus",
+                "Indang",
+                "Kawit", 
+                "Magallanes", 
+                "Maragondon", 
+                "Mendez", 
+                "Naic", 
+                "Noveleta", 
+                "Rosario", 
+                "Silang", 
+                "Tagaytay", 
+                "Tanza",
+                "Trece Martires"],
+
+    "Marikina": ["Barangka","Calumpang","Concepcion Dos","Concepcion Uno","Fortune","Industrial Valley",
+                "Jesus de la Penna","Malanday","Marikina Heights","Nangka","Parang","San Roque","Santa Elena",
+                "Santo Nino","Tannong","Tumana"]
+}
