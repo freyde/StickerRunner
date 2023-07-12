@@ -30,6 +30,32 @@ $(document).ready(function (){
     
     });
 
+    $(document).on('click', '#delBtn', function(e) {
+        
+        var it_code = $(this).val();
+
+        // alert(it_code);
+       
+        $.ajax({
+            method: "POST",
+            url: "../includes/delete_item.php",
+            data: {  
+                "it_code": it_code,
+            },
+            success: function(response){
+                window.location.href = "main_dashboard.php?products";
+            },
+            error: function(response) {
+                alert(response);
+                console.log(response);
+             }
+        });
+    
+    
+    
+    
+    });
+
 
 
 

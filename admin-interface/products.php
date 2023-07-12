@@ -104,6 +104,7 @@ include_once("../includes/functions.inc.php");
                     <td class="text-center"><?php echo $row["item_status"] ?></td>
                     <!-- <td class="text-center"><button type="button" class="btn btn-link">Edit</button></td> -->
                     <td class="text-center"><button type="button" name="editBtn" id="editBtn" value="<?php echo $row["item_code"]; ?>" class="btn btn-success">Edit</button></td>
+                    <td class="text-center"><button type="button" name="editBtn" id="delBtn" value="<?php echo $row["item_code"]; ?>" class="btn btn-danger">Delete</button></td>
                 </tr>
             <?php
                 };

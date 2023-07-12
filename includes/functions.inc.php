@@ -98,7 +98,7 @@
         $_SESSION['auth'] = true;
         $_SESSION["userEmailAdd"] = $user_exists["email_add"];
         $_SESSION["user_Id"] = $user_exists["user_id"];
-        header("Location: ../homepage.php?error=none");
+        header("Location: ../index.php?error=none");
         exit();
     }
 
@@ -126,7 +126,7 @@
                 $_SESSION['auth'] = true;
                 $_SESSION["userEmailAdd"] = $user_exists["email_add"];
                 $_SESSION["user_Id"] = $user_exists["user_id"];
-                header("Location: ../homepage.php?successful-login");
+                header("Location: ../index.php?successful-login");
                 exit();
         }
 
@@ -143,7 +143,7 @@
                 $_SESSION['auth'] = true;   
                 $_SESSION["userEmailAdd"] = $user_exists["email_add"];
                 $_SESSION["user_Id"] = $user_exists["user_id"];
-                header("Location: ../homepage.php?successful-login");
+                header("Location: ../index.php?successful-login");
                 exit();
         } 
     }
@@ -175,7 +175,7 @@
                         $item_category = $row["item_category"];
                         $item_image1 = $row["item_image1"];
 
-                        // displaying items in the HTML homepage
+                        // displaying items in the HTML index
                         echo "
                         
                         <a style='text-decoration: none; color: black;' href='itemclickpage.php'>
@@ -211,7 +211,7 @@
                         $item_image1 = $row["item_image1"];
                         $num_sold = $row["num_sold"];
 
-                        // displaying items in the HTML homepage
+                        // displaying items in the HTML index
                         // <h6 style='padding-left: 15px; margin-bottom: -10px;'>$num_sold sold</h6>
                         echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
                         <figure class='figure' style='width: 210px;'>
@@ -249,17 +249,18 @@
                         $item_category = $row["item_category"];
                         $item_image1 = $row["item_image1"];
 
-                        // displaying items in the HTML homepage
-                        echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
-                        <figure class='figure' style='width: 210px;'>
-                            <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
-                            <figcaption class='item_name'>$item_name</figcaption>
-                            <figcaption class='item_price'>₱$item_price.00</figcaption>
-                        </figure>
-                    </a>";
+                        // displaying items in the HTML index
+                        echo "
+                        <div class='float-none'>
+                            <a style='text-decoration: none;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
+                            <figure class='figure' style='width: 215px; '>
+                                <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
+                                <figcaption class='item_name'>$item_name</figcaption>
+                                <figcaption class='item_price'>₱$item_price.00</figcaption>
+                            </figure>
+                            </a>
+                        </div>";
                     }
-
-                    echo"<br><br><br><br><br>";
                 }
             }
         }
@@ -290,7 +291,7 @@
                         $item_category = $row["item_category"];
                         $item_image1 = $row["item_image1"];
         
-                        // displaying items in the HTML homepage
+                        // displaying items in the HTML index
                         echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php'>
                         <figure class='figure' style='width: 210px;'>
                             <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
@@ -323,7 +324,7 @@
                     $item_category = $row["item_category"];
                     $item_image1 = $row["item_image1"];
     
-                    // displaying items in the HTML homepage
+                    // displaying items in the HTML index
                     echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php'>
                     <figure class='figure' style='width: 210px;'>
                         <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
