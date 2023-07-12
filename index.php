@@ -41,27 +41,63 @@ include("header.php");
                 </div>
             </div>
             <hr>
-            <div style="padding-left:2rem" class="row">
-                <div class="col-md-2 shadow p-3 mb-5 bg-white rounded">
+            <div style="padding-left:4rem" class="row">
+                <div class="card col-md-2 shadow p-3 mb-5 bg-white rounded ">
                     <h3>Categories</h3>
                     <ul class="list-group">
-                        <li class="list-group-item">All</li>
+
                         <?php
                         $select_query = "SELECT * FROM mens_categories";
                         $resultOfSelectQuery = mysqli_query($conn, $select_query);
+                        if (isset($_GET["category"])) {
+                            echo "<a href='../StickerRunner/index.php'>
+                                    <li class='list-group-item'>
+                                        All
+                                    </li>
+                                </a>";
+                            while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
+                                $category_name = $row["mens_category_name"];
+                                $category_id = $row["mens_category_id"];
+                                echo "<script>alert($category_name)</script>";
+                                if (trim($_GET["category"], "\"") == $category_name) {
+                                    echo "<a href='../StickerRunner/index.php?category=\"$category_name\"'>
+                                        <li class='list-group-item active'>
+                                            $category_name
+                                        </li>
+                                    </a>";
+                                } else {
+                                    echo "<a href='../StickerRunner/index.php?category=\"$category_name\"'>
+                                        <li class='list-group-item'>
+                                            $category_name
+                                        </li>
+                                    </a>";
+                                }
+                            }
+                        } else {
+                            echo "<a href='../StickerRunner/index.php'>
+                                    <li class='list-group-item active'>
+                                        All
+                                    </li>
+                                </a>";
 
-                        while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
-                            $category_name = $row["mens_category_name"];
-                            $category_id = $row["mens_category_id"];
-                            echo "<li class='list-group-item'>$category_name</li>";
+                            while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
+                                $category_name = $row["mens_category_name"];
+                                $category_id = $row["mens_category_id"];
+
+                                echo "<a href='../StickerRunner/index.php?category=\"$category_name\"'>
+                                    <li class='list-group-item'>
+                                        $category_name
+                                      </li>
+                                </a>";
+                            }
                         }
                         ?>
                     </ul>
                 </div>
                 <!----Column right----->
-                <div class="col-md-9 shadow p-3 mb-5 bg-white rounded container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; grid-auto-rows: 340px;">
+                <div class="card col-md-10 shadow p-3 mb-5 bg-white rounded container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; grid-auto-rows: 340px;">
                     <!-- <table> -->
-                        <!-- <tr>
+                    <!-- <tr>
                             <th>
                                 <h1 class="h3">Items</h1>
                             </th>
@@ -90,8 +126,12 @@ include("header.php");
                     <!----ITEMS LIST----->
                     <!----fetching products from items table in the database ---->
                     <?php
-                    displayAllItems();
-                    get_items_from_Category($conn);
+                    if (isset($_GET["category"])) {
+                        displayCategoryItems($_GET["category"]);
+                    } else {
+                        displayAllItems();
+                        get_items_from_Category($conn);
+                    }
                     ?>
                 </div><!---for right column--->
             </div>

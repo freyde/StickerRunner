@@ -267,6 +267,43 @@
 
     }
 
+    function displayCategoryItems($category){
+        global $conn;
+
+        if(!isset($_GET['search_btn'])){
+            if(!isset($_GET["mens_category"])){
+                if(!isset($_GET["womens_category"])){
+                    $select_query = "SELECT * FROM `items` WHERE item_status = 'Available' AND item_category = $category ORDER BY rand() LIMIT 0,20"; //rand() function to randomize items display 
+                    $result_query = mysqli_query($conn, $select_query); // LIMIT function to limit the items to be displayed
+
+                    while($row = mysqli_fetch_assoc($result_query)){
+                        $item_id = $row["item_id"];
+                        $item_code = $row["item_code"]; 
+                        $item_name = $row["item_name"];
+                        $item_price = $row["item_price"];
+                        $item_description = $row["item_description"];
+                        $item_keyword = $row["item_keyword"];
+                        $item_category = $row["item_category"];
+                        $item_image1 = $row["item_image1"];
+
+                        // displaying items in the HTML index
+                        echo "
+                        <div class='float-none'>
+                            <a style='text-decoration: none;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
+                            <figure class='figure' style='width: 215px; '>
+                                <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
+                                <figcaption class='item_name'>$item_name</figcaption>
+                                <figcaption class='item_price'>₱$item_price.00</figcaption>
+                            </figure>
+                            </a>
+                        </div>";
+                    }
+                }
+            }
+        }
+
+    }
+
     function get_items_from_Category($conn){
     global $conn;
         // display mens category onclick
@@ -377,29 +414,23 @@
                         echo "
                         <!----2 Columns----->
                       <div class='row'>
-                        <div class='column left' style='background-color: rgb(255, 255, 255); height: 500px; 
-                        width: 30%;'>
-                        <img class='border border-dark' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
+                        <div class='column left' style='background-color: rgb(255, 255, 255); height: 500px; width: 30%;'>
+                            <img class='border border-dark' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
                         </div>
                         <br>
                         
-                        <div class='column right item_data' style='background-color: rgb(255, 255, 255); height: 500px;
-                        width: 47%;'>
-                        <h2 class='fw-light ps-4 pt-1 fs-2'>$item_name</h2>
-                        <h4 class='fw-light ps-4 pt-1 fs-3' style='color: orangered;'>₱$item_price.00</h4>
-                        <h6 class='fw-bold ps-4 pt2 text-success'>Sold Items: $num_sold | Items left: $num_left</h6>";
+                        <div class='column right item_data' style='background-color: rgb(255, 255, 255); height: 500px; width: 47%;'>
+                            <h2 class='fw-light ps-4 pt-1 fs-2'>$item_name</h2>
+                            <h4 class='fw-light ps-4 pt-1 fs-3' style='color: darkblue;'>₱$item_price.00</h4>";
 
-                        if(isset($_SESSION['auth']) == false){
-                            echo"
-                        <form id='loginform' class='loginform' action='./loginpage.php'>";
-                        } else {
-                            echo "
-                            <form id='chooseSizeandQuantityForm' class='chooseSizeandQuantityForm' action='assets/quantityFunction.js'>";
-                        } 
+                            if(isset($_SESSION['auth']) == false){
+                                echo "<form id='loginform' class='loginform' action='./loginpage.php'>";
+                            } else {
+                                echo "<form id='chooseSizeandQuantityForm' class='chooseSizeandQuantityForm' action='assets/quantityFunction.js'>";
+                            } 
 
-                        echo"
-                        <h4 class='fw-light ps-4 pt-3 fs-5'>Size</h4>
-                         <div class='btn-group ps-4' style='padding-right: -10px; ' id='sizeButtons' role='group' aria-label='Basic example'>
+                            echo "<h4 class='fw-light ps-4 pt-3 fs-5'>Size</h4>
+                                    <div class='btn-group ps-4' style='padding-right: -10px; ' id='sizeButtons' role='group' aria-label='Basic example'>
                         ";
 
                         $new = explode(", ",$sizes_available); 
@@ -425,8 +456,8 @@
                             if(isset($_SESSION['auth']) == false){
                                 echo "
                                     <div class='btn-group ps-4 btn-group-lg' role='group' aria-label='Basic example'>
-                                        <button type='submit' class='btn btn-warning me-1'>Add to Cart</button>
-                                        <button type='submit' class='btn btn-warning me-1'>Buy Now</button>                      
+                                        <button type='submit' class='btn btn-info me-1'>Add to Cart</button>
+                                        <button type='submit' class='btn btn-info me-1'>Buy Now</button>                      
                                     </div> 
                                     </form>   
                                     </div>";

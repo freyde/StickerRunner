@@ -69,7 +69,7 @@ include_once("includes/functions.inc.php");
                         <div class="column left" style="background-color: rgb(255, 255, 255); height: 500px; width: 52%;">
                         <div class="display shadow-lg" style="height: 500px;">
                           <h3 class="fw-light pt-2 ps-3 fs-2 pb-2 bg-warning text-start">Billing Information</h3>
-                            <div class="account_info" style="margin-left: 30px;">
+                            <div class="account_info" style="margin-left: 30px; id">
                                 <h6 style='margin-top: 20px; color: black;'>Name: <?php echo $first_name. " " .$last_name ?></h6>
                                 <h6 style="color: black">Address: <?php echo $account_address?></h6>
                                 <h6 style="color: black">Contact Number: <?php echo $mobile_number?></h6>
@@ -77,12 +77,6 @@ include_once("includes/functions.inc.php");
                                 <?php
                                $check_code = $_GET["item_code"];
                                $new = explode(",", $check_code);
-                              //  print_r($new);
-
-                              //  foreach ($new as $code){
-                              //   echo $code;
-                              //     print_r($new);
-                              //  }
                         ?>
                             </div>
                       <?php
