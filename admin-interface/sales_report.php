@@ -45,21 +45,19 @@ include_once("../includes/functions.inc.php");
 
     <div class="row mt-1">
         <div class="col-md-10">
-            <form action="">
                 <div class="row mt-4">
                     <div class="mb-4 col-md-4">
                         <label for="exampleFormControlInput1" class="form-label">From:</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1">
+                        <input id="startDate" type="date" class="form-control" id="exampleFormControlInput1">
                     </div>
                     <div class="mb-4 col-md-4">
                         <label for="exampleFormControlTextarea1" class="form-label">To:</label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1">
+                        <input id="endDate" type="date" class="form-control" id="exampleFormControlInput1">
                     </div>
                     <div class="mt-4 col-md-3 d-flex align-items-center">
-                        <button type="submit" class="btn btn-primary mb-3">Generate Report</button>
+                        <button id="generateReportBtn" name="generateReportBtn" type="submit" class="btn btn-primary mb-3">Generate Report</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 

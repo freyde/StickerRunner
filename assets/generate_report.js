@@ -1,24 +1,18 @@
 $(document).ready(function (){
-    
-    
-    $(document).on('click', '#receiveBtn', function(e) {
-        
-        var package_num = $(this).val();
-    
+    $(document).on('click', '#generateReportBtn', function(e) {
         $.ajax({
             method: "POST",
-            url: "includes/received_order.inc.php",
+            url: "../includes/generate_report.php",
             data: {  
-                "package_num": package_num,
+                "startDate": $("#startDate").val(),
+                "endDate": $("#endDate").val(),
             },
             success: function(response){
-                alert(response);
                 console.log(response);
-                location.reload(true);
             },
             error: function(response) {
                 alert(response);
              }
         });
     });
-});
+})
