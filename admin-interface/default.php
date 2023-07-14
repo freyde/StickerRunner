@@ -18,7 +18,7 @@ include_once("../includes/functions.inc.php");
             <h1 class="ms-3">Admin - Dashboard</h1>
                     <div class="row mt-5">
                         
-                        <div class="col-3 me-4 ms-5" style="background-color: black; height: 170px;">
+                        <div class="col-3 me-4 ms-5" style="background-color: blue; height: 170px;">
                             <h5 style="color: white; padding-top: 10px;">Daily Revenue</h5>    
                                 <?php
                                     $select_total = "SELECT SUM(order_total_price) FROM `orders` WHERE payment_status = 'Paid' AND DATE(`order_date`) = DATE(NOW())";
@@ -37,7 +37,7 @@ include_once("../includes/functions.inc.php");
                                 ?>
                                 <a href ="main_dashboard.php?sales_report" style="color: white; padding-top: 20px;">More info...</a>
                         </div>
-                        <div class="col-2 me-4" style="background-color: black;">
+                        <div class="col-2 me-4" style="background-color: blue;">
                             <h5 style="color: white; padding-top: 10px;">Placed Orders</h5> 
                                 <?php
                                     $select_total_shipped = "SELECT * FROM `orders` WHERE order_status = 'Placed'";
@@ -48,7 +48,7 @@ include_once("../includes/functions.inc.php");
                                 ?>
 
                         </div>
-                        <div class="col-2 me-4" style="background-color: black;">
+                        <div class="col-2 me-4" style="background-color: blue;">
                             <h5 style="color: white; padding-top: 10px;">For Shipping</h5>
                                 <?php
                                     $select_all_orders = "SELECT * FROM `orders` WHERE order_status = 'Shipping'";
@@ -58,7 +58,7 @@ include_once("../includes/functions.inc.php");
                                     echo "<h1 style='color: White; padding-top: 15px;'> $number_cancelled_orders </h1>";
                                 ?>
                         </div>
-                        <div class="col-3" style="background-color: black; width: 180px;">
+                        <div class="col-3" style="background-color: blue; width: 180px;">
                             <h5 style="color: white; padding-top: 10px;">Cancelled Orders</h5>
                                 <?php
                                     $select_all_orders = "SELECT * FROM `orders` WHERE order_status = 'Cancelled'";

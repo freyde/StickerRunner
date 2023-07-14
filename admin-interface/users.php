@@ -80,7 +80,7 @@ include_once("../includes/functions.inc.php");
             $select_list = mysqli_query($conn, "SELECT * FROM users");
         ?>
 
-        <table class="table table-bordered border-primary table-success">
+        <table class="table table-bordered border-primary table-striped">
             <thead class="text-center fw-bold">
                 <tr>
                     <th>ID</th>
@@ -99,7 +99,7 @@ include_once("../includes/functions.inc.php");
                     <td class="text-center"><?php echo $row["user_id"] ?></td>
                     <td class="text-center"><?php echo $row["first_name"] . " ". $row["last_name"] ?></td>
                     <td class="text-center"><?php echo $row["email_add"] ?></td>
-                    <td class="text-center">₱<?php echo $row["street_number"] . ", " . $row["barangay"] . ", " . $row["province"] ?></td>
+                    <td class="text-center"><?php echo $row["street_number"] . ", " . $row["barangay"] . ", " . $row["province"] ?></td>
                     <td class="text-center"><?php echo $row["birthday"] ?></td>
                     <td class="text-center"><?php echo $row["gender"] ?></td>
                     <!-- <td class="text-center"><button type="button" class="btn btn-link">Edit</button></td> -->

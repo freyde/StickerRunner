@@ -121,14 +121,18 @@
             exit();
         }
 
-        if ($email_add == "admin@email.com" && $userPassword == "admin123"){
-                session_start();
-                $_SESSION['auth'] = true;
-                $_SESSION["userEmailAdd"] = $user_exists["email_add"];
-                $_SESSION["user_Id"] = $user_exists["user_id"];
-                header("Location: ../index.php?successful-login");
-                exit();
-        }
+        // if ($email_add == "admin@email.com" && $userPassword == "admin123"){
+        //         session_start();
+        //         $_SESSION['auth'] = true;
+        //         $_SESSION["userEmailAdd"] = $user_exists["email_add"];
+        //         $_SESSION["user_Id"] = $user_exists["user_id"];
+        //         $_SESSION["role"] = $user_exists["role"];
+        //         if($_SESSION["role"] != "admin")
+        //             header("Location: ../admin-interface/main_dashboard.php");
+        //         else
+        //             header("Location: ../index.php?successful-login");
+        //         exit();
+        // }
 
         $pwdHashed = $user_exists["user_password"];
         $checkPassword = password_verify($userPassword, $pwdHashed);
@@ -143,7 +147,11 @@
                 $_SESSION['auth'] = true;   
                 $_SESSION["userEmailAdd"] = $user_exists["email_add"];
                 $_SESSION["user_Id"] = $user_exists["user_id"];
-                header("Location: ../index.php?successful-login");
+                $_SESSION["role"] = $user_exists["role"];
+                if($_SESSION["role"] == "admin")
+                    header("Location: ../admin-interface/main_dashboard.php?dashboard");
+                else
+                    header("Location: ../index.php?successful-login");
                 exit();
         } 
     }

@@ -23,7 +23,7 @@ include_once("../includes/functions.inc.php");
 <body>
     <div class="container shadow-lg bg-white" style="margin-top: 50px; width:100%;">
         <h1 class="text-start pt-3 pb-3">In-Transit</h1>
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs nav-fill">
                 <li class="nav-item">
                     <a class="nav-link" href="main_dashboard.php?orders">Orders List</a>
                 </li>
@@ -34,7 +34,7 @@ include_once("../includes/functions.inc.php");
                     <a class="nav-link" href="main_dashboard.php?to_ship">To Ship</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="main_dashboard.php?in_transit">In-Transit</a>
+                    <a class="nav-link active" href="main_dashboard.php?in_transit">In-Transit</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="main_dashboard.php?delivered">Delivered</a>
@@ -43,10 +43,10 @@ include_once("../includes/functions.inc.php");
     </div>
     <div class="list-of-products">
         <?php
-            $select_list = mysqli_query($conn, "SELECT * FROM orders WHERE order_status = 'Shipping'");
+            $select_list = mysqli_query($conn, "SELECT * FROM orders WHERE order_status = 'In-Transit'");
         ?>
 
-        <table class="table table-bordered border-primary table-success">
+        <table class="table table-bordered table-striped border-primary">
             <thead class="text-center fw-bold">
                 <tr>
                     <th>Package Number</th>
@@ -57,8 +57,8 @@ include_once("../includes/functions.inc.php");
                     <th>Ordered At</th>
                     <th>Payment Method</th>
                     <th>Paid</th>
-                    <th>Status</th>
-                    <th colspan="2">Action</th>
+                    <th style="width:14%">Status</th>
+                    <!-- <th colspan="2">Action</th> -->
                 </tr>
             </thead>
             <?php
@@ -66,7 +66,6 @@ include_once("../includes/functions.inc.php");
             ?>
                 <tr style="font-size: 14px;">
                     <td class="text-center"><?php echo $row["package_num"] ?></td>
-                    <!-- <td class="text-center"><?php echo $row["order_item_code"] ?></td> -->
                     <td class="text-center">
                         <img src="../admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
                     </td>
@@ -74,12 +73,85 @@ include_once("../includes/functions.inc.php");
                     <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
                     <td class="text-center"><?php echo $row["order_date"] ?></td>
                     <td class="text-center"><?php echo $row["payment_method"] ?></td>
-                    <td class="text-center"><?php echo $row["payment_status"] ?></td>
-                    <td class="text-center"><?php echo $row["order_status"] ?></td>
-                    <!-- <td class="text-center"><button type="button" class="btn btn-link">Edit</button></td> -->
-                    <td class="text-center">
-                        <button type="button" name="paidBtn" id="paidBtn" value="<?php echo $row["order_item_code"] ?>" class="btn btn-success">Paid</button>
+                  
+
+                    <td class="text-center" style="width:14%">
+
+                    <select class="form-select" payment-id=<?php echo $row["order_item_code"];?>
+                    payment-email=<?php echo $row["order_email_add"];?> name="payment_status_change" aria-label="Default select example">
+                        <option value="<?php echo $row["payment_status"];?>" selected><?php echo $row["payment_status"];?></option>
+
+                        <?php 
+
+                            if($row["payment_status"] == "Paid"){
+                                ?>
+                                    <option value="Not Paid">Not Paid</option> 
+                                <?php
+                            } else if ($row["payment_status"] == "Not Paid") {
+                                ?>
+                                    <option value="Paid">Paid</option>
+                                <?php
+                            } 
+                        ?>
+                    </select>
+
+                        <!-- <button type="button" name="paidBtn" id="paidBtn" value="<?php echo $row["order_item_code"] ?>" class="btn btn-success">Paid</button> -->
                     </td>
+
+                   
+                    <td class="text-center" style="width:15%">
+
+                    <!-- <input type="hidden" value="<?php echo $row["order_item_code"] ?>" id="select_value" name="select_value"> -->
+                    <select class="form-select" status-id=<?php echo $row["order_item_code"];?> 
+                    status-email=<?php echo $row["order_email_add"];?> name="order_status_change" aria-label="Default select example">
+                        <option value="<?php echo $row["order_status"];?>" selected><?php echo $row["order_status"];?></option>
+
+                        <?php 
+
+                            if($row["order_status"] == "Placed"){
+                                ?>
+                                    <option value="To Ship">To Ship</option>
+                                    <option value="In-Transit">In-Transit</option>
+                                    <option value="Delivered">Delivered</option>
+                                    <option value="Cancelled">Cancelled</option>    
+                                <?php
+                            } else if ($row["order_status"] == "To Ship") {
+                                ?>
+                                    <option value="Placed">Placed</option>
+                                    <option value="In-Transit">In-Transit</option>
+                                    <option value="Delivered">Delivered</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                <?php
+                            } else if ($row["order_status"] == "In-Transit"){
+                                ?>
+                                     <option value="Placed">Placed</option>
+                                     <option value="To Ship">To Ship</option>
+                                     <option value="Delivered">Delivered</option>
+                                     <option value="Cancelled">Cancelled</option>
+                                <?php
+                            } else if ($row["order_status"] == "Delivered"){
+                                ?>
+                                        <option value="Placed">Placed</option>
+                                        <option value="To Ship">To Ship</option>
+                                        <option value="In-Transit">In-Transit</option>
+                                        <option value="Cancelled">Cancelled</option>
+                                <?php
+                            } else if ($row["order_status"] == "Cancelled"){
+                                ?>
+                                            <option value="Placed">Placed</option>
+                                            <option value="To Ship">To Ship</option>
+                                            <option value="In-Transit">In-Transit</option>
+                                            <option value="Delivered">Delivered</option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+
+                    </td>
+                    <!-- <td class="text-center"><button type="button" class="btn btn-link">Edit</button></td> -->
+                    <!-- <td class="text-center" style="width:14%">
+                        <button type="button" name="paidBtn" id="paidBtn" value="<?php echo $row["order_item_code"] ?>" class="btn btn-success">Paid</button>
+                    </td> -->
                 </tr>
                     
             <?php

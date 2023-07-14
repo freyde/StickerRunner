@@ -32,7 +32,7 @@ include_once("includes/functions.inc.php");
                       }
 
                       ?>
-                                    <table class="table table-sm table-bordered">
+                                    <table class="table table-sm table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Package#</th>

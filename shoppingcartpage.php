@@ -16,7 +16,7 @@ include_once("includes/functions.inc.php");
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <button class="btn btn-warning deleteAll_btn" style="width: 130px; margin-left: 455px; height: 35px;">
+            <button class="btn btn-danger deleteAll_btn" style="width: 130px; margin-left: 455px; height: 35px;">
               <img src="icons8-delete-trash-32.png" style="margin-top: -3px; height: 25px; width: 25px;" id="deleteAll">
             Delete
             </button>
@@ -53,7 +53,7 @@ include_once("includes/functions.inc.php");
                       </div>
                         
                       <div class='remove'>
-                            <button class="btn btn-warning deleteItem_btn" value='<?= $cart_Items['item_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 50px;">
+                            <button class="btn btn-danger deleteItem_btn" value='<?= $cart_Items['item_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 50px;">
                             <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
                             </button>
                       </div>
@@ -67,7 +67,7 @@ include_once("includes/functions.inc.php");
       </div><!---for left column--->
       <div class="column right" style="background-color: white; width: 25%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
        0 6px 20px 0 rgba(0, 0, 0, 0.19); height: 350px;">
-      <h2 class="fw-light pt-2 fs-2 pb-2 bg-warning text-center">Order Summary</h2>
+      <h2 class="fw-light pt-2 fs-2 pb-2 bg-primary text-center text-white">Order Summary</h2>
        
           <table style="width: 100%; margin-top: 30px;">
           <tr>
@@ -93,7 +93,7 @@ include_once("includes/functions.inc.php");
                         while ($users = mysqli_fetch_array($query)) {
                             $email_add = $users["email_add"];
                         ?>
-                            <button type="button" id="checkout_btn" class="btn btn-warning" style="width: 100%;">Place Order</button>
+                            <button type="button" id="checkout_btn" class="btn btn-primary" style="width: 100%;">Place Order</button>
                         <?php 
                         }
                     }

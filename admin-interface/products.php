@@ -87,7 +87,7 @@ include_once("../includes/functions.inc.php");
         $select_list = mysqli_query($conn, "SELECT * FROM items");
         ?>
 
-        <table class="table table-bordered border-primary table-success">
+        <table class="table table-bordered border-primary table-striped">
             <thead class="text-center fw-bold">
                 <tr>
                     <th>Item Code</th>

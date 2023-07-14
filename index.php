@@ -58,7 +58,6 @@ include("header.php");
                             while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
                                 $category_name = $row["mens_category_name"];
                                 $category_id = $row["mens_category_id"];
-                                echo "<script>alert($category_name)</script>";
                                 if (trim($_GET["category"], "\"") == $category_name) {
                                     echo "<a href='../StickerRunner/index.php?category=\"$category_name\"'>
                                         <li class='list-group-item active'>
@@ -222,7 +221,7 @@ include("header.php");
     </script>
 
 
-    <script>
+    <!-- <script>
         // When the user scrolls the page, execute myFunction
         window.onscroll = function() {
             myFunction()
@@ -242,7 +241,7 @@ include("header.php");
                 header.classList.remove("sticky");
             }
         }
-    </script>
+    </script> -->
 
     <script>
         /* When the user clicks on the button, 

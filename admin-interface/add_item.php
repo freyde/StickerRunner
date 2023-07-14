@@ -215,7 +215,7 @@ if (isset($_POST["addItemBtn"])) {
                 </div>
             </div>
 
-            <button type="submit" name="addItemBtn" class="btn btn-warning" style="margin-left: 40px; width: 50%;
+            <button type="submit" name="addItemBtn" class="btn btn-primary" style="margin-left: 40px; width: 50%;
                 margin-top: 120px; font-size: 20px;">Add Item</button>
 
             <br><br><br>

@@ -10,32 +10,32 @@
         require_once('dbh.inc.php');
         require_once('functions.inc.php');
 
-            if(emptyInputSignup($first_name, $last_name, $email_add, $userPassword, $repeatPass) !== false){
+            if(emptyInputSignup($first_name, $last_name, $email_add, $userPassword, $repeatPass)){
                 header("Location: ../signuppage.php?error=emptyinput");
                 exit();   
             }  
 
-            if(invalidFirstName($first_name) !== false){
+            if(invalidFirstName($first_name)){
                 header("Location: ../signuppage.php?error=invalidFirstName");
                 exit();
             }
 
-            if(invalidLastName($last_name) !== false){
+            if(invalidLastName($last_name)){
                 header("Location: ../signuppage.php?error=invalidLastName");
                 exit();
             }
             
-            if(invalidEmail($email_add) !== false){
+            if(invalidEmail($email_add)){
                 header("Location: ../signuppage.php?error=invalidEmail");
                 exit();
             }
 
-            if(checkPasswordMatch($userPassword, $repeatPass) !== false){
+            if(checkPasswordMatch($userPassword, $repeatPass)){
                 header("Location: ../signuppage.php?error=passwordsdontmatch");
                 exit();
             }
 
-            if(userExists($conn, $email_add) !== false){
+            if(userExists($conn, $email_add)){
                 header("Location: ../signuppage.php?error=emailaddresstaken");
                 exit();
             }

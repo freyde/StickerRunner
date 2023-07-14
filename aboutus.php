@@ -45,51 +45,57 @@
     
     <div class="content">
         <div class="bg-image">
-            <img src="admin-interface/item_images/aboutus_banner.jpg" style="width: 100%; height: 300px;" alt="">
+            <img src="images/bannersticker.jpg" style="width: 100%; height: 300px;" alt="">
         </div>
 
         <div class="about">
             <h1 class="text-center pt-5">About Us</h1>
             <p class="text-center w-75 pt-5" style="padding-left: 350px; background-color: rgb(255, 255, 255);">
-            Given that the Covid-19 brought negative impact to people, society, economy and particularly in most businesses, this led to the different business-specific problems surfacing and affecting the client and their business. The most recognizably problem is the lack of customers. An imminent outcome brought by the negative impact of Covid-19 to the people and the society.  
+            At Sticker Runners, we believe that fashion is a powerful means of self-expression. Our passion for style
+            and our commitment to quality has driven us to curate a stunning collection of clothing that caters to diverse
+            tastes and occasions. Whether you're looking for casual everyday wear, elegant formal attire, or trendy statement
+            pieces, we've got you covered.
             </p>
         </div>
 <br><br><br>
       <!----2 Columns----->
-      <div class="row pt-4 text-center">
+      <div class="row pt-4 text-center ">
           <!----Column LEFT----->
           <div class="column left border-2 border-end" style="height: 300px; 
           width: 28%;">
-          <h1 style="background-color: orange;">We Care</h1>
+          <h1 style="background-color: blue; color:white">We Care</h1>
           <br>
-          <p>At TopBuds, we deeply value our customers and strive to provide them with the best experience possible.
-             Their satisfaction is our top priority, and we are committed to building long-lasting relationships based
-              on trust and mutual respect.</p> 
+          <p>We care about the environment and strive to make sustainable choices. 
+            We actively seek out brands that prioritize eco-friendly materials, ethical production processes, 
+            and fair trade practices. By supporting us, you're joining us in our commitment to creating a more 
+            sustainable future for fashion.</p> 
           </div>
+
           
           <div class="column center border-2 border-end" style=" height: 300px; 
           width: 28%;">
-          <h1 style="background-color: orange;">We Value</h1>
+          <h1 style="background-color:blue; color:white">We Value</h1>
           <br>
-          <p>We appreciate the trust our customers place in us and constantly work towards exceeding their expectations.
-             Their feedback and input are invaluable to us as we continue to improve our products and services.
-              We are grateful for their continued support, and we remain dedicated to serving them with integrity, excellence, and care.</p>
+          <p>We value your shopping experience and want to make it as enjoyable and convenient as possible. Our user-friendly website and
+             intuitive navigation make browsing and finding your perfect pieces a breeze. And if you ever need assistance, our friendly and
+              knowledgeable customer service team is just a message or call away. We're here to answer your questions, offer styling advice,
+               and ensure your shopping journey with us is nothing short of delightful.</p>
         </p>
           </div>
   
           <!----Column RIGHT----->
           <div class="column right" style=" height: 500px;
           width: 28%;">
-          <h1 style="background-color: orange;">We Offer</h1>
+          <h1 style="background-color: blue; color: white ">We Offer</h1>
           <br>
-          <p>Our team of skilled professionals is dedicated to delivering high-quality solutions that are tailored to our
-             customers' specific requirements. We strive to provide prompt and reliable service, maintaining clear
-              communication every step of the way.</p>
+          <p>Our team of fashion
+             experts keeps a keen eye on the latest trends, attending fashion shows, and conducting extensive research to ensure that our 
+             collection reflects the latest styles. You can trust us to provide you with the freshest and most up-to-date fashion choices.</p>
           </div> <!---for right column--->
         </div> <!---for row--->
 
-        
-        <div class="row pt-4 pb-5 text-center" style="background-color: orange;">
+        <hr>
+        <div class="row pt-4 pb-5 text-center";>
             <div class="column left" style="width: 40%; height: 400px;">
                 <img src="admin-interface/item_images/location.jpg" style="width:450px; height: 400px;" alt="">
             </div>
