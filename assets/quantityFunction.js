@@ -308,6 +308,7 @@ $(document).ready(function (){
             check_id[i] = $(this).val();
         });
 
+        
         $.ajax({
             method: "POST",
             url: "includes/handle_cart.php",
@@ -322,7 +323,7 @@ $(document).ready(function (){
                 "check_id": check_id,
             },
             success: function(response){
-                window.location.href = "ordersummarypage.php?email_add="+getEmail+"&item_code="+check_id;
+                window.location.href = "ordersummarypage.php?email_add="+getEmail+"&item_code="+check_id.filter(n => n);
             },
             error: function(response) {
                 alert("Something went wrong");

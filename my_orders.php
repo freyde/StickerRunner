@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if (isset($_SESSION['auth'])) {
     include_once("header.php");
     include_once("includes/functions.inc.php");

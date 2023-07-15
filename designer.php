@@ -61,9 +61,14 @@ if (isset($_SESSION["auth"])) {
                     </div>
                 </div>
                 <hr>
-                <button id="delObjBtn" class="btn btn-primary" type="button">Delete Selected</button>
-                <button id="delAllBtn" class="btn btn-primary" type="button">Delete All</button>
-                <button id="buyBtn" class="btn btn-primary" type="button">Buy</button>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button id="delObjBtn" class="btn btn-primary" type="button">Delete Selected</button>
+                    <button id="delAllBtn" class="btn btn-primary" type="button">Delete All</button>
+                </div>
+                <hr>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button id="buyBtn" class="btn btn-primary" type="button">Download</button>
+                </div>
             </form>
         </div>
     </div>
@@ -222,16 +227,31 @@ if (isset($_SESSION["auth"])) {
 
         $(document).ready(function() {
             $(document).on('click', '#buyBtn', function(e) {
-                alert("aksd");
-                this.href = canvas.toDataURL({
+
+                const canvasDataURL = canvas.toDataURL({
+                    width: canvas.width,
+                    height: canvas.height,
                     format: 'jpg',
                 });
-                this.download = 'canvas.jpg';
-            },false);
+
+                // alert(this.href);
+
+                // this.download = 'canvas.jpg';
+
+                // alert(this);
+
+                const link = document.createElement('a');
+                link.download = 'image.png';
+                link.href = canvasDataURL;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+            });
         });
     </script>
 <?php
 } else {
-    header("Location: ../stickerrunner/loginpage.php");
+    header("Location: ../loginpage.php");
 }
 ?>

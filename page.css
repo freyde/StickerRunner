@@ -201,7 +201,9 @@ img{
 /*FOOTER*/
 
 .footer{
+  /* position: fixed; */
   background-color: black;  
+  bottom: 0;width: 100%;
 }
 
 .footer_row{
@@ -210,7 +212,6 @@ img{
 }
 
 .footer_column {
-  margin-top: 70px;
   float: left;
   width: 20%;
   border: 1px solid black;
@@ -226,7 +227,7 @@ img{
 .footer_column, h6{
   color: rgb(150, 149, 149);
   font-weight: lighter;
-}
+} */
 
 /************************LOG IN*********************************/
 
