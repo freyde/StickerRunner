@@ -23,6 +23,7 @@ $(document).ready(function (){
                 success: function(response){
                     window.location.href = "successful_checkout.php";
                     // alert("No error");
+                    // alert(response);
                 },
                 error: function(response) {
                     alert("Something went wrong");

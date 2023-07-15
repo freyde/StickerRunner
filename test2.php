@@ -63,16 +63,8 @@ include("header.php");
                     <h6>My Cart</h6>
                     <h6>Order Status</h6>
             </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Help and FAQs</h1>
-                    <h6>Online Ordering</h6>
-                    <h6>Shipping</h6>
-                    <h6>Billing</h6>
-                    <h6>Return Item</h6>
-            </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Sticker Runner</h1>
-            </div>
+            
+           
           </div>
 
           <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">

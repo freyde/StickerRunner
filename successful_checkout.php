@@ -51,11 +51,9 @@ include_once("includes/functions.inc.php");
                             </div>
 
                             <div class="buttons text-center pt-4">
-                                <a class="btn btn-primary" href="homepage.php" role="button">Go to Home</a>
+                                <a class="btn btn-primary" href="index.php" role="button">Go to Home</a>
                                 <a class="btn btn-warning" href="my_orders.php" role="button">My Orders</a>
                             </div>
-                          
-
                       <?php
                       
                     }
@@ -82,16 +80,8 @@ include_once("includes/functions.inc.php");
                     <h6>My Cart</h6>
                     <h6>Order Status</h6>
             </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Help and FAQs</h1>
-                    <h6>Online Ordering</h6>
-                    <h6>Shipping</h6>
-                    <h6>Billing</h6>
-                    <h6>Return Item</h6>
-            </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Sticker Runner</h1>
-            </div>
+           
+           
           </div>
 
           <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">

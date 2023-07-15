@@ -474,7 +474,7 @@ function viewItemInformation()
                                         </div>
                                     <br><br>";
 
-                        if (isset($_SESSION['auth']) == false) {
+                        if (!isset($_SESSION['auth'])) {
                             echo "
                                     <div class='btn-group ps-4 btn-group-lg' role='group' aria-label='Basic example'>
                                         <button type='submit' class='btn btn-info me-1'>Add to Cart</button>

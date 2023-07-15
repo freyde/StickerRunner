@@ -33,7 +33,7 @@ include('dbh.inc.php');
                         $result_check_cart_item = mysqli_query($conn, $check_cart_item);
 
                         if(mysqli_num_rows($result_check_cart_item) > 0){
-                            $update_quantity = "UPDATE `cart_table` SET quantity= quantity + $item_qty WHERE item_code = '$item_code' AND email_add = '$email_add'";
+                            $update_quantity = "UPDATE `cart_table` SET quantity= quantity + $item_qty WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size'";
                             $result_update_quantity= mysqli_query($conn, $update_quantity);
                         } else {
                             $insert_to_cartTbl = "INSERT INTO `cart_table` (item_code, item_name, item_price, size, quantity, item_image, email_add)

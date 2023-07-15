@@ -3,37 +3,31 @@ session_start();
 include('dbh.inc.php');
 
 
-// echo "<script>alert('asdasd')</script>";
-// echo "<script>console.log('asdasd')</script>";
-
 
 if (isset($_SESSION["userEmailAdd"])) {
     $selectData = "SELECT * FROM users WHERE email_add ='{$_SESSION["userEmailAdd"]}'";
     $query = mysqli_query($conn, $selectData);
 
-    // echo "<script>alert($query)</script>";
     if (mysqli_num_rows($query)) {
         while ($users = mysqli_fetch_array($query)) {
             $email_add = $users["email_add"];
         }
     }
 
-    // echo "<script>alert($id)</script>";
     if (isset($_POST["orders_id"])) {
+        $ordersId = $_POST["orders_id"];
         $payment = $_POST["payment_method"];
         $package_unique_num = mt_rand(100000000000, 999999999999);
-        $id = $_POST["orders_id"];
 
         $_SESSION['pack_num'] = $package_unique_num;
 
-        foreach ($_POST["orders_id"] as $orders_id) {
-            $select = "SELECT * FROM `cart_table` WHERE item_code = '$orders_id'";
+        foreach ($ordersId as $order_id) {
+            echo $order_id;
+            $select = "SELECT * FROM `cart_table` WHERE item_id = '$order_id' AND email_add = '$email_add'";
+
             $result = mysqli_query($conn, $select);
 
-            print_r($id);
-
             while ($row = mysqli_fetch_assoc($result)) {
-
                 $item_id = $row["item_id"];
                 $item_code = $row["item_code"];
                 $item_name = $row["item_name"];
@@ -52,15 +46,11 @@ if (isset($_SESSION["userEmailAdd"])) {
                      payment_status, order_item_image, order_email_add, order_date, order_status)
                     VALUES ('$package_unique_num', '$item_code', '$item_name',
                     '$item_price', '$item_size', '$item_quantity', '$total_price', '$payment', 'Not Paid', '$item_image', '$email_add', NOW(), 'Placed')";
+
                 $result_place_item = mysqli_query($conn, $place_item);
-
-                //  if($result_place_item){
-                //     echo "hey";
-                //  } else {
-                //     echo "hehe";
-                //  }
-
             }
+            $delete_items = "DELETE FROM `cart_table` WHERE item_id = '$order_id'";
+            $result = mysqli_query($conn, $delete_items);
         }
     } else {
         echo "no";

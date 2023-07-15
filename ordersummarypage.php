@@ -117,7 +117,7 @@ include_once("includes/functions.inc.php");
                         </div>
                         <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 20px;
                                       text-align: center; justify-content: center; display: flex;'>
-                          <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['item_code'] ?>' style="opacity: 0;">
+                          <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['item_id'] ?>' style="opacity: 0;">
                           <input type="checkbox" name="" class="checkQuantity" value='<?= $check_Items['quantity'] ?>' style="opacity: 0;">
                           <?php
                           echo "
@@ -256,16 +256,8 @@ include_once("includes/functions.inc.php");
             <h6>My Cart</h6>
             <h6>Order Status</h6>
         </div>
-        <div class="footer_column">
-          <h4 style="color: white;">Help and FAQs</h1>
-            <h6>Online Ordering</h6>
-            <h6>Shipping</h6>
-            <h6>Billing</h6>
-            <h6>Return Item</h6>
-        </div>
-        <div class="footer_column">
-          <h4 style="color: white;">Sticker Runner</h1>
-        </div>
+        
+       
       </div>
 
       <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">

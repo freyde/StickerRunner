@@ -155,16 +155,8 @@ include("header.php");
                     <h6><a href="">My Cart</a></h6>
                     <h6><a href="">Order Status</a></h6>
             </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Help and FAQs</h1>
-                    <h6><a href="">Online Ordering</a></h6>
-                    <h6><a href="">Shipping</a></h6>
-                    <h6><a href="">Billing</a></h6>
-                    <h6><a href="">Return Item</a></h6>
-            </div>
-            <div class="footer_column">
-                <h4 style="color: white;">Sticker Runners</h1>
-            </div>
+            
+            
         </div>
 
         <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
