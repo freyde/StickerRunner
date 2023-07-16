@@ -57,7 +57,7 @@ include_once("includes/functions.inc.php");
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="all_products.php" class="nav-link navbar-brand">All Products</a>
+                        <a href="all_products.php" class="nav-link navbar-brand active">All Products</a>
                     </li>
                     <li class="nav-item">
                         <a href="designer.php" class="nav-link navbar-brand">Make Your Own</a>

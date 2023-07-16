@@ -8,7 +8,7 @@
 */
 
 .font-select {
-  font-size: 20px;
+  font-size: 18px;
   width: 210px;
   position: relative;
   display: inline-block;
@@ -50,7 +50,7 @@
   overflow: hidden;
   white-space: nowrap;
   position: relative;
-  height: 26px;
+  height: 35px;
   line-height: 26px;
   padding: 0 0 0 8px;
   color: #444;

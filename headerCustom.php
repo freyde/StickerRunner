@@ -60,7 +60,7 @@ include_once("includes/functions.inc.php");
                         <a href="all_products.php" class="nav-link navbar-brand">All Products</a>
                     </li>
                     <li class="nav-item">
-                        <a href="designer.php" class="nav-link navbar-brand">Make Your Own</a>
+                        <a href="designer.php" class="nav-link navbar-brand active">Make Your Own</a>
                     </li>
                     <li class="nav-item">
                         <a href="aboutus.php" class="nav-link navbar-brand">About Us</a>

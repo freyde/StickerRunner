@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("headerAll.php");
 ?>
 
 <head>

@@ -45,7 +45,7 @@ include_once("includes/signuppage.inc.php");
             <div class="btn-group">
                 <div class="form-group" style="height: 75px; width: 400px; padding-right: 10px;">
                     <small id="street_numGuide" class="form-text fst-italic">Street Number<span style="color: red;">*</span></small>
-                    <input type="text" name="street_num" class="form-control" id="street_num" placeholder="Block, Section, Phase, Street No."
+                    <input type="text" name="street_num" class="form-control" id="street_num" placeholder="Lot, Block, Section, Phase, Street No."
                     autocomplete="off">
                 </div>
                 <div class="provinceSelect">

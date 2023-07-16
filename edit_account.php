@@ -36,8 +36,8 @@ include_once("header.php");
                                 <label style="font-size: 14px;" for="lastName">Last Name<span style="color: red;">*</span></label>
                                 <input type="search" class="form-control" id="last_name" name="e_last_name" value="<?php echo $last_name; ?>" style="width: 200px;">
                             </div>
-                            <div class="col-7" style="width: 220px;">
-                                <label style="font-size: 14px;" for="lastName">Street Number<span style="color: red;">*</span></label>
+                            <div class="col-7" style="width: 270px;">
+                                <label style="font-size: 14px;" for="lastName">Lot, Block, Section, Phase, Street No.<span style="color: red;">*</span></label>
                                 <input type="search" class="form-control" id="street_num" name="street_num" value="<?php echo $users["street_number"]; ?>" style="width: 400px;">
                             </div>
 

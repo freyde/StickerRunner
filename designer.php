@@ -7,7 +7,7 @@
 session_start();
 
 if (isset($_SESSION["auth"])) {
-    include("header.php");
+    include("headerCustom.php");
     include_once("includes/functions.inc.php");
 ?>
     <div class="row">
@@ -56,14 +56,6 @@ if (isset($_SESSION["auth"])) {
                     <div class="input-group mb-3">
                         <h5>Font:&nbsp&nbsp</h5>
                         <input id="font" type="text" class="form-control" />
-                        <!-- <select id="selectFont" name="selectFont">
-                            <option value="Serif"> Serif </option>
-                            <option value="Arial"> Arial </option>
-                            <option value="Sans-Serif"> Sans-Serif </option>
-                            <option value="Tahoma"> Tahoma </option>
-                            <option value="Verdana"> Verdana </option>
-                            <option value="Lucida Sans Unicode"> Lucida Sans Unicode </option>
-                        </select> -->
                     </div>
                     <div class="input-group mb-3">
                         <h5>Color:&nbsp&nbsp</h5>
@@ -97,7 +89,9 @@ if (isset($_SESSION["auth"])) {
     <script src="assets/fontselect.js"></script>
     <script>
         $(function() {
-            $('#font').fontselect();
+            $('#font').fontselect({
+                lookahead: 20,
+            });
         });
         // create a wrapper around native canvas element (with id="c")
         // { preserveObjectStacking:true }
@@ -190,7 +184,7 @@ if (isset($_SESSION["auth"])) {
 
         $(document).ready(function() {
             $(document).on('click', '#addTextBtn', function(e) {
-                var font = $('#selectFont').find(":selected").val();
+                var font = $('#font').val().replace(/\+/g, ' ');
                 var color = $('#textColor').val();
                 canvas.add(new fabric.IText('Sample Text', {
                     left: canvas.getWidth() / 3,

@@ -5,7 +5,6 @@
  * MIT Licensed
  * @version 0.1
 */
-alert('asdasd');
 (function($){
 
   $.fn.fontselect = function(options) {  

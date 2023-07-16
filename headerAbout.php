@@ -63,7 +63,7 @@ include_once("includes/functions.inc.php");
                         <a href="designer.php" class="nav-link navbar-brand">Make Your Own</a>
                     </li>
                     <li class="nav-item">
-                        <a href="aboutus.php" class="nav-link navbar-brand">About Us</a>
+                        <a href="aboutus.php" class="nav-link navbar-brand active">About Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
