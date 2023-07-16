@@ -444,10 +444,10 @@ function viewItemInformation()
                             <h2 class='fw-light ps-4 pt-1 fs-2'>$item_name</h2>
                             <h4 class='fw-light ps-4 pt-1 fs-3' style='color: darkblue;'>₱$item_price.00</h4>";
 
-                        if (isset($_SESSION['auth']) == false) {
+                        if (!isset($_SESSION['auth'])) {
                             echo "<form id='loginform' class='loginform' action='./loginpage.php'>";
                         } else {
-                            echo "<form id='chooseSizeandQuantityForm' class='chooseSizeandQuantityForm' action='assets/quantityFunction.js'>";
+                            echo "<form id='chooseSizeandQuantityForm' class='chooseSizeandQuantityForm'>";
                         }
 
                         echo "<h4 class='fw-light ps-4 pt-3 fs-5'>Size</h4>
@@ -486,7 +486,7 @@ function viewItemInformation()
                             echo "
                                     <div class='btn-group ps-4 btn-group-lg' role='group' aria-label='Basic example'>
                                         <button type='submit' id='atcBtnModal' class='btn btn-warning me-1 addToCartBtn' value='$item_code'>Add to Cart</button>
-                                        <button type='submit' class='btn btn-warning me-1 buyNowBtn' value='$item_code'>Buy Now</button>                      
+                                        <button type='button' id='buyNowBtn' class='btn btn-warning me-1 buyNowBtn' value='$item_code'>Buy Now</button>                      
                                     </div> 
                                     </form>   
                                     </div>";
@@ -529,11 +529,13 @@ function get_Suggestion()
                             $item_category = $row["item_category"];
                             $item_image1 = $row["item_image1"];
 
-                            echo "<figure class='figure' style='width: 210px;'>
-                                    <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' alt='A generic square placeholder image with rounded corners in a figure.'>
-                                    <figcaption class='item_name'>$item_name</figcaption>
-                                    <figcaption class='item_price'>₱$item_price.00</figcaption>
-                                </figure>
+                            echo "<a style='text-decoration: none;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
+                                    <figure class='figure' style='width: 210px;'>
+                                        <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' alt='A generic square placeholder image with rounded corners in a figure.'>
+                                        <figcaption class='item_name'>$item_name</figcaption>
+                                        <figcaption class='item_price'>₱$item_price.00</figcaption>
+                                    </figure>
+                                </a>
                                 ";
                         }
                     }
@@ -679,10 +681,14 @@ function get_checkout_Items()
         $itemsArr = explode(",", $itemCode);
         // echo "<script>alert(".implode(',', $itemsArr).")</script>";
         // foreach ($itemsArr as $item) {
-            $email_add = $_GET["email_add"];
-            $select_query = "SELECT * FROM `cart_table` WHERE email_add = '$email_add' AND item_id IN (".implode(',', array_filter($itemsArr)).")";
+        $email_add = $_GET["email_add"];
+        if (!isset($_GET["checkout"]))
+            $select_query = "SELECT * FROM `cart_table` WHERE email_add = '$email_add' AND item_id IN (" . implode(',', array_filter($itemsArr)) . ")";
+        else
+            $select_query = "SELECT * FROM `checkout_items` WHERE check_email_add = '$email_add' AND check_code IN (" . implode(',', array_filter($itemsArr)) . ")";
+
         // }
-        
+
         // echo "<script>alert('$select_query')</script>";
         return mysqli_query($conn, $select_query);
         // }

@@ -98,43 +98,86 @@ include_once("includes/functions.inc.php");
             <div class="container">
               <?php
               $c_items = get_checkout_Items();
+              $_SESSION['checkout'] = false;
+              // echo "<script>alert(".$_SESSION['checkout'].")</script>";
               foreach ($c_items as $check_Items) {
+                if (!isset($_GET['checkout'])) {
+                  $_SESSION['checkout'] = true;
               ?>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class='card check_item_data shadow-lg mb-1 bg-white rounded' style='height: 130px; background-color: #F0F0F0;'>
-                      <div class='btn-group mb-2'>
-                        <div class='form-check' style='width: 400px;'>
-                          <input type="hidden" class="checkEmail" value='<?= $check_Items['email_add'] ?>'>
-                          <input type="hidden" class="checkName" value='<?= $check_Items['item_name'] ?>'>
-                          <input type="hidden" class="checkSize" value='<?= $check_Items['item_size'] ?>'>
-                          <input type="hidden" class="checkImage" value='<?= $check_Items['item_image'] ?>'>
-                          <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $check_Items['item_image'] ?>' alt=''>
-                          <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['item_name'] ?></h6>
-                          <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['item_price'] ?>.00</h6>
-                          <input type="hidden" class="checkPrice" value='<?= $check_Items['item_price'] ?>'>
-                          <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $check_Items['size'] ?></h6>
-                        </div>
-                        <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 20px;
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class='card check_item_data shadow-lg mb-1 bg-white rounded' style='height: 130px; background-color: #F0F0F0;'>
+                        <div class='btn-group mb-2'>
+                          <div class='form-check' style='width: 400px;'>
+                            <input type="hidden" class="checkEmail" value='<?= $check_Items['email_add'] ?>'>
+                            <input type="hidden" class="checkName" value='<?= $check_Items['item_name'] ?>'>
+                            <input type="hidden" class="checkSize" value='<?= $check_Items['item_size'] ?>'>
+                            <input type="hidden" class="checkImage" value='<?= $check_Items['item_image'] ?>'>
+                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $check_Items['item_image'] ?>' alt=''>
+                            <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['item_name'] ?></h6>
+                            <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['item_price'] ?>.00</h6>
+                            <input type="hidden" class="checkPrice" value='<?= $check_Items['item_price'] ?>'>
+                            <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $check_Items['size'] ?></h6>
+                          </div>
+                          <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 20px;
                                       text-align: center; justify-content: center; display: flex;'>
-                          <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['item_id'] ?>' style="opacity: 0;">
-                          <input type="checkbox" name="" class="checkQuantity" value='<?= $check_Items['quantity'] ?>' style="opacity: 0;">
-                          <?php
-                          echo "
+                            <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['item_id'] ?>' style="opacity: 0;">
+                            <input type="checkbox" name="" class="checkQuantity" value='<?= $check_Items['quantity'] ?>' style="opacity: 0;">
+                            <?php
+                            echo "
                                                     <p>Quantity: </p>
                                                     <p>{$check_Items['quantity']}<p>";
-                          ?>
-                        </div>
-                        <div class='remove'>
-                          <button class="btn btn-danger deleteItem_btn" value='<?= $check_Items['check_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 60px;">
-                            <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
-                          </button>
+                            ?>
+                          </div>
+                          <div class='remove'>
+                            <button class="btn btn-danger deleteItem_btn" value='<?= $check_Items['check_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 60px;">
+                              <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <?php
+
+                } else {
+                ?>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class='card check_item_data shadow-lg mb-1 bg-white rounded' style='height: 130px; background-color: #F0F0F0;'>
+                        <div class='btn-group mb-2'>
+                          <div class='form-check' style='width: 400px;'>
+                            <input type="hidden" class="checkEmail" value='<?= $check_Items['check_email_add'] ?>'>
+                            <input type="hidden" class="checkName" value='<?= $check_Items['check_name'] ?>'>
+                            <input type="hidden" class="checkSize" value='<?= $check_Items['check_size'] ?>'>
+                            <input type="hidden" class="checkImage" value='<?= $check_Items['check_image'] ?>'>
+                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $check_Items['check_image'] ?>' alt=''>
+                            <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['check_name'] ?></h6>
+                            <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['check_price'] ?>.00</h6>
+                            <input type="hidden" class="checkPrice" value='<?= $check_Items['check_price'] ?>'>
+                            <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $check_Items['check_size'] ?></h6>
+                          </div>
+                          <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 20px;
+                                      text-align: center; justify-content: center; display: flex;'>
+                            <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['check_id'] ?>' style="opacity: 0;">
+                            <input type="checkbox" name="" class="checkQuantity" value='<?= $check_Items['check_quantity'] ?>' style="opacity: 0;">
+                            <?php
+                            echo "
+                                                    <p>Quantity: </p>
+                                                    <p>{$check_Items['check_quantity']}<p>";
+                            ?>
+                          </div>
+                          <div class='remove'>
+                            <button class="btn btn-danger deleteItem_btn" value='<?= $check_Items['check_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 60px;">
+                              <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               <?php
+                }
               }
               ?>
               <hr>
@@ -174,8 +217,10 @@ include_once("includes/functions.inc.php");
                     <div class="paymentOpt-button-group text-center">
                       <input type="checkbox" name="payment_chk" id="GCashBtn" value="GCash" class="payment_chk btn btn-primary">GCash
                       <input type="checkbox" name="payment_chk" id="CoDBtn" value="CoD" class="payment_chk btn btn-primary ms-3">CoD
-                      <!-- <button type="button" id="GCashBtn" value="GCash" class="btn btn-primary">GCash</button>
-                    <button type="button" class="btn btn-primary">Cash on Delivery</button>          -->
+                      <!-- <button type="button" class="btn btn-primary">Cash on Delivery</button>          -->
+                    </div>
+                    <div class="mt-3 ml-2 mr-2">
+                      <input id="inputGcashRef" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Gcash Reference Number">
                     </div>
                     <hr>
                     <div class="row pt-2 ps-4">
@@ -185,9 +230,13 @@ include_once("includes/functions.inc.php");
                             <h6 class="text-dark">Subtotal (2 items):</h6>
                           </td>
                           <td class="text-end" style="padding-right: 40px;">₱<?php
-                                                                              //display data on web page
-                                                                              while ($row = mysqli_fetch_array($resultSubtotal)) {
-                                                                                echo $row['SUM(item_price * quantity)'];
+                                                                              if (!isset($_GET['checkout'])) {
+                                                                                while ($row = mysqli_fetch_array($resultSubtotal)) {
+                                                                                  $totalPrice = $row['SUM(item_price * quantity)'];
+                                                                                  echo $totalPrice;
+                                                                                }
+                                                                              } else {
+                                                                                echo $check_Items['check_price'] * $check_Items['check_quantity'];
                                                                               }
                                                                               ?>.00</td>
                         </tr>
@@ -202,9 +251,13 @@ include_once("includes/functions.inc.php");
                             <h6 class="text-dark pt-4 fs-5">Total Amount:</h6>
                           </td>
                           <td class="text-end fs-5 pt-2" style="padding-right: 15px; padding-right: 40px;">₱<?php
-                                                                                                            //display data on web page
-                                                                                                            while ($row = mysqli_fetch_array($resultTotalPricewithSF)) {
-                                                                                                              echo $row['SUM(item_price * quantity)'] + 45;
+                                                                                                            if (!isset($_GET['checkout'])) {
+                                                                                                              echo $totalPrice + 45;
+                                                                                                              while ($row = mysqli_fetch_array($resultSubtotal)) {
+                                                                                                                echo $row['SUM(item_price * quantity)'];
+                                                                                                              }
+                                                                                                            } else {
+                                                                                                              echo $check_Items['check_price'] * $check_Items['check_quantity'] + 45;
                                                                                                             }
                                                                                                             ?>.00</td>
                         </tr>
@@ -240,7 +293,7 @@ include_once("includes/functions.inc.php");
 
 
     <!----Footer Section----->
-    
+
     <div class="footer">
       <div class="footer_row">
         <div class="footer_column">
@@ -256,8 +309,8 @@ include_once("includes/functions.inc.php");
             <h6>My Cart</h6>
             <h6>Order Status</h6>
         </div>
-        
-       
+
+
       </div>
 
       <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
@@ -282,14 +335,22 @@ include_once("includes/functions.inc.php");
     var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("GCashBtn");
+    var gcashbtn = document.getElementById("GCashBtn");
+    var codbtn = document.getElementById("CoDBtn");
+    var gcashinpt = document.getElementById("inputGcashRef");
+    gcashinpt.style.display = "none";
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
-    btn.onclick = function() {
+    gcashbtn.onclick = function() {
+      gcashinpt.style.display = "block";
       modal.style.display = "block";
+    }
+
+    codbtn.onclick = function() {
+      gcashinpt.style.display = "none";
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -307,6 +368,7 @@ include_once("includes/functions.inc.php");
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+
       document.querySelectorAll('.sidebar .nav-link').forEach(function(element) {
 
         element.addEventListener('click', function(e) {

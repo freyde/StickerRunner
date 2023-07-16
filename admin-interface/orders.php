@@ -59,6 +59,7 @@ include_once("../includes/functions.inc.php");
                     <th>Item Total Price</th>
                     <th>Ordered At</th>
                     <th>Payment Method</th>
+                    <th>GCash Reference No.</th>
                     <th>Paid</th>
                     <th style="width:14%">Status</th>
                     <!-- <th colspan="2">Action</th> -->
@@ -79,6 +80,7 @@ include_once("../includes/functions.inc.php");
                         <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
                         <td class="text-center"><?php echo $row["order_date"] ?></td>
                         <td class="text-center"><?php echo $row["payment_method"] ?></td>
+                        <td class="text-center"><?php echo $row["gcash_ref"] ?></td>
 
 
                         <td class="text-center" style="width:14%">
@@ -143,12 +145,7 @@ include_once("../includes/functions.inc.php");
                                 }
                                 ?>
                             </select>
-
                         </td>
-                        <!-- <td class="text-center"><button type="button" class="btn btn-link">Edit</button></td> -->
-                        <!-- <td class="text-center" style="width:14%">
-                        <button type="button" name="paidBtn" id="paidBtn" value="<?php echo $row["order_item_code"] ?>" class="btn btn-success">Paid</button>
-                    </td> -->
                     </tr>
 
                 <?php

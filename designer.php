@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/fontselect-default.css" />
+    <script src="jquery.fontselect.js"></script>
+</head>
+
 <?php
 session_start();
 
@@ -14,7 +19,7 @@ if (isset($_SESSION["auth"])) {
             <h1>Customize Your Shirt</h1>
             <form action="">
                 <hr>
-                <p>Shirt Control</p>
+                <h4>Shirt</h4>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="shirtOrientaion" id="shirtOrientaionFront" value="front" checked>
@@ -46,14 +51,31 @@ if (isset($_SESSION["auth"])) {
                 </div>
                 <hr>
 
-                <p>Text Control</p>
+                <h4>Text</h4>
                 <div class="d-grid gap-2 col-6 mx-auto">
+                    <div class="input-group mb-3">
+                        <h5>Font:&nbsp&nbsp</h5>
+                        <input id="font" type="text" class="form-control" />
+                        <!-- <select id="selectFont" name="selectFont">
+                            <option value="Serif"> Serif </option>
+                            <option value="Arial"> Arial </option>
+                            <option value="Sans-Serif"> Sans-Serif </option>
+                            <option value="Tahoma"> Tahoma </option>
+                            <option value="Verdana"> Verdana </option>
+                            <option value="Lucida Sans Unicode"> Lucida Sans Unicode </option>
+                        </select> -->
+                    </div>
+                    <div class="input-group mb-3">
+                        <h5>Color:&nbsp&nbsp</h5>
+                        <input class="ml-3" type="color" name="textColor" id="textColor" value="#FFFFFF">
+                    </div>
+
                     <button id="addTextBtn" class="btn btn-primary" type="button">Add Text</button>
 
                 </div>
                 <hr>
 
-                <p>Image Control</p>
+                <h4>Image</h4>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <div class="input-group">
                         <input type="file" class="form-control" id="inputImageFile" accept="image/*">
@@ -72,8 +94,11 @@ if (isset($_SESSION["auth"])) {
             </form>
         </div>
     </div>
-
+    <script src="assets/fontselect.js"></script>
     <script>
+        $(function() {
+            $('#font').fontselect();
+        });
         // create a wrapper around native canvas element (with id="c")
         // { preserveObjectStacking:true }
         var canvas = new fabric.Canvas('c');
@@ -165,10 +190,13 @@ if (isset($_SESSION["auth"])) {
 
         $(document).ready(function() {
             $(document).on('click', '#addTextBtn', function(e) {
+                var font = $('#selectFont').find(":selected").val();
+                var color = $('#textColor').val();
                 canvas.add(new fabric.IText('Sample Text', {
                     left: canvas.getWidth() / 3,
                     top: canvas.getHeight() / 3,
-                    fill: 'white',
+                    fill: color,
+                    fontFamily: font,
                 }));
             });
         });
@@ -249,6 +277,10 @@ if (isset($_SESSION["auth"])) {
 
             });
         });
+
+        window.onbeforeunload = function() {
+            return 'Are you sure you want to leave?';
+        };
     </script>
 <?php
 } else {

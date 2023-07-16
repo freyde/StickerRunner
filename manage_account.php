@@ -1,40 +1,44 @@
 <?php
 include_once("header.php");
 ?>
-<style>
-    body {
-        background-color: #F0F0F0;
-    }
 
-    .column {
-        float: left;
-        height: 200px;
-        /* Should be removed. Only for demonstration */
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-    .left {
-        width: 35%;
-        background-color: white;
-    }
+    <style>
+        body {
+            background-color: #F0F0F0;
+        }
 
-    .middle {
-        width: 30%;
-        margin-left: 10px;
-        background-color: white;
-    }
+        .column {
+            float: left;
+            height: 200px;
+            /* Should be removed. Only for demonstration */
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
 
-    .right {
-        width: 15%;
-        margin-top: 0px;
-        background-color: white;
-        margin-left: 10px;
-    }
-</style>
+        .left {
+            width: 35%;
+            background-color: white;
+        }
 
+        .middle {
+            width: 30%;
+            margin-left: 10px;
+            background-color: white;
+        }
+
+        .right {
+            width: 15%;
+            margin-top: 0px;
+            background-color: white;
+            margin-left: 10px;
+        }
+    </style>
+</head>
 
 <body>
-
     <div class="row">
         <div class="col-2">
             <div class="flex-shrink-0 p-3 bg-white" style="width: 230px; margin-left: 70px;">
@@ -159,8 +163,8 @@ include_once("header.php");
                         <h6>My Cart</h6>
                         <h6>Order Status</h6>
                 </div>
-               
-                
+
+
             </div>
 
             <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">

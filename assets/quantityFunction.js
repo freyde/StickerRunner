@@ -66,29 +66,32 @@ $(document).ready(function () {
 
     $(document).on('click', '.buyNowBtn', function (e) {
         e.preventDefault();
-
+        // alert("asdad");
         var qty = $(this).closest('.item_data').find('.input-qty').val();
         var item_code = $(this).val();
         var size = $(".btn-check:checked").val();
 
-        $.ajax({
-            method: "POST",
-            url: "includes/handle_cart.php",
-            data: {
-                "item_code": item_code,
-                "item_qty": qty,
-                "item_size": size,
-                "scope": "buy"
-            },
-            success: function (response) {
-                alert("Item has been checked out!");
-                resetForm();
-                window.location.href = "ordersummarypage.php?email_add=" + getEmail + "?items=";
-            },
-            error: function (response) {
-                alert("Something went wrong");
-            }
-        });
+        if (size != null) {
+            $.ajax({
+                method: "POST",
+                url: "includes/handle_cart.php",
+                data: {
+                    "item_code": item_code,
+                    "item_qty": qty,
+                    "item_size": size,
+                    "scope": "buy"
+                },
+                success: function (response) {
+                        const a = JSON.parse(response);
+                        window.location.assign("ordersummarypage.php?email_add=" + a.email_add + "&item_code=" + a.item_code + "&checkout=true");
+                },
+                error: function (response) {
+                    alert("Something went wrong");
+                }
+            });
+        } else {
+            alert("Please select size before adding to cart.");
+        }
 
     });
 
