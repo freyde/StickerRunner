@@ -51,14 +51,14 @@ if (!isset($_SESSION["auth"])) {
 
     <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
 
-    <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Topbuds Clothing. All Rights Reserved</h6>
+    <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Stciker Runners Clothing. All Rights Reserved</h6>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>
 <?php
 } else {
-  header("Location: ../stickerrunner/index.php");
+  header("Location: ../index.php");
 }
 ?>
 </body>

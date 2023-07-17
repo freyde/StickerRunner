@@ -1,6 +1,6 @@
 <?php
-include_once("../includes/dbh.inc.php");
-include_once("../includes/functions.inc.php");
+include_once("includes/dbh.inc.php");
+include_once("includes/functions.inc.php");
 
 ?>
 
@@ -74,7 +74,7 @@ include_once("../includes/functions.inc.php");
                         <td class="text-center"><b><?php echo $row["package_num"] ?></b></td>
                         <td class="text-center"><?php echo $row["order_email_add"] ?></td>
                         <td class="text-center">
-                            <img src="../admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
+                            <img src="/admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
                         </td>
                         <td class="text-center"><?php echo $row["order_item_name"] ?></td>
                         <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
@@ -156,7 +156,7 @@ include_once("../includes/functions.inc.php");
                         <td></td>
                         <td></td>
                         <td class="text-center">
-                            <img src="../admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
+                            <img src="admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
                         </td>
                         <td class="text-center"><?php echo $row["order_item_name"] ?></td>
                         <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
@@ -182,8 +182,8 @@ include_once("../includes/functions.inc.php");
 
 
 
-    <script src="../jquery-3.6.3.js"></script>
-    <script src="../assets/paid_function.js"></script>
+    <script src="jquery-3.6.3.js"></script>
+    <script src="assets/paid_function.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -198,7 +198,7 @@ include_once("../includes/functions.inc.php");
 
                 $.ajax({
                     method: "POST",
-                    url: "../includes/change_status.php",
+                    url: "includes/change_status.php",
                     data: {
                         status: status,
                         package_num: package_num,
@@ -230,7 +230,7 @@ include_once("../includes/functions.inc.php");
 
                 $.ajax({
                     method: "POST",
-                    url: "../includes/change_payment.php",
+                    url: "includes/change_payment.php",
                     data: {
                         Pstatus: Pstatus,
                         package_num: package_num,

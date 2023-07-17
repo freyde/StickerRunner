@@ -112,9 +112,9 @@
 
     <!---JAVASCRIPT----->
     <script src="jquery-3.6.3.js"></script>
-    <script src="./assets/cancel_order_function.js"></script>
-    <script src="./assets/received_function.js"></script>
-    <!-- <script src="./assets/checkout_function.js"></script> -->
+    <script src="assets/cancel_order_function.js"></script>
+    <script src="assets/received_function.js"></script>
+    <!-- <script src="assets/checkout_function.js"></script> -->
 
      
     <!-- <script language="JavaScript">
@@ -182,7 +182,7 @@
 
         <?php
     } else {
-        header("Location: loginpage.php?login_required");
+        header("Location: ../loginpage.php?login_required");
     }
 ?>
 

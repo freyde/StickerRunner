@@ -1,6 +1,6 @@
 <?php
-include_once("../includes/dbh.inc.php");
-include_once("../includes/functions.inc.php");
+include_once("includes/dbh.inc.php");
+include_once("includes/functions.inc.php");
 
 if (isset($_POST["updateItemBtn"])) {
 
@@ -58,7 +58,7 @@ if (isset($_POST["updateItemBtn"])) {
             WHERE item_code = $item_code";
         $result_update = mysqli_query($conn, $update_item);
         if ($result_update) {
-            header("Location: main_dashboard.php?products");
+            header("Location: ../main_dashboard.php?products");
             // echo "<script>alert('Item has been updated successfully!')</script>";
         }
     }
@@ -356,7 +356,7 @@ if (isset($_POST["updateItemBtn"])) {
     </div>
     </div>
 
-    <script src="../jquery-3.6.3.js"></script>
+    <script src="jquery-3.6.3.js"></script>
     <script src="./assets/checkout_function.js"></script>
 
 

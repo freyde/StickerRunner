@@ -35,7 +35,7 @@ include_once("includes/functions.inc.php");
                           <input type="hidden" class="email" value='<?= $cart_Items['email_add'] ?>'>
                           <input class="form-check-input" type="checkbox" value="<?= $cart_Items['item_id'] ?>" name="item_checkbox" style="margin-top: 50px;">
                           <input type="hidden" class="itemImage" value='<?= $cart_Items['item_image'] ?>'>
-                          <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $cart_Items['item_image'] ?>' alt=''>
+                          <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='admin-interface/item_images/<?= $cart_Items['item_image'] ?>' alt=''>
                           <input type="hidden" class="itemName" value='<?= $cart_Items['item_name'] ?>'>
                           <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $cart_Items['item_name'] ?></h6>
                           <input type="hidden" class="itemPrice" value='<?= $cart_Items['item_price'] ?>'>
@@ -106,7 +106,7 @@ include_once("includes/functions.inc.php");
     </div> <!---for row--->
 </div>
       <script src="jquery-3.6.3.js"></script>
-      <script src="./assets/quantityFunction.js"></script>
+      <script src="assets/quantityFunction.js"></script>
 
     <script>
         // When the user scrolls the page, execute myFunction

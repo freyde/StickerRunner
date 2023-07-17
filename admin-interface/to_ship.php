@@ -1,6 +1,6 @@
 <?php
-include_once("../includes/dbh.inc.php");
-include_once("../includes/functions.inc.php");
+include_once("includes/dbh.inc.php");
+include_once("includes/functions.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ include_once("../includes/functions.inc.php");
                 <tr style="font-size: 14px;">
                     <td class="text-center"><?php echo $row["package_num"] ?></td>
                     <td class="text-center">
-                        <img src="../admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
+                        <img src="admin-interface/item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
                     </td>
                     <td><?php echo $row["order_item_name"] ?></td>
                     <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
@@ -148,8 +148,8 @@ include_once("../includes/functions.inc.php");
 
 
 
-    <script src="../jquery-3.6.3.js"></script>
-    <script src="../assets/paid_function.js"></script>
+    <script src="jquery-3.6.3.js"></script>
+    <script src="assets/paid_function.js"></script>
 
 
 

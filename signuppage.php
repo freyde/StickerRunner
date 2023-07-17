@@ -92,7 +92,7 @@ if (!isset($_SESSION["auth"])) {
   </script>
 <?php
 } else {
-  header("Location: ../stickerrunner/index.php");
+  header("Location: ../index.php");
 }
 ?>
 </body>

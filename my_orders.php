@@ -198,7 +198,7 @@ if (isset($_SESSION['auth'])) {
 
     <?php
 } else {
-    header("Location: loginpage.php?login_required");
+    header("Location: ../loginpage.php?login_required");
     exit();
 }
     ?>

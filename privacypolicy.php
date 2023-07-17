@@ -29,7 +29,7 @@ include_once("header.php");
         <!----2 Columns----->
 
         <div class="row pt-4">
-            <h3 class="text-left pt-5" style="margin-left: 5%;">Information We Collect: </h3>
+            <h3 class="text-left pt-5" style="margin-left: 5%; margin-top:5%">Information We Collect: </h3>
             <!----Column LEFT----->
             <div class="text-center column left border-2 border-end" style="height: 190px; 
           width: 30%;">
@@ -105,6 +105,71 @@ include_once("header.php");
                     experience on our website and improve our services. These technologies allow us to remember your
                     preferences, understand how you use our website, and tailor content and advertisements to suit your
                     interests.</p>
+            </div> <!---for right column--->
+        </div> <!---for row--->
+
+        <div class="row pt-4">
+            <h3 class="text-left pt-5" style="margin-left: 5%;">Data Security:</h3>
+            <p class="text-center" style="margin: 0 5% 0 5%">We implement reasonable security measures to protect your personal information from unauthorized access, alteration, 
+                disclosure, or destruction. However, no data transmission or storage method can guarantee absolute security. We strive 
+                to protect your information, but we cannot guarantee its complete security.</p>
+            <!----Column LEFT----->
+            <div class="text-center column left border-2 border-end" style="height: 190px; 
+          width: 30%;">
+                <br>
+                <p>A. Opt-out: You can opt-out of receiving marketing communications from us at any time by following 
+                    the instructions provided in our emails or by contacting us directly.</p>
+            </div>
+
+
+            <div class="text-center column center border-2 border-end" style=" height: 190px; 
+          width: 30%;">
+
+                <br>
+                <p>B. Access and Rectification: You have the right to access, update, or correct your personal information.
+                     If you need assistance, please contact us using the information provided at the end of this Privacy Policy.</p>
+                </p>
+            </div>
+
+            <!----Column RIGHT----->
+            <div class="text-center column right" style=" height: 190px;
+          width: 30%;">
+
+                <br>
+                <p>C. Data Deletion: You can request the deletion of your personal information, subject to any legal obligations 
+                    we may have to retain certain data.</p>
+            </div> <!---for right column--->
+        </div> <!---for row--->
+
+        <div class="row pt-4">
+            <h3 class="text-left pt-5" style="margin-left: 5%;">Sharing Your Information: </h3>
+            <!----Column LEFT----->
+            <div class="text-center column left border-2 border-end" style="height: 190px; 
+          width: 30%;">
+                <br>
+                <p>A. Third-Party Service Providers: We may share your personal information with trusted third-party 
+                    service providers who assist us in operating our website, conducting business activities, and delivering 
+                    services to you (e.g., payment processors, shipping companies).</p>
+            </div>
+
+
+            <div class="text-center column center border-2 border-end" style=" height: 190px; 
+          width: 30%;">
+
+                <br>
+                <p>B. Legal Requirements: We may disclose your information if required by law, to protect our rights, 
+                    or in response to a valid legal request.</p>
+                </p>
+            </div>
+
+            <!----Column RIGHT----->
+            <div class="text-center column right" style=" height: 300px;
+          width: 30%;">
+
+                <br>
+                <p>C. Business Transactions: If our business undergoes a merger, acquisition, or sale, your personal 
+                    information may be transferred as part of the transaction. We will notify you of any such change and 
+                    provide options regarding your data.</p>
             </div> <!---for right column--->
         </div> <!---for row--->
             

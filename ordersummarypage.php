@@ -113,7 +113,7 @@ include_once("includes/functions.inc.php");
                             <input type="hidden" class="checkName" value='<?= $check_Items['item_name'] ?>'>
                             <input type="hidden" class="checkSize" value='<?= $check_Items['item_size'] ?>'>
                             <input type="hidden" class="checkImage" value='<?= $check_Items['item_image'] ?>'>
-                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $check_Items['item_image'] ?>' alt=''>
+                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='admin-interface/item_images/<?= $check_Items['item_image'] ?>' alt=''>
                             <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['item_name'] ?></h6>
                             <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['item_price'] ?>.00</h6>
                             <input type="hidden" class="checkPrice" value='<?= $check_Items['item_price'] ?>'>
@@ -151,7 +151,7 @@ include_once("includes/functions.inc.php");
                             <input type="hidden" class="checkName" value='<?= $check_Items['check_name'] ?>'>
                             <input type="hidden" class="checkSize" value='<?= $check_Items['check_size'] ?>'>
                             <input type="hidden" class="checkImage" value='<?= $check_Items['check_image'] ?>'>
-                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='./admin-interface/item_images/<?= $check_Items['check_image'] ?>' alt=''>
+                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='admin-interface/item_images/<?= $check_Items['check_image'] ?>' alt=''>
                             <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['check_name'] ?></h6>
                             <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['check_price'] ?>.00</h6>
                             <input type="hidden" class="checkPrice" value='<?= $check_Items['check_price'] ?>'>
@@ -322,7 +322,7 @@ include_once("includes/functions.inc.php");
 
   <!---JAVASCRIPT----->
   <script src="jquery-3.6.3.js"></script>
-  <script src="./assets/checkout_function.js"></script>
+  <script src="assets/checkout_function.js"></script>
 
   <script>
     $('input.payment_chk').on('change', function() {

@@ -8,7 +8,7 @@ $(document).ready(function (){
        
         $.ajax({
             method: "POST",
-            url: "../includes/paid_order.php",
+            url: "includes/paid_order.php",
             data: {  
                 "item_code": item_code,
             },

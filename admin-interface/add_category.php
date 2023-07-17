@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once("../includes/dbh.inc.php");
-include_once("../includes/functions.inc.php");
+include_once(".includes/dbh.inc.php");
+include_once(".includes/functions.inc.php");
 
 if(isset($_POST["addCategorybtn"])){
     $category_name = $_POST["categoryName"];

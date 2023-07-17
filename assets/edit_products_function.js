@@ -9,7 +9,7 @@ $(document).ready(function (){
        
         $.ajax({
             method: "POST",
-            url: "../includes/show_edit_modal.php",
+            url: "includes/show_edit_modal.php",
             data: {  
                 "it_code": it_code,
             },
@@ -38,7 +38,7 @@ $(document).ready(function (){
        
         $.ajax({
             method: "POST",
-            url: "../includes/delete_item.php",
+            url: "includes/delete_item.php",
             data: {  
                 "it_code": it_code,
             },

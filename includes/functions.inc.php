@@ -74,7 +74,7 @@ function userExists($conn, $email_add)
         /** fetch row of data of existing user in the db**/
     } else {
         $result = false;
-        return $result = "";
+        return $result;
     }
     mysqli_stmt_close($stmt);
 }
@@ -138,9 +138,9 @@ function loginUser($conn, $email_add, $userPassword)
     //         $_SESSION["user_Id"] = $user_exists["user_id"];
     //         $_SESSION["role"] = $user_exists["role"];
     //         if($_SESSION["role"] != "admin")
-    //             header("Location: ../admin-interface/main_dashboard.php");
+    //             header("Location: admin-interface/main_dashboard.php");
     //         else
-    //             header("Location: ../index.php?successful-login");
+    //             header("Location: index.php?successful-login");
     //         exit();
     // }
 
@@ -199,7 +199,7 @@ function checkSearch()
                         
                         <a style='text-decoration: none; color: black;' href='itemclickpage.php'>
                             <figure class='figure' style='width: 210px;'>
-                                <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
+                                <img src='admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
                                 <figcaption class='item_name'>$item_name</figcaption>
                                 <figcaption class='item_price'>₱$item_price.00</figcaption>
                             </figure>
@@ -235,7 +235,7 @@ function displayBestSellingItems()
                     // <h6 style='padding-left: 15px; margin-bottom: -10px;'>$num_sold sold</h6>
                     echo "<a style='text-decoration: none; color: black;' href='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'>
                         <figure class='figure' style='width: 210px;'>
-                            <img src='./admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
+                            <img src='admin-interface/item_images/$item_image1' class='figure-img img-fluid rounded m-3' style='height: 200px;' alt='$item_name'>
                             <figcaption class='item_name'>$item_name</figcaption>
                             <figcaption class='item_price'>₱$item_price.00</figcaption>
                         </figure>
@@ -422,15 +422,6 @@ function viewItemInformation()
                         $num_sold = $row["num_sold"];
                         $num_left = $row["num_left"];
 
-                        if (str_contains($item_category, 'Mens')) {
-                            echo "<div class='item_path' style='margin-top: 50px; margin-left: 100px;'>
-                                  <p id='item_path'>Mens Clothing > $item_category > $item_name</p>
-                                  </div>";
-                        } else if (str_contains($item_category, 'Womens')) {
-                            echo "<div class='item_path' style='margin-top: 50px; margin-left: 100px;'>
-                                  <p id='item_path'>Womens Clothing > $item_category > $item_name</p>
-                                  </div>";
-                        }
                         // displaying the clicked item
                         echo "
                         <!----2 Columns----->

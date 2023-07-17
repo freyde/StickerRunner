@@ -35,7 +35,7 @@ include("headerAll.php");
                     $select_query = "SELECT * FROM mens_categories";
                     $resultOfSelectQuery = mysqli_query($conn, $select_query);
                     if (isset($_GET["category"])) {
-                        echo "<a href='../StickerRunner/all_products.php'>
+                        echo "<a href='all_products.php'>
                                     <li class='list-group-item'>
                                         All
                                     </li>
@@ -44,13 +44,13 @@ include("headerAll.php");
                             $category_name = $row["mens_category_name"];
                             $category_id = $row["mens_category_id"];
                             if (trim($_GET["category"], "\"") == $category_name) {
-                                echo "<a href='../StickerRunner/all_products.php?category=\"$category_name\"'>
+                                echo "<a href='all_products.php?category=\"$category_name\"'>
                                         <li class='list-group-item active'>
                                             $category_name
                                         </li>
                                     </a>";
                             } else {
-                                echo "<a href='../StickerRunner/all_products.php?category=\"$category_name\"'>
+                                echo "<a href='all_products.php?category=\"$category_name\"'>
                                         <li class='list-group-item'>
                                             $category_name
                                         </li>
@@ -58,7 +58,7 @@ include("headerAll.php");
                             }
                         }
                     } else {
-                        echo "<a href='../StickerRunner/all_products.php'>
+                        echo "<a href='all_products.php'>
                                     <li class='list-group-item active'>
                                         All
                                     </li>
@@ -68,7 +68,7 @@ include("headerAll.php");
                             $category_name = $row["mens_category_name"];
                             $category_id = $row["mens_category_id"];
 
-                            echo "<a href='../StickerRunner/all_products.php?category=\"$category_name\"'>
+                            echo "<a href='all_products.php?category=\"$category_name\"'>
                                     <li class='list-group-item'>
                                         $category_name
                                       </li>

@@ -1,6 +1,6 @@
 <?php
-include_once("../includes/dbh.inc.php");
-include_once("../includes/functions.inc.php");
+include_once(".includes/dbh.inc.php");
+include_once(".includes/functions.inc.php");
 
 if (isset($_POST["addItemBtn"])) {
     $item_code = rand(1000, 9999);
@@ -34,9 +34,9 @@ if (isset($_POST["addItemBtn"])) {
         echo "<script>alert('Please fill all the available fields!')</script>";
         // exit();
     } else {
-        move_uploaded_file($temp_item_image1, "./item_images/$item_image1");
-        move_uploaded_file($temp_item_image2, "./item_images/$item_image2");
-        move_uploaded_file($temp_item_image3, "./item_images/$item_image3");
+        move_uploaded_file($temp_item_image1, "item_images/$item_image1");
+        move_uploaded_file($temp_item_image2, "item_images/$item_image2");
+        move_uploaded_file($temp_item_image3, "item_images/$item_image3");
 
         //insert query
         $insert_item = "INSERT INTO `items` 

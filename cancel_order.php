@@ -156,21 +156,7 @@ include_once("includes/functions.inc.php");
 
     <!---JAVASCRIPT----->
     <script src="jquery-3.6.3.js"></script>
-    <!-- <script src="./assets/checkout_function.js"></script> -->
-
-     
-    <!-- <script language="JavaScript">
-      window.onbeforeunload = confirmExit;
-      function confirmExit()
-      {
-        var choice;
-        return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
-        if(choice == "Reload"){
-          alert("HAHA");
-        }
-      }
-    </script> -->
-
+    
     <script>
         document.addEventListener("DOMContentLoaded", function(){
         document.querySelectorAll('.sidebar .nav-link').forEach(function(element){

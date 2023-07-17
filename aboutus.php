@@ -99,7 +99,7 @@ include("headerAbout.php");
         </div> <!---for row--->
 
         <hr>
-        <div class="row pt-4 pb-5 text-center" ;>
+        <div class="row pt-4 pb-5 text-center">
             <div class="column left" style="width: 40%; height: 400px;">
                 <img src="admin-interface/item_images/location.jpg" style="width:450px; height: 400px;" alt="">
             </div>
@@ -107,7 +107,12 @@ include("headerAbout.php");
                 <h3 style="margin-top: 100px; margin-left: -100px;">We offer our services to all of the areas within CAVITE.</h3>
             </div>
         </div>
-
+        <div class="row pt-4 text-center">
+            <h2>Here's the location of our shop</h2>
+        </div>
+        <div class="row pt-1 pb-5 text-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.5938382161485!2d120.85709956981219!3d14.335009404368403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962b41258a8063%3A0xae86bc500b51ca5b!2sStickerRunners!5e0!3m2!1sen!2sph!4v1689521788784!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
 
 
         <!----Footer Section----->

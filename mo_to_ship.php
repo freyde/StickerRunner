@@ -94,7 +94,7 @@ include_once("includes/functions.inc.php");
 
     <!---JAVASCRIPT----->
     <script src="jquery-3.6.3.js"></script>
-    <script src="./assets/cancel_order_function.js"></script>
+    <script src="assets/cancel_order_function.js"></script>
 
      
     <!-- <script language="JavaScript">

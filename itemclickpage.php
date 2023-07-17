@@ -52,7 +52,7 @@ include("header.php");
 
   <!---JAVASCRIPT----->
   <script src="jquery-3.6.3.js"></script>
-  <script src="./assets/quantityFunction.js"></script>
+  <script src="assets/quantityFunction.js"></script>
   <script>
     
   </script>
