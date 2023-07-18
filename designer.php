@@ -11,126 +11,163 @@ if (isset($_SESSION["auth"])) {
     include_once("includes/functions.inc.php");
 ?>
     <div class="p-5 bg-white rounded shadow mb-5">
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p>clicked home</p>
-                <p>clicked home</p>
-                <p>clicked home</p>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <p>clicked profile</p>
-                <p>clicked profile</p>
-                <p>clicked profile</p>
-            </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <p>clicked contact</p>
-                <p>clicked contact</p>
-                <p>clicked contact</p>
-            </div>
-        </div>
         <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center">
             <li class="nav-item flex-sm-fill">
-                <a id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2" aria-selected="true" class="active nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">
+                <a id="custom-tab" data-bs-toggle="tab" href="#custom" role="tab" aria-controls="custom" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 active">
                     <h5>Customize Your Shirt</h5>
                 </a>
             </li>
             <li class="nav-item flex-sm-fill">
-                <a id="profile2-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">
+                <a id="order-tab" data-bs-toggle="tab" href="#order" role="tab" aria-controls="order" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0">
                     <h5>Order Your Custom Shirt</h5>
                 </a>
             </li>
         </ul>
         <div id="myTab2Content" class="tab-content">
-            <div id="home2" role="tabpanel" aria-labelledby="home2-tab" class="tab-pane fade px-4 py-5 show active">
+            <div id="custom" role="tabpanel" aria-labelledby="custom-tab" class="tab-pane fade px-4 py-5 show active">
                 <div class="row">
-                    <div class="col-md-6 float-start">
-                        <canvas id="c"></canvas>
-                    </div>
-
-                    <div class="col-md-6 float-end">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
                         <h1>Customize Your Shirt</h1>
-                        <form action="">
-                            <hr>
-                            <h4>Shirt</h4>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="shirtOrientaion" id="shirtOrientaionFront" value="front" checked>
-                                    <label class="form-check-label" for="shirtOrientaionFront">
-                                        Front
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="shirtOrientaion" id="shirtOrientaionBack" value="back">
-                                    <label class="form-check-label" for="shirtOrientaionFront">
-                                        Back
-                                    </label>
-                                </div>
-                                <label for="shirtColorSelect">Color</label>
-                                <select id="shirtColorSelect" class="form-select float-end" aria-label="Default select example">
-                                    <option value="shirt/blackShirtFront.png" selected>Black</option>
-                                    <option value="shirt/whiteShirtFront.png">White</option>
-                                    <option value="shirt/redShirtFront.png">Red</option>
-                                    <option value="shirt/greenShirtFront.png">Green</option>
-                                    <option value="shirt/blueShirtFront.png">Blue</option>
-                                    <option value="shirt/yellowShirtFront.png">Yellow</option>
-                                    <option value="shirt/purpleShirtFront.png">Purple</option>
-                                    <option value="shirt/grayShirtFront.png">Gray</option>
-                                    <option value="shirt/brownShirtFront.png">Brown</option>
-                                    <option value="shirt/navyShirtFront.png">Navy Blue</option>
-                                    <option value="shirt/maroonShirtFront.png">Maroon</option>
-                                    <option value="shirt/cyanShirtFront.png">Cyan</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-7 float-start">
+                                <canvas id="c"></canvas>
                             </div>
-                            <hr>
+                            <div class="col-md-5 float-end">
 
-                            <h4>Text</h4>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <div class="input-group mb-3">
-                                    <h5>Font:&nbsp&nbsp</h5>
-                                    <input id="font" type="text" class="form-control" />
-                                </div>
-                                <div class="input-group mb-3">
-                                    <h5>Color:&nbsp&nbsp</h5>
-                                    <input class="ml-3" type="color" name="textColor" id="textColor" value="#FFFFFF">
-                                </div>
-
-                                <button id="addTextBtn" class="btn btn-primary" type="button">Add Text</button>
-
+                                <form action="">
+                                    <!-- <hr> -->
+                                    <div class="d-grid gap-2 col-7 mx-auto">
+                                        <h4>Shirt</h4>
+                                    </div>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="shirtOrientaion" id="shirtOrientaionFront" value="front" checked>
+                                            <label class="form-check-label" for="shirtOrientaionFront">
+                                                Front
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="shirtOrientaion" id="shirtOrientaionBack" value="back">
+                                            <label class="form-check-label" for="shirtOrientaionFront">
+                                                Back
+                                            </label>
+                                        </div>
+                                        <div class="d-grid gap-2 col-12 mx-auto">
+                                            <h6>Shirt Color</h6>
+                                        </div>
+                                        <select id="shirtColorSelect" class="form-select float-end" aria-label="Default select example">
+                                            <option value="shirt/blackShirtFront.png" selected>Black</option>
+                                            <option value="shirt/whiteShirtFront.png">White</option>
+                                            <option value="shirt/redShirtFront.png">Red</option>
+                                            <option value="shirt/greenShirtFront.png">Green</option>
+                                            <option value="shirt/blueShirtFront.png">Blue</option>
+                                            <option value="shirt/yellowShirtFront.png">Yellow</option>
+                                            <option value="shirt/purpleShirtFront.png">Purple</option>
+                                            <option value="shirt/grayShirtFront.png">Gray</option>
+                                            <option value="shirt/brownShirtFront.png">Brown</option>
+                                            <option value="shirt/navyShirtFront.png">Navy Blue</option>
+                                            <option value="shirt/maroonShirtFront.png">Maroon</option>
+                                            <option value="shirt/cyanShirtFront.png">Cyan</option>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid gap-2 col-7 mx-auto">
+                                        <h4>Text</h4>
+                                    </div>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <div class="input-group mb-3">
+                                            <h5>Font:&nbsp&nbsp</h5>
+                                            <input id="font" type="text" class="form-control" />
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <h5>Color:&nbsp&nbsp</h5>
+                                            <input class="ml-3" type="color" name="textColor" id="textColor" value="#FFFFFF">
+                                        </div>
+                                        <button id="addTextBtn" class="btn btn-primary" type="button">Add Text</button>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid gap-2 col-7 mx-auto">
+                                        <h4>Image</h4>
+                                    </div>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <div class="input-group">
+                                            <input type="file" class="form-control" id="inputImageFile" accept="image/*">
+                                            <!-- <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button> -->
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button id="delObjBtn" class="btn btn-primary" type="button">Delete Selected</button>
+                                        <button id="delAllBtn" class="btn btn-primary" type="button">Delete All</button>
+                                    </div>
+                                    <hr>
+                                    <div class="d-grid gap-2 col-4 mx-auto">
+                                        <button id="buyBtn" class="btn btn-success" type="button">Download</button>
+                                    </div>
+                                </form>
                             </div>
-                            <hr>
-
-                            <h4>Image</h4>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <div class="input-group">
-                                    <input type="file" class="form-control" id="inputImageFile" accept="image/*">
-                                    <!-- <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button> -->
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button id="delObjBtn" class="btn btn-primary" type="button">Delete Selected</button>
-                                <button id="delAllBtn" class="btn btn-primary" type="button">Delete All</button>
-                            </div>
-                            <hr>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button id="buyBtn" class="btn btn-primary" type="button">Download</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
-            <div id="profile2" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
-                <p class="leade font-italic">BLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p class="leade font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <!-- --------------------------------------------Order Tab------------------------------------ -->
+            <div id="order" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade px-4 py-5">
+                <div class="row">
+                    <div class="col-md 1"></div>
+                    <div class="col-md-10">
+                        <h1>Order Your Custom Shirt</h1>
+                        <form method="post" action="submitCustom.php" enctype="multipart/form-data">
+                            <div class="gap-2 col-4 mx-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="printScope" id="printScopeFB" value="frontback" checked>
+                                    <label class="form-check-label" for="printScopeFB">
+                                        <h5>Front and Back</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="printScope" id="printScopeF" value="front">
+                                    <label class="form-check-label" for="printScopeF">
+                                        <h5>Front</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="printScope" id="printScopeB" value="back">
+                                    <label class="form-check-label" for="printScopeB">
+                                        <h5>Back</h5>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class=" gap-2 col-12 mx-auto">
+                                <div class="row">
+                                    <div class="col-md-5" id="frontUploadDiv">
+                                        <h4>Front:</h4>
+                                        <div class="d-grid gap-2 col-10 mx-auto">
+                                            <img class="img-fluid" id="frontPrev" src="" alt="">
+                                        </div>
+                                        <div class="d-grid gap-2 col-10 mx-auto">
+                                            <input id="frontUpload" class="form-control" type="file" name="customUpload[]" accept="image/*" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5" id="backUploadDiv">
+                                        <h4>Back:</h4>
+                                        <div class="d-grid gap-2 col-10 mx-auto">
+                                            <img class="img-fluid" id="backPrev" src="" alt="">
+                                        </div>
+                                        <div class="d-grid gap-2 col-10 mx-auto">
+                                            <input id="backUpload" class="form-control" type="file" name="customUpload[]" accept="image/*" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <button class="btn btn-primary float-end" type="submit">Submit Order</button>
+                        </form>
+                    </div>
+                    <div class="col-md 1"></div>
+                </div>
             </div>
         </div>
 
@@ -317,6 +354,51 @@ if (isset($_SESSION["auth"])) {
                     link.click();
                     document.body.removeChild(link);
 
+                });
+            });
+
+            $(document).ready(function() {
+                $('#frontPrev').hide();
+                $('#backPrev').hide();
+                $(document).on('change', '#frontUpload', function(e) {
+                    if (this.files && this.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#frontPrev').attr('src', e.target.result);
+                        }
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    $('#frontPrev').show();
+                });
+
+                $(document).on('change', '#backUpload', function(e) {
+                    if (this.files && this.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#backPrev').attr('src', e.target.result);
+                        }
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    $('#backPrev').show();
+                });
+
+                $('input[type=radio][name=printScope]').change(function() {
+                    if (this.value == 'frontback') {
+                        $('#frontUploadDiv').show();
+                        $('#frontUpload').prop('required', true);
+                        $('#backUploadDiv').show();
+                        $('#backUpload').attprop('required', true);
+                    } else if (this.value == 'front') {
+                        $('#frontUploadDiv').show();
+                        $('#frontUpload').prop('required', true);
+                        $('#backUploadDiv').hide();
+                        $('#backUpload').prop('required', false);
+                    } else if (this.value == 'back') {
+                        $('#frontUploadDiv').hide();
+                        $('#frontUpload').prop('required', false);
+                        $('#backUploadDiv').show();
+                        $('#backUpload').prop('required', true);
+                    }
                 });
             });
 

@@ -207,7 +207,7 @@ if (isset($_POST["addItemBtn"])) {
                         <input type="file" class="form-control" name="item_image2" id="item_image2" required="required">
                         <small id="emailHelp" class="form-text text-muted"></small>
                     </div>
-                    <div class="form-group" style="">
+                    <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
                         <small id="s7" class="form-text fst-italic">Item Image 3<span style="color: red;">*</span></small>
                         <input type="file" class="form-control" name="item_image3" id="item_image3" required="required">
                         <small id="emailHelp" class="form-text text-muted"></small>
