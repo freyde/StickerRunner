@@ -1,6 +1,6 @@
 <?php
-include_once("includes/dbh.inc.php");
-include_once("includes/functions.inc.php");
+include("../includes/dbh.inc.php");
+include("../includes/functions.inc.php");
 ?>
 
 <!DOCTYPE html>

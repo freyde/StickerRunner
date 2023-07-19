@@ -82,8 +82,8 @@ $(document).ready(function () {
                     "scope": "buy"
                 },
                 success: function (response) {
-                        const a = JSON.parse(response);
-                        window.location.assign("ordersummarypage.php?email_add=" + a.email_add + "&item_code=" + a.item_code + "&checkout=true");
+                    const a = JSON.parse(response);
+                    window.location.assign("ordersummarypage.php?email_add=" + a.email_add + "&item_code=" + a.item_code + "&checkout=true");
                 },
                 error: function (response) {
                     alert("Something went wrong");
@@ -119,7 +119,6 @@ $(document).ready(function () {
         });
     });
 
-    // $('.deleteItem_btn').click(function(e){
     $(document).on('click', '.deleteItem_btn', function (e) {
         e.preventDefault();
 
@@ -132,6 +131,27 @@ $(document).ready(function () {
             data: {
                 "item_code": item_code,
                 "item_size": item_size,
+                "scope": "delete"
+            },
+            success: function (response) {
+                alert(response);
+                location.reload(true);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    });
+
+    $(document).on('click', '.deleteCust_btn', function (e) {
+        e.preventDefault();
+
+        var item_code = $(this).val();
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_custom.php",
+            data: {
+                "item_code": item_code,
                 "scope": "delete"
             },
             success: function (response) {
@@ -179,62 +199,48 @@ $(document).ready(function () {
 
     //check all checkboxes button function
     $("#checkAll").click(function () {
-        $('input:checkbox').not(this).prop('checked', this.checked);
+        $('.item_checkbox').prop('checked', this.checked);
+        $('.item_checkbox').change();
+    });
+
+    $("#customAll").click(function () {
+        var items = $('.custom_checkbox');
+
+        var stat = this.checked
+        $.each(items, function (i) {
+            var $this = $(this);
+            if (!$this.prop('disabled')) {
+                $this.prop('checked', stat);
+            }
+        });
+
+
+        $('.custom_checkbox').change();
     });
 
     //disable place order button by default
     $('#checkout_btn').prop('disabled', true);
+    $('#custom_checkout_btn').prop('disabled', true);
 
     var counter = 0;
-    //for displaying total amount on click
-    $("input:checkbox").click(function () {
+
+
+    //for displaying total amount on click of pre made items
+    // $("[name='item_checkbox[]']").click(function () {
+    $('.item_checkbox').change(function () {
         var item_id = [];
         var get_ship_fee = document.querySelector("#display_shipping_fee").textContent;
         var ship_fee = get_ship_fee.slice(1, 3);
         var getEmail = $(".email").val();
 
-        $(':checkbox:checked').each(function (i) {
-            item_id[i] = $(this).val();
+        var items = $('.item_checkbox');
+
+        $.each(items, function (i) {
+            var $this = $(this);
+            if ($this.is(":checked")) {
+                item_id[i] = $(this).val();
+            }
         });
-
-        if ($(this).prop("checked") == false) {
-            var id = $(this).val();
-            // alert("Array: " + item_id.toString() + "Id: " + id);
-        }
-
-        // $("#checkout_btn").click(function(){
-        //     var res = item_id.indexOf("");
-        //     if(res == 0){
-        //         item_id.shift(); 
-        //     }   
-        //     alert("Items length: " + item_id.length + "Items are: " + item_id.toString() + "counter: " + counter);
-
-        //     check_id = [];
-
-        //     for (i = 0; i < item_id.length; i++) {
-        //     check_id[i] = item_id[i];
-        //     }
-
-        //     //alert(check_id.toString());
-
-        //     $.ajax({
-        //         method: "POST",
-        //         url: "includes/handle_cart.php",
-        //         data: {
-        //             "check_id": check_id,
-        //         },
-        //         success: function(response){
-        //             var arrStr = encodeURIComponent(JSON.stringify(item_id));
-        //             // sessionStorage.setItem("items", JSON.stringify(item_id));
-        //             // //sessionStorage.setItem("jsArray", JSON.stringify(jsarray));
-        //             window.location.href = "ordersummarypage.php?email_add="+getEmail+"?items="+arrStr;
-        //         },
-        //         error: function(response){
-
-        //         }
-        //     });
-
-        // });
 
 
         $.ajax({
@@ -285,7 +291,72 @@ $(document).ready(function () {
         });
         counter++;
         // alert(item_id.toString());
+    });
 
+    //for displaying total amount on click of custom shirts
+    $(".custom_checkbox").change(function () {
+        var item_id = [];
+        var get_ship_fee = document.querySelector("#display_shipping_fee").textContent;
+        var ship_fee = get_ship_fee.slice(1, 3);
+        var getEmail = $(".email").val();
+
+        var items = $(".custom_checkbox");
+        $.each(items, function (i) {
+            var $this = $(this);
+            if ($this.is(":checked")) {
+                item_id[i] = $(this).val();
+            }
+        });
+
+
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_custom.php",
+            data: {
+                "item_id": item_id,
+            },
+            success: function (response) {
+                $("#custom_subtotal").text("₱" + response + ".00");
+
+                if (response == 0 || response == "") {
+                    $("#custom_subtotal").text("₱0.00");
+                    $('#custom_checkout_btn').prop('disabled', true);
+                    //alert(item_id.toString());
+                } else {
+                    $('#custom_checkout_btn').prop('disabled', false);
+                    //alert(item_id.toString());
+                }
+
+                var len = item_id.length;
+                if (len > 0) {
+                    $("#num_items").text(len);
+                } else {
+                    $("#num_items").text("0");
+                }
+
+                var parsed_response = parseInt(response);
+                var parsed_ship_fee = parseInt(ship_fee);
+
+                // var a = jQuery.type(parsed_response);
+                // var b = jQuery.type(parsed_ship_fee);
+
+                var total_amount = parsed_response + parsed_ship_fee;
+                // alert(parsed_response + " " + parsed_ship_fee);
+
+                if (response == "" || total_amount == 0 || parsed_response == NaN) {
+                    $("#custom_total_amount").text("₱0.00");
+                } else {
+                    $("#custom_total_amount").text("₱" + total_amount + ".00");
+                }
+
+
+            },
+            error: function (response) {
+                alert("Something went wrong");
+            }
+        });
+        counter++;
+        // alert(item_id.toString());
     });
 
     currLoc = $(location).attr('href');
@@ -310,7 +381,7 @@ $(document).ready(function () {
         var qty = $(this).closest('.item_data').find('.input-qty').val();
         var getEmail = $(".email").val();
 
-        $(':checkbox:checked').each(function (i) {
+        $('.item_checkbox').each(function (i) {
             check_id[i] = $(this).val();
         });
 
@@ -336,5 +407,48 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#custom_checkout_btn").click(function () {
+        var check_id = [];
+        var item_name = $(this).closest('.item_data').find('.itemName').val();
+        var email = $(this).closest('.item_data').find('.email').val();
+        var item_price = $(this).closest('.item_data').find('.itemPrice').val();
+        var item_image = $(this).closest('.item_data').find('.itemImage').val();
+        var item_code = $(this).closest('.item_data').find('.itemCode').val();
+        var item_size = $(this).closest('.item_data').find('.itemSize').val();
+        // var qty = $(this).closest('.item_data').find('.input-qty').val();
+        var getEmail = $(".email").val();
+
+        var items = $('.custom_checkbox');
+        $.each(items, function (i) {
+            var $this = $(this);
+            if (!$this.prop('disabled')) {
+                check_id[i] = $(this).val();
+            }
+        });
+
+
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_custom.php",
+            data: {
+                "email": email,
+                "item_code": item_code,
+                "item_name": item_name,
+                "item_price": item_price,
+                "item_image": item_image,
+                "item_size": item_size,
+                // "item_qty": qty,
+                "check_id": check_id,
+            },
+            success: function (response) {
+                window.location.href = "ordersummarypage.php?email_add=" + getEmail + "&item_code=" + check_id.filter(n => n) + "&custom=true";
+            },
+            error: function (response) {
+                alert("Something went wrong");
+            }
+        });
+    });
+
 
 });

@@ -1,6 +1,6 @@
 <?php
-include_once("includes/dbh.inc.php");
-include_once("includes/functions.inc.php");
+include_once("../includes/dbh.inc.php");
+include_once("../includes/functions.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -114,8 +114,8 @@ include_once("includes/functions.inc.php");
 
                  
     
-    <script src="jquery-3.6.3.js"></script>
-    <script src="assets/edit_products_function.js"></script>
+    <script src="../jquery-3.6.3.js"></script>
+    <script src="../assets/edit_products_function.js"></script>
 
 
         <script>

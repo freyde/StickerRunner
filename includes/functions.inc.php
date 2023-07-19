@@ -427,7 +427,7 @@ function viewItemInformation()
                         <!----2 Columns----->
                       <div class='row'>
                         <div class='column left' style='background-color: rgb(255, 255, 255); height: 500px; width: 30%;'>
-                            <img class='border border-dark' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
+                            <img class='border border-dark thumbnail' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
                         </div>
                         <br>
                         
@@ -673,10 +673,12 @@ function get_checkout_Items()
         // echo "<script>alert(".implode(',', $itemsArr).")</script>";
         // foreach ($itemsArr as $item) {
         $email_add = $_GET["email_add"];
-        if (!isset($_GET["checkout"]))
-            $select_query = "SELECT * FROM `cart_table` WHERE email_add = '$email_add' AND item_id IN (" . implode(',', array_filter($itemsArr)) . ")";
-        else
+        if (isset($_GET["checkout"]))
             $select_query = "SELECT * FROM `checkout_items` WHERE check_email_add = '$email_add' AND check_code IN (" . implode(',', array_filter($itemsArr)) . ")";
+        else if (isset($_GET["custom"])) {
+            $select_query = "SELECT * FROM `custom_shirt` WHERE custom_email = '$email_add' AND custom_id IN (" . implode(',', array_filter($itemsArr)) . ")";
+        } else
+            $select_query = "SELECT * FROM `cart_table` WHERE email_add = '$email_add' AND item_id IN (" . implode(',', array_filter($itemsArr)) . ")";
 
         // }
 
@@ -800,4 +802,13 @@ function getCancelledOrders()
         $select_from_orders = "SELECT * FROM `orders` WHERE order_email_add = '$email_address' AND order_status = 'Cancelled'";
         return $select_query = mysqli_query($conn, $select_from_orders);
     }
+}
+
+function getCustomCart()
+{
+    global $conn;
+    $email = $_SESSION['userEmailAdd'];
+
+    $query = "SELECT * FROM custom_shirt WHERE custom_email = '$email'";
+    return mysqli_query($conn, $query);
 }

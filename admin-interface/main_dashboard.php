@@ -1,6 +1,6 @@
 <?php
-include_once("includes/dbh.inc.php");
-include_once("includes/functions.inc.php");
+include_once("../includes/dbh.inc.php");
+include_once("../includes/functions.inc.php");
 session_start();
 ?>
 
@@ -17,7 +17,9 @@ session_start();
     <!-- <link rel="stylesheet" href="page.css"> -->
     <script src="https://kit.fontawesome.com/d5585e7213.js" crossorigin="anonymous"></script>
     <script src="../jquery-3.6.3.js"></script>
-    <script src="../assets/generate_report.js"></script>
+    <script src="../assets/generate_report.js"></script><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -41,7 +43,36 @@ session_start();
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                         </div>
-
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <?php
+                                if (isset($_SESSION["userEmailAdd"])) {
+                                    $selectData = "SELECT * FROM users WHERE email_add ='{$_SESSION["userEmailAdd"]}'";
+                                    $query = mysqli_query($conn, $selectData);
+                                    if (mysqli_num_rows($query)) {
+                                        while ($users = mysqli_fetch_array($query)) {
+                                ?>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-dark btn-lg dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                                    Admin - <?php echo $users["first_name"]; ?>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-lg-end">
+                                                    <li><button class="dropdown-item" type="button" onclick="window.location.href='includes/logout.inc.php'">Log Out</button></li>
+                                                </ul>
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+                                } else {
+                                    ?>
+                                    <a href="loginpage.php">
+                                        <img style="width: 30px; height: 30px; margin-left: 10px; margin-right:20px" src="user_icon.png" alt="">
+                                    </a>
+                                <?php
+                                }
+                                ?>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
 
@@ -67,7 +98,11 @@ session_start();
                                     <a href="main_dashboard.php?products" class="nav-link text-white">
                                         Products
                                     </a>
-
+                                </li>
+                                <li>
+                                    <a href="main_dashboard.php?custom" class="nav-link text-white">
+                                        Custom Shirts
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="main_dashboard.php?users" class="nav-link text-white">
@@ -97,6 +132,12 @@ session_start();
                             if (isset($_GET["orders"])) {
                                 include("orders.php");
                             }
+                            if (isset($_GET["custom"])) {
+                                include("custom.php");
+                            }
+                            if (isset($_GET["custom_pending"])) {
+                                include("custom_pending.php");
+                            }
                             if (isset($_GET["users"])) {
                                 include("users.php");
                             }
@@ -117,6 +158,9 @@ session_start();
                             }
                             if (isset($_GET["delivered"])) {
                                 include("delivered.php");
+                            }
+                            if (isset($_GET["cancelled"])) {
+                                include("canceled.php");
                             }
                             ?>
                         </div>

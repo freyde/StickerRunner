@@ -1,6 +1,6 @@
 <?php
-include_once("includes/dbh.inc.php");
-include_once("includes/functions.inc.php");
+include_once("../includes/dbh.inc.php");
+include_once("../includes/functions.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +105,7 @@ include_once("includes/functions.inc.php");
                 <tr>
                     <td class="text-center"><?php echo $row["item_code"] ?></td>
                     <td class="text-center">
-                        <img src="admin-interface/item_images/<?= $row["item_image1"] ?>" height="50" width="50" alt="" />
+                        <img src="item_images/<?= $row["item_image1"] ?>" height="50" width="50" alt="" />
                     </td>
                     <td><?php echo $row["item_name"] ?></td>
                     <td class="text-center">₱<?php echo $row["item_price"] ?>.00</td>
@@ -130,8 +130,8 @@ include_once("includes/functions.inc.php");
         </div>
     </div> -->
 
-    <script src="jquery-3.6.3.js"></script>
-    <script src="assets/edit_products_function.js"></script>
+    <script src="../jquery-3.6.3.js"></script>
+    <script src="../assets/edit_products_function.js"></script>
 
 
     <script>

@@ -23,7 +23,7 @@ if (isset($_SESSION["auth"])) {
                 </a>
             </li>
         </ul>
-        <div id="myTab2Content" class="tab-content">
+        <div id="myTabContent" class="tab-content">
             <div id="custom" role="tabpanel" aria-labelledby="custom-tab" class="tab-pane fade px-4 py-5 show active">
                 <div class="row">
                     <div class="col-md-1"></div>
@@ -82,7 +82,7 @@ if (isset($_SESSION["auth"])) {
                                         </div>
                                         <div class="input-group mb-3">
                                             <h5>Color:&nbsp&nbsp</h5>
-                                            <input class="ml-3" type="color" name="textColor" id="textColor" value="#FFFFFF">
+                                            <input class="form-control-color" type="color" name="textColor" id="textColor" value="#FFFFFF">
                                         </div>
                                         <button id="addTextBtn" class="btn btn-primary" type="button">Add Text</button>
                                     </div>
@@ -118,8 +118,9 @@ if (isset($_SESSION["auth"])) {
                     <div class="col-md 1"></div>
                     <div class="col-md-10">
                         <h1>Order Your Custom Shirt</h1>
+                        <br><br>
                         <form method="post" action="submitCustom.php" enctype="multipart/form-data">
-                            <div class="gap-2 col-4 mx-auto">
+                            <div class="gap-2 col-12 mx-auto">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="printScope" id="printScopeFB" value="frontback" checked>
                                     <label class="form-check-label" for="printScopeFB">
@@ -148,7 +149,7 @@ if (isset($_SESSION["auth"])) {
                                             <img class="img-fluid" id="frontPrev" src="" alt="">
                                         </div>
                                         <div class="d-grid gap-2 col-10 mx-auto">
-                                            <input id="frontUpload" class="form-control" type="file" name="customUpload[]" accept="image/*" required>
+                                            <input id="frontUpload" class="form-control" type="file" name="frontUpload" accept="image/*" required>
                                         </div>
                                     </div>
                                     <div class="col-md-5" id="backUploadDiv">
@@ -157,13 +158,47 @@ if (isset($_SESSION["auth"])) {
                                             <img class="img-fluid" id="backPrev" src="" alt="">
                                         </div>
                                         <div class="d-grid gap-2 col-10 mx-auto">
-                                            <input id="backUpload" class="form-control" type="file" name="customUpload[]" accept="image/*" required>
+                                            <input id="backUpload" class="form-control" type="file" name="backUpload" accept="image/*" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <hr>    
+                            <div class="gap-2 col-12 mx-auto">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="customSize" id="customSizeXS" value="Extra Small" required>
+                                    <label class="form-check-label" for="customSizeXS">
+                                        <h5>Extra Small</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="customSize" id="customSizeS" value="Small">
+                                    <label class="form-check-label" for="customSizeS">
+                                        <h5>Small</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="customSize" id="customSizeM" value="Medium">
+                                    <label class="form-check-label" for="customSizeM">
+                                        <h5>Medium</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="customSize" id="customSizeL" value="Large">
+                                    <label class="form-check-label" for="customSizeL">
+                                        <h5>Large</h5>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="customSize" id="customSizeXL" value="Extra Large">
+                                    <label class="form-check-label" for="customSizeXL">
+                                        <h5>Extra Large</h5>
+                                    </label>
+                                </div>
+                            </div>
                             <hr>
-                            <button class="btn btn-primary float-end" type="submit">Submit Order</button>
+                            <p class="float-start"><i>*Note: Prize of customized design of shirt may range Php 300.00 to Php 500.00 depending on print and size. Price basis may change wihtout prior notice.</i></p>
+                            <button class="btn btn-primary float-end" type="submit" id="submitBtn">Submit Order</button>
                         </form>
                     </div>
                     <div class="col-md 1"></div>
@@ -401,9 +436,14 @@ if (isset($_SESSION["auth"])) {
                     }
                 });
             });
+            var submit = false;
+            $(document).on('click', '#submitBtn', function(e) {
+                submit = true
+            });
 
             window.onbeforeunload = function() {
-                return 'Are you sure you want to leave?';
+                if (!submit)
+                    return 'Are you sure you want to leave?';
             };
         </script>
     <?php

@@ -1,6 +1,7 @@
 <?php
 include_once("../includes/dbh.inc.php");
 include_once("../includes/functions.inc.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +17,11 @@ include_once("../includes/functions.inc.php");
 
 
 
-
-
 </head>
 
 <body>
     <div class="container shadow-lg bg-white" style="margin-top: 50px; width:100%;">
-        <h1 class="text-start pt-3 pb-3">To Ship</h1>
+        <h1 class="text-start pt-3 pb-3">Cancelled Orders List</h1>
         <ul class="nav nav-tabs nav-fill">
             <li class="nav-item">
                 <a class="nav-link" href="main_dashboard.php?orders">Orders List</a>
@@ -31,7 +30,7 @@ include_once("../includes/functions.inc.php");
                 <a class="nav-link" href="main_dashboard.php?placed_orders">Placed Orders</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="main_dashboard.php?to_ship"><strong><u>To Ship</u></strong></a>
+                <a class="nav-link" href="main_dashboard.php?to_ship">To Ship</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="main_dashboard.php?in_transit">In-Transit</a>
@@ -40,13 +39,13 @@ include_once("../includes/functions.inc.php");
                 <a class="nav-link" href="main_dashboard.php?delivered">Delivered</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="main_dashboard.php?cancelled">Cancelled</a>
+                <a class="nav-link" href="main_dashboard.php?cancelled"><strong><u>Cancelled</u></strong></a>
             </li>
         </ul>
     </div>
-    <<div class="list-of-products">
+    <div class="list-of-products">
         <?php
-        $select_list = mysqli_query($conn, "SELECT * FROM orders WHERE order_status='To Ship' ORDER BY order_date DESC");
+        $select_list = mysqli_query($conn, "SELECT * FROM orders WHERE order_status='Cancelled' ORDER BY order_date DESC");
         ?>
 
         <table class="table table-bordered table-striped border-primary table-hover">
@@ -199,8 +198,69 @@ include_once("../includes/functions.inc.php");
     <script src="../jquery-3.6.3.js"></script>
     <script src="../assets/paid_function.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('select[name="order_status_change"]').change(function() {
+                var status = $(this).val();
+                var package_num = $(this).attr("status-id");
+                var email = $(this).attr("status-email");
 
+                // alert(status);
+                // alert(getid);
+                // alert(email);
 
+                $.ajax({
+                    method: "POST",
+                    url: "../includes/change_status.php",
+                    data: {
+                        status: status,
+                        package_num: package_num,
+                        email: email
+                    },
+                    success: function(response) {
+                        alert("Order status update successful!");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        alert("Error");
+                    }
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('select[name="payment_status_change"]').change(function() {
+                var Pstatus = $(this).val();
+                var package_num = $(this).attr("payment-id");
+                var email = $(this).attr("payment-email");
+
+                // alert(Pstatus);
+                // alert(getcode);
+                // alert(email);
+
+                $.ajax({
+                    method: "POST",
+                    url: "../includes/change_payment.php",
+                    data: {
+                        Pstatus: Pstatus,
+                        package_num: package_num,
+                        email: email
+                    },
+                    success: function(response) {
+                        alert("Payment status update successful!");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        alert("Error");
+                    }
+                });
+
+            });
+        });
+    </script>
 
 </body>
 

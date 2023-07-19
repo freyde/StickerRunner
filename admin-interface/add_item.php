@@ -1,6 +1,6 @@
 <?php
-include_once(".includes/dbh.inc.php");
-include_once(".includes/functions.inc.php");
+include_once("../includes/dbh.inc.php");
+include_once("../includes/functions.inc.php");
 
 if (isset($_POST["addItemBtn"])) {
     $item_code = rand(1000, 9999);
@@ -146,7 +146,7 @@ if (isset($_POST["addItemBtn"])) {
                                 </div> -->
                         <div class="form-group ps-3" style="width: 300px;">
                             <small id="s5" class="form-text fst-italic">Select a Category<span style="color: red;">*</span></small>
-                            <select class="form-select" name="item_category" id="item_category" style="" aria-label="Default select example" required="required">
+                            <select class="form-select" name="item_category" id="item_category" aria-label="Default select example" required="required">
                                 <option selected hidden>Select a Category</option>
                                 <?php
                                 $select_query = "SELECT * FROM mens_categories";

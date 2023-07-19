@@ -1,0 +1,196 @@
+<?php
+session_start();
+include('dbh.inc.php');
+
+if (isset($_SESSION["userEmailAdd"])) {
+    $email_add = $_SESSION["userEmailAdd"];
+
+    if (isset($_POST['scope'])) {
+        $scope = $_POST['scope'];
+        switch ($scope) {
+
+            case "add":
+                $item_code = $_POST['item_code'];
+                $item_qty = $_POST['item_qty'];
+                $item_size = $_POST['item_size'];
+
+                $select_query = "SELECT * FROM `items` WHERE item_code = '$item_code'";
+                $result_query = mysqli_query($conn, $select_query);
+
+                while ($row = mysqli_fetch_assoc($result_query)) {
+                    $item_name = $row["item_name"];
+                    $item_price = $row["item_price"];
+                    $item_image = $row["item_image1"];
+                }
+
+                $check_cart_item = "SELECT * FROM `cart_table` WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size'";
+                $result_check_cart_item = mysqli_query($conn, $check_cart_item);
+
+                if (mysqli_num_rows($result_check_cart_item) > 0) {
+                    $update_quantity = "UPDATE `cart_table` SET quantity= quantity + $item_qty WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size'";
+                    $result_update_quantity = mysqli_query($conn, $update_quantity);
+                } else {
+                    $insert_to_cartTbl = "INSERT INTO `cart_table` (item_code, item_name, item_price, size, quantity, item_image, email_add)
+                            VALUES ('$item_code', '$item_name', '$item_price', '$item_size', '$item_qty', '$item_image', '$email_add')";
+                    $insert_result = mysqli_query($conn, $insert_to_cartTbl);
+                }
+
+                break;
+
+            case "buy":
+                $item_code = $_POST['item_code'];
+                $item_qty = $_POST['item_qty'];
+                $item_size = $_POST['item_size'];
+
+                $select_query = "SELECT * FROM `items` WHERE item_code = '$item_code'";
+                $result_query = mysqli_query($conn, $select_query);
+
+                while ($row = mysqli_fetch_assoc($result_query)) {
+                    $item_name = $row["item_name"];
+                    $item_price = $row["item_price"];
+                    $item_image = $row["item_image1"];
+                }
+                $total_price = $item_price * $item_qty;
+
+                $update_query = "SELECT * FROM `checkout_items` WHERE check_code = '$item_code'";
+                $result_query = mysqli_query($conn, $update_query);
+
+                if (mysqli_num_rows($result_query) > 0) {
+                    $insert_to_check_Table = "UPDATE `checkout_items` SET  check_size = '$item_size', check_quantity = '$item_qty', total_price = '$total_price'";
+                    $insert_result = mysqli_query($conn, $insert_to_check_Table);
+                    $returnArr = ['email_add' => $email_add, 'item_code' => $item_code];
+                    echo json_encode($returnArr);
+                } else {
+                    $insert_to_check_Table = "INSERT INTO `checkout_items` (check_code, check_name, check_price, check_size, check_quantity, check_image, check_email_add, total_price)
+                                VALUES ('$item_code', '$item_name', '$item_price', '$item_size', '$item_qty', '$item_image', '$email_add', '$total_price')";
+                    $insert_result = mysqli_query($conn, $insert_to_check_Table);
+                    $returnArr = ['email_add' => $email_add, 'item_code' => $item_code];
+                    echo json_encode($returnArr);
+                }
+                break;
+
+            case "update":
+                $item_code = $_POST['item_code'];
+                $item_qty = $_POST['item_qty'];
+                $item_size = $_POST['item_size'];
+
+                $check_cart_item = "SELECT * FROM `cart_table` WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size'";
+                $result_check_cart_item = mysqli_query($conn, $check_cart_item);
+
+                if (mysqli_num_rows($result_check_cart_item) > 0) {
+                    $update_query = "UPDATE `cart_table` SET quantity = '$item_qty' WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size' ";
+                    $result_update_query = mysqli_query($conn, $update_query);
+
+                    if ($result_update_query) {
+                        echo "Item quantity has been updated. Quantity: $item_qty";
+                    } else {
+                        echo "Something went wrong!";
+                    }
+                } else {
+                    echo "Something went wrong";
+                }
+                break;
+
+            case "delete":
+                $item_code = $_POST['item_code'];
+
+                $delete_query = "DELETE FROM `custom_shirt` WHERE custom_id = '$item_code'";
+                $result_delete_query = mysqli_query($conn, $delete_query);
+
+                if ($result_delete_query) {
+                    echo ("Item has been successfully deleted!");
+                } else {
+                    echo ("Something went wrong!");
+                }
+
+                break;
+            default:
+                echo "Something went wrong!";
+        }
+    }
+
+    if (isset($_POST["id"])) {
+        foreach ($_POST["id"] as $id) {
+            $delete_all_query = "DELETE FROM `cart_table` WHERE item_id = '$id' ";
+            $result_delete_all_query = mysqli_query($conn, $delete_all_query);
+        }
+    }
+
+    if (isset($_POST["item_id"])) {
+        $current_price = 0;
+        $count = 0;
+        foreach ($_POST["item_id"] as $item_id) {
+            $fetch_price = "SELECT * FROM `custom_shirt` WHERE custom_id = '$item_id' ";
+            $result_fetch_query = mysqli_query($conn, $fetch_price);
+
+            if (mysqli_num_rows($result_fetch_query)) {
+
+                while ($fetch = mysqli_fetch_array($result_fetch_query)) {
+
+                    $price = $fetch["custom_price"];
+                    // $quantity = $fetch["quantity"];
+                    $quantity = 1;
+                    $pPrice = intval($price);
+                    $pQuantity = intval($quantity);
+                    $total_price = intval($price) * intval($quantity);
+                    $current_price = $current_price + $total_price;
+                }
+            }
+        }
+        echo $current_price;
+    }
+
+
+
+    if (isset($_POST["check_id"])) {
+        foreach ($_POST["check_id"] as $check_id) {
+            $select = "SELECT * FROM `custom_shirt` WHERE custom_id = '$check_id'";
+            $result = mysqli_query($conn, $select);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $item_id = $row["item_id"];
+                $item_code = $row["item_code"];
+                $item_name = $row["item_name"];
+                $item_price = $row["item_price"];
+                $item_size = $row["size"];
+                $item_quantity = $row["quantity"];
+                $item_image = $row["item_image"];
+                $email = $row["email_add"];
+
+                $total_price = $item_price * $item_quantity;
+
+                $place_item = "INSERT INTO `checkout_items` (check_id, check_code, check_name, check_price,
+                        check_size, check_quantity, total_price, check_image, check_email_add) VALUES ('$check_id', '$item_code', '$item_name',
+                        '$item_price', '$item_size', '$item_quantity', '$total_price', '$item_image', '$email')";
+                $result_place_item = mysqli_query($conn, $place_item);
+            }
+        }
+        echo "successfully placed the item in the database";
+    }
+
+    if (isset($_POST["check_id_code"])) {
+        foreach ($_POST["check_id_code"] as $check_id_code) {
+            $select = "SELECT * FROM `cart_table` WHERE item_id = '$check_id_code'";
+            $result = mysqli_query($conn, $select);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $item_id = $row["item_id"];
+                $item_code = $row["item_code"];
+                $item_name = $row["item_name"];
+                $item_price = $row["item_price"];
+                $item_size = $row["size"];
+                $item_quantity = $row["quantity"];
+                $item_image = $row["item_image"];
+                $email = $row["email_add"];
+
+                $total_price = $item_price * $item_quantity;
+
+                $place_item = "INSERT INTO `checkout_items` (check_id, check_code, check_name, check_price,
+                        check_size, check_quantity, total_price, check_image, check_email_add) VALUES ('$check_id', '$item_code', '$item_name',
+                        '$item_price', '$item_size', '$item_quantity', '$total_price', '$item_image', '$email')";
+                $result_place_item = mysqli_query($conn, $place_item);
+            }
+        }
+        echo "successfully placed the item in the database";
+    }
+}
