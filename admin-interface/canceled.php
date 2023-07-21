@@ -169,9 +169,21 @@ include_once("../includes/functions.inc.php");
                             <td></td>
                             <td></td>
                             <td class="text-center">
-                                <img src="item_images/<?= $row["order_item_image"] ?>" height="50" width="50" alt="" />
+                                <?php
+                                if ($row["order_item_code"] == $row["order_item_name"]) {
+                                    $name = "Custom - " . $row["order_item_name"];
+                                ?>
+                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                <?php
+                                } else {
+                                    $name = $row["order_item_name"];
+                                ?>
+                                    <img src="item_images/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                <?php
+                                }
+                                ?>
                             </td>
-                            <td class="text-center"><?php echo $row["order_item_name"] ?></td>
+                            <td class="text-center"><?php echo $name ?></td>
                             <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
                             <td class="text-center"><?php echo $row["order_date"] ?></td>
                             <td class="text-center"><?php echo $row["payment_method"] ?></td>
@@ -261,7 +273,6 @@ include_once("../includes/functions.inc.php");
             });
         });
     </script>
-
 </body>
 
 </html>

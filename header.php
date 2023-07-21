@@ -33,11 +33,6 @@ include_once("includes/functions.inc.php");
 </head>
 
 <body>
-    <!----Promo Banner----->
-    <!-- <div class="promo">
-        <h4 class = "h6" style="text-align: center; color: white; padding-top: 5px;">Get P100 off on your first purchase for a min spend of P2,000</h4>
-    </div> -->
-    <!----Header----->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,13 +63,12 @@ include_once("includes/functions.inc.php");
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
-                    <!-- onsubmit="return searchEnter() -->
                         <form class="d-flex" role="search" method="GET" action="search_item.php">
                             <input style="width: 400px" class="form-control me-3 rounded-pill" type="text" id="searchString" name="searchString" placeholder="Search" aria-label="Search" value="<?php
-                                                                                                                                                        if (isset($_GET['search'])) {
-                                                                                                                                                            echo $_GET['search'];
-                                                                                                                                                        }
-                                                                                                                                                        ?>">
+                                                                                                                                                                                                    if (isset($_GET['search'])) {
+                                                                                                                                                                                                        echo $_GET['search'];
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                    ?>">
                             <button class="btn btn-outline-light m-2" type="submit" id="searchBtn">Search</button>
                         </form>
                     </li>
@@ -92,6 +86,11 @@ include_once("includes/functions.inc.php");
                                     $sql = "SELECT * FROM cart_table WHERE email_add ='{$_SESSION["userEmailAdd"]}'";
                                     $mysqliStatus = mysqli_query($conn, $sql);
                                     $rows_count_value = mysqli_num_rows($mysqliStatus);
+
+                                    $sql = "SELECT * FROM custom_shirt WHERE custom_email ='{$_SESSION["userEmailAdd"]}'";
+                                    $mysqliStatus = mysqli_query($conn, $sql);
+
+                                    $rows_count_value += mysqli_num_rows($mysqliStatus);
                                     ?>
                                     <a href="shoppingcartpage.php?email_add=<?php echo $email_add ?>">
                                         <img style="width: 35px; height: 50px;" src="shopping_cart.png" alt="">
@@ -155,14 +154,6 @@ include_once("includes/functions.inc.php");
         </div>
     </nav>
     <script>
-        // var temp = "";
-        // $(document).ready(function() {
-        //     $(document).on('click', '#searchBtn', function(e) {
-        //         var searchString = $('#searchText').val();
-        //         window.location.href = "search_item.php?search=" + searchString;
-        //     });
-        // });
-
         $(document).ready(function() {
             $(document).on('focusin', '#searchText', function(e) {
                 temp = $('#searchText').val();
@@ -176,7 +167,6 @@ include_once("includes/functions.inc.php");
             const url = "search_item.php?search=" + searchString;
             window.location.href = url;
         }
-
     </script>
 
 </body>

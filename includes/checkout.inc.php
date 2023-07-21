@@ -63,7 +63,7 @@ if (isset($_SESSION["userEmailAdd"])) {
                 $result = mysqli_query($conn, $select);
 
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $item_id = $row["check_id"];
+                    // $item_id = $row["check_id"];
                     $item_code = $row["custom_id"];
                     $item_name = $row["custom_id"];
                     $item_price = $row["custom_price"];
@@ -86,6 +86,8 @@ if (isset($_SESSION["userEmailAdd"])) {
                     '$item_price', '$item_size', '$item_quantity', '$total_price', '$payment', 'Not Paid', '$item_image', '$email_add', NOW(), 'Placed', '$gcashRef')";
 
                     $result_place_item = mysqli_query($conn, $place_item);
+
+                    $query = "UPDATE ";
                 }
 
                 $delete_items = "DELETE FROM `custom_shirt` WHERE custom_id = '$item_code'";
@@ -119,6 +121,10 @@ if (isset($_SESSION["userEmailAdd"])) {
                     '$item_price', '$item_size', '$item_quantity', '$total_price', '$payment', 'Not Paid', '$item_image', '$email_add', NOW(), 'Placed', '$gcashRef')";
 
                     $result_place_item = mysqli_query($conn, $place_item);
+
+                    $query = "UPDATE items SET num_sold = num_sold + $item_quantity WHERE  item_code = '$item_code'";
+                    mysqli_query($conn, $query);
+
                 }
                 // echo "<script>alert('asdasdas')</script>";
                 $delete_items = "DELETE FROM `cart_table` WHERE item_id = '$order_id'";

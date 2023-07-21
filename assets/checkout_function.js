@@ -27,9 +27,9 @@ $(document).ready(function () {
                         "gcashRef": gcashRef,
                     },
                     success: function (response) {
-                        // window.location.href = "successful_checkout.php";
+                        window.location.href = "successful_checkout.php";
                         // alert("No error");
-                        alert(response);
+                        // alert(response);
                     },
                     error: function (response) {
                         alert("Something went wrong");

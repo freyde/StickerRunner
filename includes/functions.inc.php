@@ -476,8 +476,8 @@ function viewItemInformation()
                         } else {
                             echo "
                                     <div class='btn-group ps-4 btn-group-lg' role='group' aria-label='Basic example'>
-                                        <button type='submit' id='atcBtnModal' class='btn btn-warning me-1 addToCartBtn' value='$item_code'>Add to Cart</button>
-                                        <button type='button' id='buyNowBtn' class='btn btn-warning me-1 buyNowBtn' value='$item_code'>Buy Now</button>                      
+                                        <button type='submit' id='atcBtnModal' class='btn btn-primary me-1 addToCartBtn' value='$item_code'>Add to Cart</button>
+                                        <button type='button' id='buyNowBtn' class='btn btn-primary me-1 buyNowBtn' value='$item_code'>Buy Now</button>                      
                                     </div> 
                                     </form>   
                                     </div>";

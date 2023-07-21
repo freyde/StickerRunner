@@ -212,36 +212,20 @@ a {
 
 /*FOOTER*/
 
-.footer {
-  /* position: fixed; */
-  background-color: black;
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 250px;
-}
-
-.footer_row {
-  margin-left: 100px;
-  padding: 0;
-}
-
-.footer_column {
-  float: left;
-  width: 20%;
-  border: 1px solid black;
-}
-
-/* Clear floats after the columns */
-.footer_row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.footer_column,
-h6 {
-  color: rgb(150, 149, 149);
-  font-weight: lighter;
+  height: 2.5rem;            /* Footer height */
 }
 
 */

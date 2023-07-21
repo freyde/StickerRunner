@@ -57,7 +57,7 @@ session_start();
                                                     Admin - <?php echo $users["first_name"]; ?>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-lg-end">
-                                                    <li><button class="dropdown-item" type="button" onclick="window.location.href='includes/logout.inc.php'">Log Out</button></li>
+                                                    <li><button class="dropdown-item" type="button" onclick="window.location.href='../includes/logout.inc.php'">Log Out</button></li>
                                                 </ul>
                                             </div>
                                     <?php
@@ -114,7 +114,7 @@ session_start();
                         </div>
                     </div>
 
-                    <div class="col-9">
+                    <div class="col-10">
                         <div class="container" style="margin-top: 10px;">
                             <?php
                             if (isset($_GET["products"])) {

@@ -47,156 +47,133 @@ include("headerAbout.php");
 
     <!----Header----->
 
-    <div class="content">
-        <div class="bg-image">
-            <img src="images/bannersticker.jpg" style="width: 100%; height: 300px;" alt="">
-        </div>
-
-        <div class="about">
-            <h1 class="text-center pt-5">About Us</h1>
-            <p class="text-center w-75 pt-5" style="padding-left: 350px; background-color: rgb(255, 255, 255);">
-                At Sticker Runners, we believe that fashion is a powerful means of self-expression. Our passion for style
-                and our commitment to quality has driven us to curate a stunning collection of clothing that caters to diverse
-                tastes and occasions. Whether you're looking for casual everyday wear, elegant formal attire, or trendy statement
-                pieces, we've got you covered.
-            </p>
-        </div>
-        <br><br><br>
-        <!----2 Columns----->
-        <div class="row pt-4 text-center ">
-            <!----Column LEFT----->
-            <div class="column left border-2 border-end" style="height: 300px; 
-          width: 28%;">
-                <h1 style="background-color: blue; color:white">We Care</h1>
-                <br>
-                <p>We care about the environment and strive to make sustainable choices.
-                    We actively seek out brands that prioritize eco-friendly materials, ethical production processes,
-                    and fair trade practices. By supporting us, you're joining us in our commitment to creating a more
-                    sustainable future for fashion.</p>
+    <div id="page-container">
+        <div id="content-wrap">
+            <div class="bg-image">
+                <img src="images/bannersticker.jpg" style="width: 100%; height: 300px;" alt="">
             </div>
-
-
-            <div class="column center border-2 border-end" style=" height: 300px; 
-          width: 28%;">
-                <h1 style="background-color:blue; color:white">We Value</h1>
-                <br>
-                <p>We value your shopping experience and want to make it as enjoyable and convenient as possible. Our user-friendly website and
-                    intuitive navigation make browsing and finding your perfect pieces a breeze. And if you ever need assistance, our friendly and
-                    knowledgeable customer service team is just a message or call away. We're here to answer your questions, offer styling advice,
-                    and ensure your shopping journey with us is nothing short of delightful.</p>
+            <div class="about">
+                <h1 class="text-center pt-5">About Us</h1>
+                <p class="text-center w-75 pt-5" style="padding-left: 350px; background-color: rgb(255, 255, 255);">
+                    At Sticker Runners, we believe that fashion is a powerful means of self-expression. Our passion for style
+                    and our commitment to quality has driven us to curate a stunning collection of clothing that caters to diverse
+                    tastes and occasions. Whether you're looking for casual everyday wear, elegant formal attire, or trendy statement
+                    pieces, we've got you covered.
                 </p>
             </div>
-
-            <!----Column RIGHT----->
-            <div class="column right" style=" height: 500px;
-          width: 28%;">
-                <h1 style="background-color: blue; color: white ">We Offer</h1>
-                <br>
-                <p>Our team of fashion
-                    experts keeps a keen eye on the latest trends, attending fashion shows, and conducting extensive research to ensure that our
-                    collection reflects the latest styles. You can trust us to provide you with the freshest and most up-to-date fashion choices.</p>
-            </div> <!---for right column--->
-        </div> <!---for row--->
-
-        <hr>
-        <div class="row pt-4 pb-5 text-center">
-            <div class="column left" style="width: 40%; height: 400px;">
-                <img src="admin-interface/item_images/location.jpg" style="width:450px; height: 400px;" alt="">
-            </div>
-            <div class="column left" style="width: 40%; height: 400px;">
-                <h3 style="margin-top: 100px; margin-left: -100px;">We offer our services to all of the areas within CAVITE.</h3>
-            </div>
-        </div>
-        <div class="row pt-4 text-center">
-            <h2>Here's the location of our shop</h2>
-        </div>
-        <div class="row pt-1 pb-5 text-center">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.5938382161485!2d120.85709956981219!3d14.335009404368403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962b41258a8063%3A0xae86bc500b51ca5b!2sStickerRunners!5e0!3m2!1sen!2sph!4v1689521788784!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-
-        <!----Footer Section----->
-        <div class="footer">
-            <div class="footer_row">
-                <div class="footer_column">
-                    <h4 style="color: white;">About Sticker Runners</h1>
-                        <h6>About Us</h6>
-                        <h6>Privacy Policy</h6>
-                        <h6>Terms of Use</h6>
-                        <h6>Contact Us</h6>
+            <br><br><br>
+            <!----2 Columns----->
+            <div class="row pt-4 text-center ">
+                <!----Column LEFT----->
+                <div class="column left border-2 border-end" style="height: 300px;
+              width: 28%;">
+                    <h1 style="background-color: blue; color:white">We Care</h1>
+                    <br>
+                    <p>We care about the environment and strive to make sustainable choices.
+                        We actively seek out brands that prioritize eco-friendly materials, ethical production processes,
+                        and fair trade practices. By supporting us, you're joining us in our commitment to creating a more
+                        sustainable future for fashion.</p>
                 </div>
-                <div class="footer_column">
-                    <h4 style="color: white;">Info</h1>
-                        <h6>My Account</h6>
-                        <h6>My Cart</h6>
-                        <h6>Order Status</h6>
+                <div class="column center border-2 border-end" style=" height: 300px;
+              width: 28%;">
+                    <h1 style="background-color:blue; color:white">We Value</h1>
+                    <br>
+                    <p>We value your shopping experience and want to make it as enjoyable and convenient as possible. Our user-friendly website and
+                        intuitive navigation make browsing and finding your perfect pieces a breeze. And if you ever need assistance, our friendly and
+                        knowledgeable customer service team is just a message or call away. We're here to answer your questions, offer styling advice,
+                        and ensure your shopping journey with us is nothing short of delightful.</p>
+                    </p>
                 </div>
-
+                <!----Column RIGHT----->
+                <div class="column right" style=" height: 500px;
+              width: 28%;">
+                    <h1 style="background-color: blue; color: white ">We Offer</h1>
+                    <br>
+                    <p>Our team of fashion
+                        experts keeps a keen eye on the latest trends, attending fashion shows, and conducting extensive research to ensure that our
+                        collection reflects the latest styles. You can trust us to provide you with the freshest and most up-to-date fashion choices.</p>
+                </div> <!---for right column--->
+            </div> <!---for row--->
+            <hr>
+            <div class="row pt-4 pb-5 text-center">
+                <div class="column left" style="width: 40%; height: 400px;">
+                    <img src="admin-interface/item_images/location.jpg" style="width:450px; height: 400px;" alt="">
+                </div>
+                <div class="column left" style="width: 40%; height: 400px;">
+                    <h3 style="margin-top: 100px; margin-left: -100px;">We offer our services to all of the areas within CAVITE.</h3>
+                </div>
             </div>
-
-            <hr style="color: white; background-color: white; height: 2px; width: 85%; margin-left: 100px;">
-
-            <h6 style="margin-top: 130px; text-align: center;">(C) 2022 Sticker Runners. All Rights Reserved</h6>
+            <div class="row pt-4 text-center">
+                <h2>Here's the location of our shop</h2>
+            </div>
+            <div class="row pt-1 pb-5 text-center">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.5938382161485!2d120.85709956981219!3d14.335009404368403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33962b41258a8063%3A0xae86bc500b51ca5b!2sStickerRunners!5e0!3m2!1sen!2sph!4v1689521788784!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
         </div>
+        <?php
+        include("footer.php");
+        ?>
+    </div>
 
 
-        <!---JAVASCRIPT----->
+    <!---JAVASCRIPT----->
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                document.querySelectorAll('.sidebar .nav-link').forEach(function(element) {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.sidebar .nav-link').forEach(function(element) {
 
-                    element.addEventListener('click', function(e) {
+                element.addEventListener('click', function(e) {
 
-                        let nextEl = element.nextElementSibling;
-                        let parentEl = element.parentElement;
+                    let nextEl = element.nextElementSibling;
+                    let parentEl = element.parentElement;
 
-                        if (nextEl) {
-                            e.preventDefault();
-                            let mycollapse = new bootstrap.Collapse(nextEl);
+                    if (nextEl) {
+                        e.preventDefault();
+                        let mycollapse = new bootstrap.Collapse(nextEl);
 
-                            if (nextEl.classList.contains('show')) {
-                                mycollapse.hide();
-                            } else {
-                                mycollapse.show();
-                                // find other submenus with class=show
-                                var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
-                                // if it exists, then close all of them
-                                if (opened_submenu) {
-                                    new bootstrap.Collapse(opened_submenu);
-                                }
+                        if (nextEl.classList.contains('show')) {
+                            mycollapse.hide();
+                        } else {
+                            mycollapse.show();
+                            // find other submenus with class=show
+                            var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+                            // if it exists, then close all of them
+                            if (opened_submenu) {
+                                new bootstrap.Collapse(opened_submenu);
                             }
                         }
-                    }); // addEventListener
-                }) // forEach
-            });
-            // DOMContentLoaded  end
-        </script>
+                    }
+                }); // addEventListener
+            }) // forEach
+        });
+        // DOMContentLoaded  end
+    </script>
 
-        <script>
-            // When the user scrolls the page, execute myFunction
-            window.onscroll = function() {
-                myFunction()
-            };
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function() {
+            myFunction()
+        };
 
-            // Get the header
-            var header = document.getElementById("myHeader");
+        // Get the header
+        var header = document.getElementById("myHeader");
 
-            // Get the offset position of the navbar
-            var sticky = header.offsetTop;
+        // Get the offset position of the navbar
+        var sticky = header.offsetTop;
 
-            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-            function myFunction() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add("sticky");
-                } else {
-                    header.classList.remove("sticky");
-                }
+        // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
             }
-        </script>
+        }
+    </script>
 
 
 
