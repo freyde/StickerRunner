@@ -64,6 +64,8 @@ include_once("../includes/functions.inc.php");
                         <!-- <th>Item Code</th> -->
                         <th>Item Image</th>
                         <th>Item Name</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
                         <th>Item Total Price</th>
                         <th>Ordered At</th>
                         <th>Payment Method</th>
@@ -97,6 +99,8 @@ include_once("../includes/functions.inc.php");
                                         ?>
                                     </td>
                                     <td class="text-center"><?php echo $name ?></td>
+                                    <td class="text-center"><?php echo $row["order_item_size"] ?></td>
+                                    <td class="text-center"><?php echo $row["order_item_quantity"] ?></td>
                                     <td class="text-center">₱<?php echo $row["order_total_price"] + 45 ?>.00</td>
                                     <td class="text-center"><?php echo $row["order_date"] ?></td>
                                     <td class="text-center"><?php echo $row["payment_method"] ?></td>
@@ -185,6 +189,8 @@ include_once("../includes/functions.inc.php");
                                         ?>
                                     </td>
                                     <td class="text-center"><?php echo $name ?></td>
+                                    <td class="text-center"><?php echo $row["order_item_size"] ?></td>
+                                    <td class="text-center"><?php echo $row["order_item_quantity"] ?></td>
                                     <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
                                     <td class="text-center"><?php echo $row["order_date"] ?></td>
                                     <td class="text-center"><?php echo $row["payment_method"] ?></td>

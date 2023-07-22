@@ -30,10 +30,9 @@ if (isset($_SESSION['auth'])) {
                                 $package_unique_num = $row["package_num"];
                             }
                     ?>
-                            <div class="row mx-auto">
-                                <div class="col-md-12" style="background-color: rgb(255, 255, 255); height: 500px; width: 85%;">
-                                    <div class="display shadow-lg" style="height: 500px;">
-                                        <div class="account_info" style="margin-left: 30px;">
+                            <div class="row mb-4">
+                                <div class="col-md-11 mx-auto">
+                                        <div class="account_info">
                                             <h1>My Orders</h1>
                                             <ul class="nav nav-tabs">
                                                 <li class="nav-item">
@@ -52,25 +51,22 @@ if (isset($_SESSION['auth'])) {
                                                     <a class="nav-link" href="my_orders.php?Cancelled_Orders">Cancelled</a>
                                                 </li>
                                             </ul>
-                                            <div class="tabledata" style="margin-top: -25px; margin-left: -12px; height: 500px; width: 100%;">
-                                                <?php
-                                                if (isset($_GET["All_Orders"])) {
-                                                    include("mo_all_orders.php");
-                                                } else if (isset($_GET["To_Ship_Orders"])) {
-                                                    include("mo_to_ship.php");
-                                                } else if (isset($_GET["To_Receive_Orders"])) {
-                                                    include("mo_to_receive.php");
-                                                } else if (isset($_GET["Received_Orders"])) {
-                                                    include("mo_received.php");
-                                                } else if (isset($_GET["Cancelled_Orders"])) {
-                                                    include("mo_cancelled.php");
-                                                } else {
-                                                    include("mo_all_orders.php");
-                                                }
-                                                ?>
-                                            </div>
-                                            </tbody>
-                                            </table>
+
+                                            <?php
+                                            if (isset($_GET["All_Orders"])) {
+                                                include("mo_all_orders.php");
+                                            } else if (isset($_GET["To_Ship_Orders"])) {
+                                                include("mo_to_ship.php");
+                                            } else if (isset($_GET["To_Receive_Orders"])) {
+                                                include("mo_to_receive.php");
+                                            } else if (isset($_GET["Received_Orders"])) {
+                                                include("mo_received.php");
+                                            } else if (isset($_GET["Cancelled_Orders"])) {
+                                                include("mo_cancelled.php");
+                                            } else {
+                                                include("mo_all_orders.php");
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                             <?php

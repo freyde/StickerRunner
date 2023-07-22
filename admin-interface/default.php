@@ -158,7 +158,6 @@ include_once("../includes/functions.inc.php");
         $.ajax({
             method: "POST",
             url: "charts.php",
-            // dataType: "json",
             data: {
                 "type": 'topSelling',
             },
@@ -166,7 +165,6 @@ include_once("../includes/functions.inc.php");
                 var data = JSON.parse(result);
                 var itemNames = [];
                 var itemSold = [];
-                // console.log(data);
                 for (var i = 1; i < data.length; i++) {
                     itemNames.push(data[i]['item_name'].split(" "));
                     itemSold.push(data[i]['num_sold']);
@@ -206,7 +204,6 @@ include_once("../includes/functions.inc.php");
         $.ajax({
             method: "POST",
             url: "charts.php",
-            // dataType: "json",
             data: {
                 "type": 'monthlySales',
                 "year": year,
@@ -216,7 +213,6 @@ include_once("../includes/functions.inc.php");
                 var monthsText = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
                 var months = [];
                 var totalPrice = [];
-                // console.log(data);
                 for (var i = 1; i < data.length; i++) {
                     months.push(monthsText[data[i]['month(order_date)']]);
                     totalPrice.push(data[i]['sum(order_total_price)']);

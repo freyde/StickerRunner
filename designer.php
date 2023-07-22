@@ -1,15 +1,12 @@
+<?php
+include("headerCustom.php");
+if (isset($_SESSION["auth"])) {
+    include_once("includes/functions.inc.php");
+?>
 <head>
     <link rel="stylesheet" type="text/css" href="styles/fontselect-default.css" />
     <script src="jquery.fontselect.js"></script>
 </head>
-
-<?php
-session_start();
-
-if (isset($_SESSION["auth"])) {
-    include("headerCustom.php");
-    include_once("includes/functions.inc.php");
-?>
     <div id="page-container">
         <div id="content-wrap">
             <div class="p-5 bg-white rounded shadow mb-5">
