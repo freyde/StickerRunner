@@ -382,7 +382,8 @@ $(document).ready(function () {
         var getEmail = $(".email").val();
 
         $('.item_checkbox').each(function (i) {
-            check_id[i] = $(this).val();
+            if($(this).is(":checked"))
+                check_id[i] = $(this).val();
         });
 
 
@@ -422,7 +423,7 @@ $(document).ready(function () {
         var items = $('.custom_checkbox');
         $.each(items, function (i) {
             var $this = $(this);
-            if (!$this.prop('disabled')) {
+            if ($(this).is(":checked")) {
                 check_id[i] = $(this).val();
             }
         });

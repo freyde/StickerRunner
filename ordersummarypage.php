@@ -131,11 +131,11 @@ include_once("includes/functions.inc.php");
                                                       <p>{$check_Items['check_quantity']}<p>";
                               ?>
                             </div>
-                            <div class='remove'>
+                            <!-- <div class='remove'>
                               <button class="btn btn-danger deleteItem_btn" value='<?= $check_Items['check_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 60px;">
                                 <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
                               </button>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
@@ -170,11 +170,11 @@ include_once("includes/functions.inc.php");
                               //                       <p>{$check_Items['check_quantity']}<p>";
                               ?>
                             </div>
-                            <div class='remove'>
+                            <!-- <div class='remove'>
                               <button class="btn btn-danger deleteItem_btn" value='<?= $check_Items['check_code'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 60px;">
                                 <img src='icons8-delete-trash-32.png' style='margin-left: -8px; height: 30px; width: 30px; margin-top: -2px;' alt=''>
                               </button>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
