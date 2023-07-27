@@ -68,7 +68,7 @@ if (isset($_SESSION["userEmailAdd"])) {
                     $item_name = $row["custom_id"];
                     $item_price = $row["custom_price"];
                     $item_size = $row["custom_size"];
-                    $item_quantity = 1;
+                    $item_quantity = $row["custom_quantity"];
                     if ($row["custom_front"] != NULL)
                         $item_image = $row["custom_front"];
                     else
@@ -90,8 +90,8 @@ if (isset($_SESSION["userEmailAdd"])) {
                     $query = "UPDATE ";
                 }
 
-                $delete_items = "DELETE FROM `custom_shirt` WHERE custom_id = '$item_code'";
-                $result = mysqli_query($conn, $delete_items);
+                // $delete_items = "DELETE FROM `custom_shirt` WHERE custom_id = '$item_code'";
+                // $result = mysqli_query($conn, $delete_items);
             }
             unset($_SESSION['custom']);
         } else {

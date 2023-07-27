@@ -484,7 +484,6 @@ function viewItemInformation()
 
                         echo "
                             <div>
-                            <br>
                                 <h4 class='fw-light ps-4 pt-3 fs-5'>Item Description</h4>
                                 <p class='ps-4'>$item_description 
                                 </div>
