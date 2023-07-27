@@ -48,22 +48,22 @@ include_once("../includes/functions.inc.php");
         $select_list = mysqli_query($conn, "SELECT * FROM orders WHERE order_status='Cancelled' ORDER BY order_date DESC");
         ?>
 
-        <table class="table table-bordered table-striped border-primary table-hover">
+        <table class="table table-bordered table-striped border-primary table-hover" id="orderTable">
             <thead class="text-center fw-bold">
-                <tr>
-                    <th>Package Number</th>
-                    <th>Customer Email</th>
-                    <!-- <th>Item Code</th> -->
-                    <th>Item Image</th>
-                    <th>Item Name</th>
-                    <th>Item Total Price</th>
-                    <th>Ordered At</th>
-                    <th>Payment Method</th>
-                    <th>GCash Reference No.</th>
-                    <th>Paid</th>
-                    <th style="width:14%">Status</th>
-                    <!-- <th colspan="2">Action</th> -->
-                </tr>
+                <th>Package Number</th>
+                <th>Customer Email</th>
+                <!-- <th>Item Code</th> -->
+                <th>Item Image</th>
+                <th>Item Name</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Item Total Price</th>
+                <th>Ordered At</th>
+                <th>Payment Method</th>
+                <th>GCash Reference No.</th>
+                <th>Paid</th>
+                <th style="width:14%">Status</th>
+                <!-- <th colspan="2">Action</th> -->
             </thead>
             <?php
             if (mysqli_num_rows($select_list) > 0) {
@@ -90,19 +90,18 @@ include_once("../includes/functions.inc.php");
                                 ?>
                             </td>
                             <td class="text-center"><?php echo $name ?></td>
+                            <td class="text-center"><?php echo $row["order_item_size"] ?></td>
+                            <td class="text-center"><?php echo $row["order_item_quantity"] ?></td>
                             <td class="text-center">₱<?php echo $row["order_total_price"] + 45 ?>.00</td>
                             <td class="text-center"><?php echo $row["order_date"] ?></td>
                             <td class="text-center"><?php echo $row["payment_method"] ?></td>
                             <td class="text-center"><?php echo $row["gcash_ref"] ?></td>
-
-
                             <td class="text-center" style="width:14%">
                                 <?php
                                 if ($row["payment_status"] == "Paid") {
                                     echo "<select class='form-select' payment-id= '" . $row['package_num'] . "' payment-email='" . $row['order_email_add'] . "' name='payment_status_change' aria-label='Default select example' disabled>";
                                 ?>
                                     <option value="<?php echo $row["payment_status"]; ?>" selected><?php echo $row["payment_status"]; ?></option>
-
                                 <?php
                                 } else if ($row["payment_status"] == "Not Paid") {
                                     echo "<select class='form-select' payment-id= '" . $row['package_num'] . "' payment-email='" . $row['order_email_add'] . "' name='payment_status_change' aria-label='Default select example'>";
@@ -114,8 +113,6 @@ include_once("../includes/functions.inc.php");
                                 ?>
                                 </select>
                             </td>
-
-
                             <td class="text-center" style="width:15%">
                                 <select class="form-select" status-id=<?php echo $row["package_num"]; ?> status-email=<?php echo $row["order_email_add"]; ?> name="order_status_change" aria-label="Default select example">
                                     <?php
@@ -160,7 +157,6 @@ include_once("../includes/functions.inc.php");
                                 </select>
                             </td>
                         </tr>
-
                     <?php
                         $pre = $row["package_num"];
                     } else {
@@ -184,6 +180,8 @@ include_once("../includes/functions.inc.php");
                                 ?>
                             </td>
                             <td class="text-center"><?php echo $name ?></td>
+                            <td class="text-center"><?php echo $row["order_item_size"] ?></td>
+                            <td class="text-center"><?php echo $row["order_item_quantity"] ?></td>
                             <td class="text-center">₱<?php echo $row["order_item_price"] + 45 ?>.00</td>
                             <td class="text-center"><?php echo $row["order_date"] ?></td>
                             <td class="text-center"><?php echo $row["payment_method"] ?></td>
@@ -197,7 +195,7 @@ include_once("../includes/functions.inc.php");
             } else {
                 ?>
                 <tr>
-                    <td colspan="10" class="text-center"><strong>No Item</strong></td>
+                    <td colspan="12" class="text-center"><strong>No Item</strong></td>
                 </tr>
             <?php
             }

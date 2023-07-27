@@ -18,7 +18,7 @@ if (isset($_SESSION["userEmailAdd"])) {
         $result_select_packages = mysqli_query($conn, $select_packages);
 
         if(mysqli_num_rows($result_select_packages) > 0){
-            $update_package = "UPDATE `orders` SET order_status = 'Received' WHERE package_num = '$package' AND order_email_add = '$email_add'";
+            $update_package = "UPDATE `orders` SET order_status = 'Delivered' WHERE package_num = '$package' AND order_email_add = '$email_add'";
             $result_update_package = mysqli_query($conn, $update_package);
 
                 if($result_update_package){

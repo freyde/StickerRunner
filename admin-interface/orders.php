@@ -204,7 +204,7 @@ include_once("../includes/functions.inc.php");
                     } else {
                         ?>
                         <tr>
-                            <td colspan="10" class="text-center"><strong>No Item</strong></td>
+                            <td colspan="12" class="text-center"><strong>No Item</strong></td>
                         </tr>
                     <?php
                     }
