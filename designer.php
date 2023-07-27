@@ -3,10 +3,11 @@ include("headerCustom.php");
 if (isset($_SESSION["auth"])) {
     include_once("includes/functions.inc.php");
 ?>
-<head>
-    <link rel="stylesheet" type="text/css" href="styles/fontselect-default.css" />
-    <script src="jquery.fontselect.js"></script>
-</head>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/fontselect-default.css" />
+        <script src="jquery.fontselect.js"></script>
+    </head>
     <div id="page-container">
         <div id="content-wrap">
             <div class="p-5 bg-white rounded shadow mb-5">
@@ -454,6 +455,9 @@ if (isset($_SESSION["auth"])) {
     </script>
 <?php
 } else {
-    header("Location: loginpage.php");
+    // header("Location: /loginpage.php");
+?>
+    <script>window.location.replace("loginpage.php")</script>
+<?php
 }
 ?>

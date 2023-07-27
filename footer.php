@@ -35,7 +35,7 @@
                 <h4 style="color: white;">Contact Us</h4>
                 <a class="link-dark link-offset-2 link-underline link-underline-opacity-0" href="mailto:stickerrunners@gmail.com">stickerrunners@gmail.com</a><br>
                 <a class="link-dark link-offset-2 link-underline link-underline-opacity-0" href="https://www.facebook.com/profile.php?id=100093969124011">Facebook</a><br>
-                <a class="link-dark link-offset-2 link-underline link-underline-opacity-0" href="my_orders.php">+63968-3263-991</a>
+                <a class="link-dark link-offset-2 link-underline link-underline-opacity-0" href="my_orders.php">+63968-326-3991, +63917-827-2293</a>
             </figure>
         </div>
         <div class="col-md-2"></div>
