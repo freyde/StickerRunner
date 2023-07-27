@@ -479,9 +479,18 @@ function viewItemInformation()
                                         <button type='submit' id='atcBtnModal' class='btn btn-primary me-1 addToCartBtn' value='$item_code'>Add to Cart</button>
                                         <button type='button' id='buyNowBtn' class='btn btn-primary me-1 buyNowBtn' value='$item_code'>Buy Now</button>                      
                                     </div> 
-                                    </form>   
-                                    </div>";
+                                    </form>";
                         }
+
+                        echo "
+                            <div>
+                            <br>
+                                <h4 class='fw-light ps-4 pt-3 fs-5'>Item Description</h4>
+                                <p class='ps-4'>$item_description 
+                                </div>
+                            </div>
+                        
+                        ";
                     }
 
                     //formaction='itemclickpage.php?item_code=$item_code&item_category=$item_category&click_on_item=$item_name'

@@ -338,12 +338,15 @@ include_once("includes/functions.inc.php");
                   </div> <!---for right column--->
                   <!-- FOR MODAL GCASH -->
                   <div id="myModal" class="modal">
+
                     <div class="modal-content">
                       <span class="close">&times;</span>
-                      <p class="text-center">Please refer to the QR Code below to pay amount of order.</p>
-                      <img src="GCash_QR_Code.jpg" style="height: 240px; margin-left: 220px; border: 1px solid gray;" alt="">
-                      <p class="text-center fw-bold" style="margin-top: 5px;">Raymond P. - 09508120671</p>
-                      <p class="text-center" style="margin-top: -10px;">Note: Must pay exact amount within 24 hours from the time of order.</p>
+                      <div class="modal-body">
+                        <p class="text-center">Please refer to the QR Code below to pay amount of order.</p>
+                        <img src="GCash_QR_Code2.jpg" class="rounded mx-auto d-block" style="height: 250px; width: 220px" >
+                        <p class="text-center fw-bold" style="margin-top: 5px;">Lyn L. - 09178272293</p>
+                        <p class="text-center" style="margin-top: -10px;">Note: Must pay exact amount within 24 hours from the time of order.</p>
+                      </div>
                     </div>
                   </div>
         </div>
@@ -352,7 +355,7 @@ include_once("includes/functions.inc.php");
       <!---for row--->
       <!-- </form> -->
       <!----Footer Section----->
-    
+
     </div>
     <?php
     include("footer.php");

@@ -61,20 +61,24 @@ include_once("../includes/functions.inc.php");
                             <?php
                             } else {
                             ?>
-                                <img src="../custom/<?= $row['custom_front'] ?>" height="50" width="70" alt="" />
+                                <button type="button" class="btn preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $row['custom_front'] ?>">
+                                    <img src="../custom/<?= $row['custom_front'] ?>" height="50" width="70" alt="" />
+                                </button>
                             <?php
                             }
                             ?>
                         </td>
                         <td class="text-center">
-                        <?php
+                            <?php
                             if ($row['custom_back'] == NULL) {
                             ?>
                                 No Back
                             <?php
                             } else {
                             ?>
-                                <img src="../custom/<?= $row['custom_back'] ?>" height="50" width="70" alt="" />
+                                <button type="button" class="btn preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $row['custom_back'] ?>">
+                                    <img src="../custom/<?= $row['custom_back'] ?>" height="50" width="70" alt="" />
+                                </button>
                             <?php
                             }
                             ?>
@@ -94,13 +98,36 @@ include_once("../includes/functions.inc.php");
             ?>
         </table>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Preview</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img class="mx-auto d-block" id="previewImg" src="" alt="preview">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="../jquery-3.6.3.js"></script>
     <script src="../assets/paid_function.js"></script>
 
-    
+    <script>
+        $(document).ready(function() {
+            $(".preview").click(function() {
+                // alert(this.value);
+                $("#previewImg").attr("src", "../custom/" + this.value);
+            });
+        });
+    </script>
 
 </body>
 

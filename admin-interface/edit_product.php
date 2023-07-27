@@ -3,63 +3,72 @@ include_once("../includes/dbh.inc.php");
 include_once("../includes/functions.inc.php");
 
 if (isset($_POST["updateItemBtn"])) {
-
-    $size_raw = $_POST['size_check'];
-    $uc_first = array_map('ucfirst', $size_raw);
-    $size = implode(", ", $uc_first);
-
-    $status = $_POST['status_check'];
-
-    $item_code = $_GET['item_code'];
-    $item_name = $_POST["item_name"];
-    $item_price = $_POST["item_price"];
-    $item_description = $_POST["item_description"];
-    $item_keyword = $_POST["item_keyword"];
-    $item_category = $_POST["item_category"];
-
-    //accessing item images
-    $item_image1 = $_FILES["item_image1"]["name"];
-    $item_image2 = $_FILES["item_image2"]["name"];
-    $item_image3 = $_FILES["item_image3"]["name"];
-
-    //accessing image tmp name
-    $temp_item_image1 = $_FILES["item_image1"]["tmp_name"];
-    $temp_item_image2 = $_FILES["item_image2"]["tmp_name"];
-    $temp_item_image3 = $_FILES["item_image3"]["tmp_name"];
-
-    // checks if any forms are empty
-    if (
-        empty($item_name) || empty($item_price) || empty($item_description) || empty($item_keyword) || empty($item_category)
-        || empty($item_image1) || empty($item_image2) || empty($item_image3)
-    ) {
-        echo "<script>alert('Please fill all the available fields!')</script>";
-        exit();
+    if (!isset($_POST['size_check'])) {
+        echo "<script>alert('Please set available sizes.')</script>";
     } else {
-        move_uploaded_file($temp_item_image1, "./item_images/$item_image1");
-        move_uploaded_file($temp_item_image2, "./item_images/$item_image2");
-        move_uploaded_file($temp_item_image3, "./item_images/$item_image3");
+        $size_raw = $_POST['size_check'];
+        $uc_first = array_map('ucfirst', $size_raw);
+        $size = implode(", ", $uc_first);
 
-        //insert query
+        $status = $_POST['status_check'];
 
-        $item_description = mysqli_real_escape_string($conn, $item_description);
+        $item_code = $_GET['item_code'];
+        $item_name = $_POST["item_name"];
+        $item_price = $_POST["item_price"];
+        $item_description = $_POST["item_description"];
+        $item_keyword = $_POST["item_keyword"];
+        $item_category = $_POST["item_category"];
 
+        //accessing item images
+        $item_image1 = $_FILES["item_image1"]["name"];
+        $item_image2 = $_FILES["item_image2"]["name"];
+        $item_image3 = $_FILES["item_image3"]["name"];
 
-        $update_item = "UPDATE items SET 
+        //accessing image tmp name
+        $temp_item_image1 = $_FILES["item_image1"]["tmp_name"];
+        $temp_item_image2 = $_FILES["item_image2"]["tmp_name"];
+        $temp_item_image3 = $_FILES["item_image3"]["tmp_name"];
+
+        // checks if any forms are empty
+        if (
+            empty($item_name) || empty($item_price) || empty($item_description) || empty($item_keyword) || empty($item_category)
+        ) {
+            echo "<script>alert('Please fill all the available fields!')</script>";
+            exit();
+        } else {
+
+            $update_item = "UPDATE items SET 
             item_name = '$item_name',
             item_price = '$item_price',
             sizes_available = '$size',
             item_description = '$item_description',
             item_keyword = '$item_keyword',
-            item_category = '$item_category',
-            item_image1 = '$item_image1',
-            item_image3 = '$item_image2',
-            item_image2 = '$item_image3',
+            item_category = '$item_category',";
+
+            if (!empty($item_image1)) {
+                move_uploaded_file($temp_item_image1, "./item_images/$item_image1");
+                $update_item = $update_item . "item_image1 = '$item_image1',";
+            }
+            if (!empty($item_image2)) {
+                move_uploaded_file($temp_item_image2, "./item_images/$item_image2");
+                $update_item = $update_item . "item_image2 = '$item_image2',";
+            }
+            if (!empty($item_image3)) {
+                move_uploaded_file($temp_item_image3, "./item_images/$item_image3");
+                $update_item = $update_item . "item_image3 = '$item_image3',";
+            }
+
+            //insert query
+
+            $item_description = mysqli_real_escape_string($conn, $item_description);
+            $update_item = $update_item . "
             item_status = '$status'
             WHERE item_code = $item_code";
-        $result_update = mysqli_query($conn, $update_item);
-        if ($result_update) {
-            header("Location: ../main_dashboard.php?products");
-            // echo "<script>alert('Item has been updated successfully!')</script>";
+            $result_update = mysqli_query($conn, $update_item);
+            if ($result_update) {
+                header("Location: ../admin-interface/main_dashboard.php?products");
+                // echo "<script>alert('Item has been updated successfully!')</script>";
+            }
         }
     }
 }
@@ -218,7 +227,7 @@ if (isset($_POST["updateItemBtn"])) {
 
                                         <div class="size pt-2 pb-2">
                                             <small id="s2" class="form-text fst-italic ps-3">Size<span style="color: red;">*</span></small>
-                                            <input class="form-check-input ms-3" type="checkbox" value="small" name="size_check[]">
+                                            <!-- <input class="form-check-input ms-3" type="checkbox" value="small" name="size_check[]" required>
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 Small
                                             </label>
@@ -236,7 +245,24 @@ if (isset($_POST["updateItemBtn"])) {
                                             <input class="form-check-input" type="checkbox" value="extra Large" name="size_check[]">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 Extra Large
-                                            </label>
+                                            </label> -->
+
+                                            <div class="form-check form-check-inline checkbox-group" required>
+                                                <input class="form-check-input ms-1" type="checkbox" value="small" name="size_check[]">
+                                                <label class="form-check-label" for="inlineCheckbox1">Small</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="medium" name="size_check[]">
+                                                <label class="form-check-label" for="inlineCheckbox2">Medium</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="large" name="size_check[]">
+                                                <label class="form-check-label" for="inlineCheckbox3">Large</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="extra Large" name="size_check[]">
+                                                <label class="form-check-label" for="inlineCheckbox3">Extra Large</label>
+                                            </div>
                                         </div>
 
 
@@ -247,29 +273,11 @@ if (isset($_POST["updateItemBtn"])) {
                                             <textarea class="form-control" style="height: 100px;" name="item_description" id="item_description" placeholder="<?php echo $item_description ?>" required="required"><?php echo $item_description ?></textarea>
                                         </div>
                                         <div class="btn-group pt-3">
-                                            <!-- <div class="form-group ps-3" style="width: 200px;">
-                                    <small id="s5" class="form-text fst-italic">Gender<span style="color: red;">*</span></small>
-                                        <select class="form-select" name="gender_category" id="gender_category" style="" 
-                                         onchange="checkGenderValue(this.value)" aria-label="Default select example" required="required">
-                                            <option disabled selected>Select a Gender</option>
-                                            <?php
-                                            $select_query = "SELECT * FROM `categories`";
-                                            $resultOfSelectQuery = mysqli_query($conn, $select_query);
 
-                                            while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
-                                                $category_name = $row["category_name"];
-                                                $category_id = $row["category_id"];
-
-                                                echo "<option value='$category_name'>$category_name</option>";
-                                            }
-
-                                            ?>
-                                        </select>
-                                </div> -->
                                             <div class="form-group ps-3" style="width: 300px;">
                                                 <small id="s5" class="form-text fst-italic">Select a Category<span style="color: red;">*</span></small>
                                                 <select class="form-select" name="item_category" id="item_category" aria-label="Default select example" required="required">
-                                                    <option disabled selected>Select a Category</option>
+                                                    <option disabled selected hidden>Select a Category</option>
                                                     <?php
                                                     $select_query = "SELECT * FROM mens_categories";
                                                     $resultOfSelectQuery = mysqli_query($conn, $select_query);
@@ -277,19 +285,11 @@ if (isset($_POST["updateItemBtn"])) {
                                                     while ($row = mysqli_fetch_assoc($resultOfSelectQuery)) {
                                                         $category_name = $row["mens_category_name"];
                                                         $category_id = $row["mens_category_id"];
-
-                                                        echo "<option value='$category_name'>$category_name</option>";
+                                                        if ($item_category == $category_name)
+                                                            echo "<option value='$category_name' selected>$category_name</option>";
+                                                        else
+                                                            echo "<option value='$category_name'>$category_name</option>";
                                                     }
-
-                                                    //    $select_query1 = "SELECT * FROM womens_categories";
-                                                    //    $resultOfSelectQuery1 = mysqli_query($conn, $select_query1);
-
-                                                    //    while($row = mysqli_fetch_assoc($resultOfSelectQuery1)){
-                                                    //       $category_name1 = $row["womens_category_name"];
-                                                    //       $category_id1 = $row["womens_category_id"];
-
-                                                    //      echo "<option value='$category_name1'>$category_name1</option>";
-                                                    //   }
                                                     ?>
                                                 </select>
                                             </div>
@@ -319,21 +319,45 @@ if (isset($_POST["updateItemBtn"])) {
                                             <input type="text" class="form-control" name="item_keyword" value="<?php echo $item_keyword ?>" id="item_keyword" placeholder="Enter Item Keyword" required="required">
                                             <small id="emailHelp" class="form-text text-muted"></small>
                                         </div>
-                                        <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
-                                            <small id="s6" class="form-text fst-italic">Item Image 1<span style="color: red;">*</span></small>
-                                            <input type="file" class="form-control" name="item_image1" id="item_image1" required="required">
-                                            <small id="emailHelp" class="form-text text-muted"></small>
-                                        </div>
-                                        <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
-                                            <small id="s7" class="form-text fst-italic">Item Image 2<span style="color: red;">*</span></small>
-                                            <input type="file" class="form-control" name="item_image2" id="item_image2" required="required">
-                                            <small id="emailHelp" class="form-text text-muted"></small>
-                                        </div>
-                                        <div class="form-group">
-                                            <small id="s7" class="form-text fst-italic">Item Image 3<span style="color: red;">*</span></small>
-                                            <input type="file" class="form-control" name="item_image3" id="item_image3" required="required">
-                                            <small id="emailHelp" class="form-text text-muted"></small>
-                                        </div>
+                                        <?php
+                                        if (isset($_GET['item_code'])) {
+                                        ?>
+                                            <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
+                                                <small id="s6" class="form-text fst-italic">Item Image 1</small>
+                                                <input type="file" class="form-control" name="item_image1" id="item_image1">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                            <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
+                                                <small id="s7" class="form-text fst-italic">Item Image 2</small>
+                                                <input type="file" class="form-control" name="item_image2" id="item_image2">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <small id="s7" class="form-text fst-italic">Item Image 3</small>
+                                                <input type="file" class="form-control" name="item_image3" id="item_image3">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
+                                                <small id="s6" class="form-text fst-italic">Item Image 1<span style="color: red;">*</span></small>
+                                                <input type="file" class="form-control" name="item_image1" id="item_image1" required="required">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                            <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px;">
+                                                <small id="s7" class="form-text fst-italic">Item Image 2<span style="color: red;">*</span></small>
+                                                <input type="file" class="form-control" name="item_image2" id="item_image2" required="required">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <small id="s7" class="form-text fst-italic">Item Image 3<span style="color: red;">*</span></small>
+                                                <input type="file" class="form-control" name="item_image3" id="item_image3" required="required">
+                                                <small id="emailHelp" class="form-text text-muted"></small>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
 

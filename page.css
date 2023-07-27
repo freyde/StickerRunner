@@ -329,12 +329,21 @@ a {
 
 /*change the number below to scale to the appropriate size*/
 .thumbnail:hover {
-  top: 550px;
-  transform: scale(1.25);
+  top: 100px;
+  left: 680px;
+  transform: scale(1.5);
   position: absolute;
   z-index: 999;
 }
 
 .thumbnail2:hover {
   transform: scale(4);
+}
+
+.thumbnail3:hover {
+  top: 100px;
+  left: 680px;
+  transform: scale(1.5);
+  position: absolute;
+  z-index: 999;
 }

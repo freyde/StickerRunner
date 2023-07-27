@@ -6,13 +6,15 @@ include("header.php");
 
   <div id="page-container">
     <div id="content-wrap">
-        <!----Column LEFT----->
-        <!----Column RIGHT----->
-        <!---for right column--->
-        <?php
-        viewItemInformation();
-        ?>
-
+      <div class="row">
+        <div class="col-12">
+          <?php
+          viewItemInformation();
+          ?>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="suggestions" style="margin-left: 100px;">
         <h4>Suggestions</h4>
         <?php
@@ -20,9 +22,10 @@ include("header.php");
         ?>
       </div>
     </div>
-    <?php
-    include("footer.php");
-    ?>
+  </div>
+  <?php
+  include("footer.php");
+  ?>
   </div>
 
 
