@@ -162,12 +162,12 @@ include_once("includes/functions.inc.php");
                             <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 20px;
                                       text-align: center; justify-content: center; display: flex;'>
                               <input type="checkbox" name="code_checkboxes" class="checkCode" checked="checked" value='<?= $check_Items['custom_id'] ?>' style="opacity: 0;">
-                              <!-- <input type="checkbox" name="" class="checkQuantity" value='' style="opacity: 0;"> -->
+                              <input type="checkbox" name="" class="checkQuantity" value='' style="opacity: 0;">
                               <?php
-                              $totalItems += 1;
-                              // echo "
-                              //                       <p>Quantity: </p>
-                              //                       <p>{$check_Items['check_quantity']}<p>";
+                              $totalItems = $check_Items['custom_quantity'];
+                              echo "
+                                                    <p>Quantity: </p>
+                                                    <p>{$totalItems}<p>";
                               ?>
                             </div>
                             <!-- <div class='remove'>
@@ -247,7 +247,7 @@ include_once("includes/functions.inc.php");
                   if (isset($_GET['checkout']))
                     $subtotal = "SELECT SUM(check_price * check_quantity) FROM checkout_items WHERE check_code IN (" . implode(',', $new) . ")";
                   else if (isset($_GET['custom']))
-                    $subtotal = "SELECT SUM(custom_price) FROM custom_shirt WHERE custom_id IN (" . implode(',', $new) . ")";
+                    $subtotal = "SELECT SUM(custom_price * custom_quantity) FROM custom_shirt WHERE custom_id IN (" . implode(',', $new) . ")";
                   else
                     $subtotal = "SELECT SUM(item_price * quantity) FROM cart_table WHERE item_id IN (" . implode(',', $new) . ")";
                   $resultSubtotal = mysqli_query($conn, $subtotal);
@@ -282,7 +282,7 @@ include_once("includes/functions.inc.php");
                                                                                   }
                                                                                 } else if (isset($_GET['custom'])) {
                                                                                   while ($row = mysqli_fetch_array($resultSubtotal)) {
-                                                                                    $totalPrice = $row['SUM(custom_price)'];
+                                                                                    $totalPrice = $row['SUM(custom_price * custom_quantity)'];
                                                                                     echo $totalPrice;
                                                                                   }
                                                                                 } else {

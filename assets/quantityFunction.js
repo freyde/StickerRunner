@@ -119,6 +119,29 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.updateCustQty_btn', function (e) {
+        var item_code = $(this).closest('.item_data').find('.itemCode').val();
+        var item_size = $(this).closest('.item_data').find('.itemSize').val();
+        var qty = $(this).closest('.item_data').find('.input-qty').val();
+
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_custom.php",
+            data: {
+                "item_code": item_code,
+                "item_size": item_size,
+                "item_qty": qty,
+                "scope": "update"
+            },
+            success: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    });
+
     $(document).on('click', '.deleteItem_btn', function (e) {
         e.preventDefault();
 
@@ -417,7 +440,7 @@ $(document).ready(function () {
         var item_image = $(this).closest('.item_data').find('.itemImage').val();
         var item_code = $(this).closest('.item_data').find('.itemCode').val();
         var item_size = $(this).closest('.item_data').find('.itemSize').val();
-        // var qty = $(this).closest('.item_data').find('.input-qty').val();
+        var qty = $(this).closest('.item_data').find('.input-qty').val();
         var getEmail = $(".email").val();
 
         var items = $('.custom_checkbox');
@@ -439,7 +462,7 @@ $(document).ready(function () {
                 "item_price": item_price,
                 "item_image": item_image,
                 "item_size": item_size,
-                // "item_qty": qty,
+                "item_qty": qty,
                 "check_id": check_id,
             },
             success: function (response) {

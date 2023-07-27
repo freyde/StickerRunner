@@ -12,10 +12,10 @@ include("header.php");
                         <img style="width:100%; height: 400px;" class="d-block w-100" src="images/bannersticker.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img style="width:100%; height: 400px;" class="d-block w-100" src="" alt="First slide">
+                        <img style="width:100%; height: 400px;" class="d-block w-100" src="images/bannersticker2.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img style="width:100%; height: 400px;" class="d-block w-100" src="images/bannersticker.jpg" alt="First slide">
+                        <img style="width:100%; height: 400px;" class="d-block w-100" src="images/bannersticker3.jpg" alt="First slide">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">

@@ -54,8 +54,7 @@ include_once("includes/functions.inc.php");
                             <input type="hidden" class="itemSize" value='<?= $cart_Items['size'] ?>'>
                             <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $cart_Items['size'] ?></h6>
                           </div>
-                          <div class='wrapper' style='border: 1px solid #C0C0C0; height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;
-                        text-align: center; justify-content: center; display: flex;'>
+                          <div class='wrapper' style='border: 1px solid #C0C0C0; height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
                             <input type="hidden" class="itemCode" value='<?= $cart_Items['item_code'] ?>'>
                             <button class='input-group-text decrement-btn updateQty_btn'>-</button>
                             <input type='text' class='form-control text-center bg-white input-qty' value='<?= $cart_Items['quantity'] ?>' disabled>
@@ -182,6 +181,12 @@ include_once("includes/functions.inc.php");
                               ?>
                               <input type="hidden" class="itemSize" value='<?= $item['custom_size'] ?>'>
                               <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $item['custom_size'] ?></h6>
+                            </div>
+                            <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
+                              <input type="hidden" class="itemCode" value='<?= $item['custom_id'] ?>'>
+                              <button class='input-group-text decrement-btn updateCustQty_btn'>-</button>
+                              <input type='text' class='form-control text-center bg-white input-qty' value='<?= $item['custom_quantity'] ?>' disabled>
+                              <button class='input-group-text increment-btn updateCustQty_btn'>+</button>
                             </div>
                             <div class='remove float-end'>
                               <button class="btn btn-danger deleteCust_btn" value='<?= $item['custom_id'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 50px;">

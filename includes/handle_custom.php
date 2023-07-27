@@ -74,11 +74,11 @@ if (isset($_SESSION["userEmailAdd"])) {
                 $item_qty = $_POST['item_qty'];
                 $item_size = $_POST['item_size'];
 
-                $check_cart_item = "SELECT * FROM `cart_table` WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size'";
+                $check_cart_item = "SELECT * FROM `custom_shirt` WHERE custom_id = '$item_code' AND custom_email = '$email_add'";
                 $result_check_cart_item = mysqli_query($conn, $check_cart_item);
 
                 if (mysqli_num_rows($result_check_cart_item) > 0) {
-                    $update_query = "UPDATE `cart_table` SET quantity = '$item_qty' WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size' ";
+                    $update_query = "UPDATE `custom_shirt` SET custom_quantity = '$item_qty' WHERE custom_id = '$item_code' AND custom_email = '$email_add'";
                     $result_update_query = mysqli_query($conn, $update_query);
 
                     if ($result_update_query) {
@@ -87,7 +87,7 @@ if (isset($_SESSION["userEmailAdd"])) {
                         echo "Something went wrong!";
                     }
                 } else {
-                    echo "Something went wrong";
+                    echo "Something went wrong! $item_code $email_add";
                 }
                 break;
 
@@ -128,8 +128,7 @@ if (isset($_SESSION["userEmailAdd"])) {
                 while ($fetch = mysqli_fetch_array($result_fetch_query)) {
 
                     $price = $fetch["custom_price"];
-                    // $quantity = $fetch["quantity"];
-                    $quantity = 1;
+                    $quantity = $fetch["custom_quantity"];
                     $pPrice = intval($price);
                     $pQuantity = intval($quantity);
                     $total_price = intval($price) * intval($quantity);
