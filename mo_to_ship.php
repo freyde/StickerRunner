@@ -78,7 +78,7 @@ include_once("includes/functions.inc.php");
             }
         }
         ?>
-    </div>
+    </div>  
 
 
     <!---for row--->

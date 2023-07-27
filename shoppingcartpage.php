@@ -46,7 +46,7 @@ include_once("includes/functions.inc.php");
                             <input type="hidden" class="email" value='<?= $cart_Items['email_add'] ?>'>
                             <input class="form-check-input item_checkbox" type="checkbox" value="<?= $cart_Items['item_id'] ?>" name="item_checkbox" style="margin-top: 50px;">
                             <input type="hidden" class="itemImage" value='<?= $cart_Items['item_image'] ?>'>
-                            <img class='ms-3 mt-3 thumbnail2' style='height: 100px; width: 100px; float: left;' src='admin-interface/item_images/<?= $cart_Items['item_image'] ?>' alt=''>
+                            <img class='ms-3 mt-3' style='height: 100px; width: 100px; float: left;' src='admin-interface/item_images/<?= $cart_Items['item_image'] ?>' alt=''>
                             <input type="hidden" class="itemName" value='<?= $cart_Items['item_name'] ?>'>
                             <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $cart_Items['item_name'] ?></h6>
                             <input type="hidden" class="itemPrice" value='<?= $cart_Items['item_price'] ?>'>
@@ -150,7 +150,7 @@ include_once("includes/functions.inc.php");
                         }
                           ?>
                           <div class='btn-group mb-2'>
-                            <div class='form-check' style='width: 400px;'>
+                            <div class='form-check'>
                               <?php
                               if ($item['custom_price'] == "") {
                               ?>
@@ -162,25 +162,32 @@ include_once("includes/functions.inc.php");
                               <?php
                               }
                               ?>
-                              <input type="hidden" class="email" value='<?= $item['custom_email'] ?>'>
-                              <input type="hidden" class="itemImage" value='<?= $item['custom_front'] ?>'>
-                              <img class='ms-3 mt-3 thumbnail2' style='height: 100px; width: 130px; float: left;' src='custom/<?= $item['custom_front'] ?>' alt=''>
+                              <button type="button" class="btn btn-sm preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $item['custom_front'] ?>">
+                                <img class='ms-3 mt-3' style='height: 100px; width: 120px' src='custom/<?= $item['custom_front'] ?>' alt=''>
+                              </button>
+                            </div>
+                            <input type="hidden" class="email" value='<?= $item['custom_email'] ?>'>
+                            <input type="hidden" class="itemImage" value='<?= $item['custom_front'] ?>'>
+                            <!-- <button type="button" class="btn btn-sm preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $item['custom_front'] ?>">
+                              <img class='ms-3 mt-3' style='height: 100px; width: 120px' src='custom/<?= $item['custom_front'] ?>' alt=''>
+                            </button> -->
+                            <div class="wrapper float-right">
                               <input type="hidden" class="itemName" value='<?= $item['custom_id'] ?>'>
-                              <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'>Custom <?= $item['custom_id'] ?></h6>
+                              <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 0px;'>Custom <?= $item['custom_id'] ?></h6>
                               <input type="hidden" class="itemPrice" value='<?= $item['custom_price'] ?>'>
                               <?php
                               if ($item['custom_price'] != NULL) {
                               ?>
-                                <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $item['custom_price'] ?>.00</h6>
+                                <h6 class='fw-bold ps-5' style='margin-left: 0px; color: orangered;'>₱<?= $item['custom_price'] ?>.00</h6>
                               <?php
                               } else {
                               ?>
-                                <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>No price yet</h6>
+                                <h6 class='fw-bold ps-5' style='margin-left: 0px; color: orangered;'>No price yet</h6>
                               <?php
                               }
                               ?>
                               <input type="hidden" class="itemSize" value='<?= $item['custom_size'] ?>'>
-                              <h6 class='fw-light text-dark ps-5' style='margin-left: 80px; color: orangered;'>Size: <?= $item['custom_size'] ?></h6>
+                              <h6 class='fw-light text-dark ps-5' style='margin-left: 0px; color: orangered;'>Size: <?= $item['custom_size'] ?></h6>
                             </div>
                             <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
                               <input type="hidden" class="itemCode" value='<?= $item['custom_id'] ?>'>
@@ -256,9 +263,35 @@ include_once("includes/functions.inc.php");
     include("footer.php");
     ?>
   </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Preview</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img class="mx-auto d-block img-fluid preview" id="previewImg" src="" alt="preview">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="jquery-3.6.3.js"></script>
   <script src="assets/quantityFunction.js"></script>
 
-
+  <script>
+    $(document).ready(function() {
+      $(".preview").click(function() {
+        $("#previewImg").attr("src", "custom/" + this.value);
+      });
+    });
+  </script>
 
 </body>

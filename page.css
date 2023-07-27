@@ -153,7 +153,7 @@ body {
 
 /*****/
 
-img {
+img:not(.preview) {
   height: 180px;
   width: 180px;
   padding-bottom: 0;

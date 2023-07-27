@@ -42,7 +42,7 @@ if (isset($_SESSION['auth'])) {
                                                     <a class="nav-link" href="my_orders.php?To_Ship_Orders">To Ship</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="my_orders.php?To_Receive_Orders">To Receive</a>
+                                                    <a class="nav-link" href="my_orders.php?To_Receive_Orders">In-Transit</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="my_orders.php?Received_Orders">Received</a>

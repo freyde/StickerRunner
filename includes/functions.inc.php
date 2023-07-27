@@ -427,7 +427,7 @@ function viewItemInformation()
                         <!----2 Columns----->
                       <div class='row'>
                         <div class='column left' style='background-color: rgb(255, 255, 255); height: 500px; width: 30%;'>
-                            <img class='border border-dark thumbnail' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
+                            <img class='border border-dark' style='margin: 0; padding: 0; height: 400px; width: 400px;' src='./admin-interface/item_images/$item_image1' alt=''>
                         </div>
                         <br>
                         
@@ -761,7 +761,7 @@ function getToReceiveOrders()
             }
         }
 
-        $select_from_orders = "SELECT * FROM `orders` WHERE order_email_add = '$email_address' AND order_status = 'Shipping'";
+        $select_from_orders = "SELECT * FROM `orders` WHERE order_email_add = '$email_address' AND order_status = 'In-Transit'";
         return $select_query = mysqli_query($conn, $select_from_orders);
     }
 }
@@ -784,7 +784,7 @@ function getReceivedOrders()
             }
         }
 
-        $select_from_orders = "SELECT * FROM `orders` WHERE order_email_add = '$email_address' AND order_status = 'Received'";
+        $select_from_orders = "SELECT * FROM `orders` WHERE order_email_add = '$email_address' AND order_status = 'Delivered'";
         return $select_query = mysqli_query($conn, $select_from_orders);
     }
 }
