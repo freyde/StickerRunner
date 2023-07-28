@@ -89,6 +89,8 @@ if (isset($_SESSION["auth"])) {
                                             <div class="d-grid gap-2 col-7 mx-auto">
                                                 <h4>Image</h4>
                                             </div>
+                                            <p class="float-start fs-6"><i>*Note: Please use PNG files for better experience.</i></p>
+                                    
                                             <div class="d-grid gap-2 col-6 mx-auto">
                                                 <div class="input-group">
                                                     <input type="file" class="form-control" id="inputImageFile" accept="image/*">
@@ -196,7 +198,7 @@ if (isset($_SESSION["auth"])) {
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="float-start"><i>*Note: Prize of customized design of shirt may range Php 300.00 to Php 500.00 depending on print and size. Price basis may change wihtout prior notice.</i></p>
+                                    <p class="float-start"><i>*Note: Prize of customized design of shirt may range Php 200.00 to Php 500.00 depending on print and size. Price basis may change wihtout prior notice.</i></p>
                                     <button class="btn btn-primary float-end" type="submit" id="submitBtn">Submit Order</button>
                                 </form>
                             </div>

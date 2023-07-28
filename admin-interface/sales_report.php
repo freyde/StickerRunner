@@ -28,7 +28,7 @@ include_once("../includes/functions.inc.php");
             if (is_null($row['SUM(order_total_price)'])) {
                 echo "<h1 style='color: orangered;'> ₱0.00 </h1>";
             } else {
-                $total_rev = $row['SUM(order_total_price)'] + 45;
+                $total_rev = $row['SUM(order_total_price)'];
                 echo "<h1 style='color: orangered;'> ₱$total_rev.00 </h1>";
             }
         }
