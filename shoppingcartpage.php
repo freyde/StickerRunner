@@ -191,9 +191,9 @@ include_once("includes/functions.inc.php");
                             </div>
                             <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
                               <input type="hidden" class="itemCode" value='<?= $item['custom_id'] ?>'>
-                              <button class='input-group-text decrement-btn updateCustQty_btn'>-</button>
-                              <input type='text' class='form-control text-center bg-white input-qty' value='<?= $item['custom_quantity'] ?>'>
-                              <button class='input-group-text increment-btn updateCustQty_btn'>+</button>
+                              <button class='input-group-text decrement-custom-btn updateCustQty_btn'>-</button>
+                              <input type='text' class='form-control text-center bg-white input-custom-qty' value='<?= $item['custom_quantity'] ?>'>
+                              <button class='input-group-text increment-custom-btn updateCustQty_btn'>+</button>
                             </div>
                             <div class='remove float-end'>
                               <button class="btn btn-danger deleteCust_btn" value='<?= $item['custom_id'] ?>' style="margin-top: 44px; height: 40px; width: 40px; margin-left: 50px;">

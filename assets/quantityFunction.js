@@ -17,6 +17,19 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('click', '.increment-custom-btn', function (e) {
+        e.preventDefault();
+
+        var qty = $(this).closest('.item_data').find('.input-custom-qty').val();
+
+        var value = parseInt(qty, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value < 10) {
+            value++;
+            $(this).closest('.item_data').find('.input-custom-qty').val(value);
+        }
+    });
+
     $(document).on('click', '.decrement-btn', function (e) {
         e.preventDefault();
 
@@ -27,6 +40,19 @@ $(document).ready(function () {
         if (value > 1) {
             value--;
             $(this).closest('.item_data').find('.input-qty').val(value);
+        }
+    });
+
+    $(document).on('click', '.decrement-custom-btn', function (e) {
+        e.preventDefault();
+
+        var qty = $(this).closest('.item_data').find('.input-custom-qty').val();
+
+        var value = parseInt(qty, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            $(this).closest('.item_data').find('.input-custom-qty').val(value);
         }
     });
 
@@ -119,10 +145,56 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('change', '.input-qty', function (e) {
+        var item_code = $(this).closest('.item_data').find('.itemCode').val();
+        var item_size = $(this).closest('.item_data').find('.itemSize').val();
+        var qty = $(this).val();
+
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_cart.php",
+            data: {
+                "item_code": item_code,
+                "item_size": item_size,
+                "item_qty": qty,
+                "scope": "update"
+            },
+            success: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    });
+
     $(document).on('click', '.updateCustQty_btn', function (e) {
         var item_code = $(this).closest('.item_data').find('.itemCode').val();
         var item_size = $(this).closest('.item_data').find('.itemSize').val();
-        var qty = $(this).closest('.item_data').find('.input-qty').val();
+        var qty = $(this).closest('.item_data').find('.input-custom-qty').val();
+
+        $.ajax({
+            method: "POST",
+            url: "includes/handle_custom.php",
+            data: {
+                "item_code": item_code,
+                "item_size": item_size,
+                "item_qty": qty,
+                "scope": "update"
+            },
+            success: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    });
+
+    $(document).on('change', '.input-custom-qty', function (e) {
+        var item_code = $(this).closest('.item_data').find('.itemCode').val();
+        var item_size = $(this).closest('.item_data').find('.itemSize').val();
+        var qty = $(this).val();
 
         $.ajax({
             method: "POST",

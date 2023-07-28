@@ -87,11 +87,11 @@ if (isset($_SESSION["userEmailAdd"])) {
                     $update_query = "UPDATE `cart_table` SET quantity = '$item_qty' WHERE item_code = '$item_code' AND email_add = '$email_add' AND size = '$item_size' ";
                     $result_update_query = mysqli_query($conn, $update_query);
 
-                    // if ($result_update_query) {
-                    //     echo "Item quantity has been updated. Quantity: $item_qty";
-                    // } else {
-                    //     echo "Something went wrong!";
-                    // }
+                    if ($result_update_query) {
+                        echo "Item quantity has been updated. Quantity: $item_qty";
+                    } else {
+                        echo "Something went wrong!";
+                    }
                 } else {
                     echo "Something went wrong";
                 }
