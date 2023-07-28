@@ -57,7 +57,7 @@ include_once("includes/functions.inc.php");
                           <div class='wrapper' style='border: 1px solid #C0C0C0; height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
                             <input type="hidden" class="itemCode" value='<?= $cart_Items['item_code'] ?>'>
                             <button class='input-group-text decrement-btn updateQty_btn'>-</button>
-                            <input type='text' class='form-control text-center bg-white input-qty' value='<?= $cart_Items['quantity'] ?>' disabled>
+                            <input type='text' class='form-control text-center bg-white input-qty' value='<?= $cart_Items['quantity'] ?>'>
                             <button class='input-group-text increment-btn updateQty_btn'>+</button>
                           </div>
                           <div class='remove'>
@@ -192,7 +192,7 @@ include_once("includes/functions.inc.php");
                             <div class='wrapper' style='height: 30px; width: 120px; margin-top: 50px; margin-left: 120px;text-align: center; justify-content: center; display: flex;'>
                               <input type="hidden" class="itemCode" value='<?= $item['custom_id'] ?>'>
                               <button class='input-group-text decrement-btn updateCustQty_btn'>-</button>
-                              <input type='text' class='form-control text-center bg-white input-qty' value='<?= $item['custom_quantity'] ?>' disabled>
+                              <input type='text' class='form-control text-center bg-white input-qty' value='<?= $item['custom_quantity'] ?>'>
                               <button class='input-group-text increment-btn updateCustQty_btn'>+</button>
                             </div>
                             <div class='remove float-end'>

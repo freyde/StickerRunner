@@ -122,7 +122,7 @@ include_once("header.php");
                                                             <h5>Shipping Address</h5>
                                                             <h6 class='text-dark fw-bold' style='margin-top: 20px; font-size: 20px;'><span style='color: gray;'>Name:</span> $first_name $last_name</h6>
                                                             <h6 class='text-dark' style='font-size: 15px;'><span style='color: gray;'>Address:</span> $account_address Philippines, 4108</h6>
-                                                            <h6 class='text-dark' style='font-size: 15px;'><span style='color: gray;'>Email-Address:</span> $mobile_number</h6>
+                                                            <h6 class='text-dark' style='font-size: 15px;'><span style='color: gray;'>Mobile Number:</span> $mobile_number</h6>
         
         
                                                         </div>
