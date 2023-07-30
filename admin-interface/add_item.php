@@ -10,44 +10,51 @@ if (isset($_POST["addItemBtn"])) {
     $item_keyword = $_POST["item_keyword"];
     $item_category = $_POST["item_category"];
     $sizes_available = implode($_POST["size_check"]);
-    $item_status = ($_POST["status_check"]);
+    $item_status = "Available";
 
-    $size_raw = $_POST['size_check'];
-    $uc_first = array_map('ucfirst', $size_raw);
-    $size = implode(", ", $uc_first);
-
-    //accessing item images
-    $item_image1 = $_FILES["item_image1"]["name"];
-    $item_image2 = $_FILES["item_image2"]["name"];
-    $item_image3 = $_FILES["item_image3"]["name"];
-
-    //accessing image tmp name
-    $temp_item_image1 = $_FILES["item_image1"]["tmp_name"];
-    $temp_item_image2 = $_FILES["item_image2"]["tmp_name"];
-    $temp_item_image3 = $_FILES["item_image3"]["tmp_name"];
-
-    // checks if any forms are empty
-    if (
-        empty($item_name) || empty($item_price) || empty($item_description) || empty($item_keyword) || empty($item_category)
-        || empty($item_image1) || empty($item_image2) || empty($item_image3)
-    ) {
-        echo "<script>alert('Please fill all the available fields!')</script>";
-        // exit();
+    $query = "SELECT * FROM items WHERE item_name = '$item_name'";
+    $result_query = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result_query) > 0) {
+        echo "<script>alert('Items already added.')</script>";
     } else {
-        move_uploaded_file($temp_item_image1, "item_images/$item_image1");
-        move_uploaded_file($temp_item_image2, "item_images/$item_image2");
-        move_uploaded_file($temp_item_image3, "item_images/$item_image3");
 
-        //insert query
-        $insert_item = "INSERT INTO `items` 
+        $size_raw = $_POST['size_check'];
+        $uc_first = array_map('ucfirst', $size_raw);
+        $size = implode(", ", $uc_first);
+
+        //accessing item images
+        $item_image1 = $_FILES["item_image1"]["name"];
+        $item_image2 = $_FILES["item_image2"]["name"];
+        $item_image3 = $_FILES["item_image3"]["name"];
+
+        //accessing image tmp name
+        $temp_item_image1 = $_FILES["item_image1"]["tmp_name"];
+        $temp_item_image2 = $_FILES["item_image2"]["tmp_name"];
+        $temp_item_image3 = $_FILES["item_image3"]["tmp_name"];
+
+        // checks if any forms are empty
+        if (
+            empty($item_name) || empty($item_price) || empty($item_description) || empty($item_keyword) || empty($item_category)
+            || empty($item_image1) || empty($item_image2) || empty($item_image3)
+        ) {
+            echo "<script>alert('Please fill all the available fields!')</script>";
+            // exit();
+        } else {
+            move_uploaded_file($temp_item_image1, "item_images/$item_image1");
+            move_uploaded_file($temp_item_image2, "item_images/$item_image2");
+            move_uploaded_file($temp_item_image3, "item_images/$item_image3");
+
+            //insert query
+            $insert_item = "INSERT INTO `items` 
                                 (item_code, item_name, item_price, sizes_available, item_description, item_keyword, item_category, item_image1, item_image2, item_image3, date_added, item_status) 
                         VALUES ('$item_code', '$item_name', '$item_price', '$size', '$item_description', '$item_keyword', '$item_category', '$item_image1', '$item_image2', '$item_image3', NOW(), '$item_status')";
 
-        $result_query = mysqli_query($conn, $insert_item);
-        if ($result_query) {
-            echo "<script>alert('Item has been successfully delivered to the database!')</script>";
-        } else {
-            echo "<script>alert('Error! Item is not successfully delivered to the database!')</script>";
+            $result_query = mysqli_query($conn, $insert_item);
+            if ($result_query) {
+                echo "<script>alert('Item has been successfully delivered to the database!')</script>";
+            } else {
+                echo "<script>alert('Error! Item is not successfully delivered to the database!')</script>";
+            }
         }
     }
 }
@@ -177,21 +184,6 @@ if (isset($_POST["addItemBtn"])) {
 
                 </div>
                 <div class="col-4" style="height: 215px;">
-
-                    <div class="form-check">
-                        <input class="form-check-input" name="status_check" type="radio" value="Available" id="status_check">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Available
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" name="status_check" type="radio" value="Out of Stock" id="status_check">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Out of Stock
-                        </label>
-                    </div>
-
-
                     <div class="form-group" style="background-color: rgb(255, 255, 255); height: 75px; width: 260px;">
                         <small id="s4" class="form-text fst-italic">Item Keyword<span style="color: red;">*</span></small>
                         <input type="text" class="form-control" name="item_keyword" id="item_keyword" placeholder="Enter Item Keyword" required="required">

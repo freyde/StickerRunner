@@ -78,8 +78,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];
@@ -168,8 +169,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];

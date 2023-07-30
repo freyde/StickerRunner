@@ -90,7 +90,7 @@ if (isset($_SESSION["auth"])) {
                                                 <h4>Image</h4>
                                             </div>
                                             <p class="float-start fs-6"><i>*Note: Please use PNG files for better experience.</i></p>
-                                    
+
                                             <div class="d-grid gap-2 col-6 mx-auto">
                                                 <div class="input-group">
                                                     <input type="file" class="form-control" id="inputImageFile" accept="image/*">
@@ -121,7 +121,7 @@ if (isset($_SESSION["auth"])) {
                                 <h1>Order Your Custom Shirt</h1>
                                 <br><br>
                                 <form method="post" action="submitCustom.php" enctype="multipart/form-data">
-                                    <div class="gap-2 col-12 mx-auto">
+                                    <!-- <div class="gap-2 col-12 mx-auto">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="printScope" id="printScopeFB" value="frontback" checked>
                                             <label class="form-check-label" for="printScopeFB">
@@ -141,19 +141,28 @@ if (isset($_SESSION["auth"])) {
                                             </label>
                                         </div>
                                     </div>
-                                    <hr>
+                                    <hr> -->
                                     <div class=" gap-2 col-12 mx-auto">
-                                        <div class="row">
-                                            <div class="col-md-5" id="frontUploadDiv">
-                                                <h4>Front:</h4>
+                                        <div class="row" id="frontUploadDiv">
+                                            <div class="col-md-5">
+                                                <h4>Final Design:</h4>
                                                 <div class="d-grid gap-2 col-10 mx-auto">
-                                                    <img class="img-fluid" id="frontPrev" src="" alt="">
+                                                    <input id="finalDesignUpload" class="form-control" type="file" name="finalDesignUpload[]" accept="image/*" required multiple>
                                                 </div>
-                                                <div class="d-grid gap-2 col-10 mx-auto">
-                                                    <input id="frontUpload" class="form-control" type="file" name="frontUpload" accept="image/*" required>
+                                                <br>
+                                                <div class="d-grid gap-2 col-10 mx-auto overflow-auto max-vh-80" id="previewDiv">
                                                 </div>
                                             </div>
-                                            <div class="col-md-5" id="backUploadDiv">
+                                            <div class="col-md-5">
+                                                <h4>Assets:</h4>
+                                                <div class="d-grid gap-2 col-10 mx-auto">
+                                                    <input id="assetsUpload" class="form-control" type="file" name="assetsUpload[]" required multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <!-- <div class="row" id="backUploadDiv">
+                                            <div class="col-md-5">
                                                 <h4>Back:</h4>
                                                 <div class="d-grid gap-2 col-10 mx-auto">
                                                     <img class="img-fluid" id="backPrev" src="" alt="">
@@ -162,43 +171,68 @@ if (isset($_SESSION["auth"])) {
                                                     <input id="backUpload" class="form-control" type="file" name="backUpload" accept="image/*" required>
                                                 </div>
                                             </div>
+                                            <div class="col-md-5">
+                                                <h4>Back Assets:</h4>
+                                                <div class="d-grid gap-2 col-10 mx-auto">
+                                                    <input id="backAssests" class="form-control" type="file" name="backAssests" accept="image/*" required multiple>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="gap-1 col-12">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="customSize" id="customSizeXS" value="Extra Small">
+                                                        <label class="form-check-label" for="customSizeXS">
+                                                            <h5>Extra Small</h5>
+                                                            <input id="xsQty" name="xsQty" class="form-control form-control-sm w-75" type="number" value="1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="customSize" id="customSizeS" value="Small">
+                                                        <label class="form-check-label" for="customSizeS">
+                                                            <h5>Small</h5>
+                                                            <input id="sQty" name="sQty" class="form-control form-control-sm w-75" type="number" value="1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="customSize" id="customSizeM" value="Medium">
+                                                        <label class="form-check-label" for="customSizeM">
+                                                            <h5>Medium</h5>
+                                                            <input id="mQty" name="mQty" class="form-control form-control-sm w-75" type="number" value="1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="customSize" id="customSizeL" value="Large">
+                                                        <label class="form-check-label" for="customSizeL">
+                                                            <h5>Large</h5>
+                                                            <input id="lQty" name="lQty" class="form-control form-control-sm w-75" type="number" value="1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="customSize" id="customSizeXL" value="Extra Large">
+                                                        <label class="form-check-label" for="customSizeXL">
+                                                            <h5>Extra Large</h5>
+                                                            <input id="xlQty" name="xlQty" class="form-control form-control-sm w-75" type="number" value="1">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="gap-2 col-12 mx-auto">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="customSize" id="customSizeXS" value="Extra Small" required>
-                                            <label class="form-check-label" for="customSizeXS">
-                                                <h5>Extra Small</h5>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="customSize" id="customSizeS" value="Small">
-                                            <label class="form-check-label" for="customSizeS">
-                                                <h5>Small</h5>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="customSize" id="customSizeM" value="Medium">
-                                            <label class="form-check-label" for="customSizeM">
-                                                <h5>Medium</h5>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="customSize" id="customSizeL" value="Large">
-                                            <label class="form-check-label" for="customSizeL">
-                                                <h5>Large</h5>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="customSize" id="customSizeXL" value="Extra Large">
-                                            <label class="form-check-label" for="customSizeXL">
-                                                <h5>Extra Large</h5>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p class="float-start"><i>*Note: Prize of customized design of shirt may range Php 200.00 to Php 500.00 depending on print and size. Price basis may change wihtout prior notice.</i></p>
+                                    <p class="float-start"><i>*Note: Price of customized design of shirt may range Php 200.00 to Php 500.00 depending on print and size. Price basis may change wihtout prior notice.</i></p>
                                     <button class="btn btn-primary float-end" type="submit" id="submitBtn">Submit Order</button>
                                 </form>
                             </div>
@@ -385,12 +419,6 @@ if (isset($_SESSION["auth"])) {
                     format: 'jpg',
                 });
 
-                // alert(this.href);
-
-                // this.download = 'canvas.jpg';
-
-                // alert(this);
-
                 const link = document.createElement('a');
                 link.download = 'image.png';
                 link.href = canvasDataURL;
@@ -404,50 +432,78 @@ if (isset($_SESSION["auth"])) {
         $(document).ready(function() {
             $('#frontPrev').hide();
             $('#backPrev').hide();
-            $(document).on('change', '#frontUpload', function(e) {
-                if (this.files && this.files[0]) {
+            $('#xsQty').hide();
+            $('#sQty').hide();
+            $('#mQty').hide();
+            $('#lQty').hide();
+            $('#xlQty').hide();
+            
+            $('#xsQty').prop('disabled', true);
+            $('#sQty').prop('disabled', true);
+            $('#mQty').prop('disabled', true);
+            $('#lQty').prop('disabled', true);
+            $('#xlQty').prop('disabled', true);
+            $(document).on('change', '#finalDesignUpload', function(e) {
+                $('#previewDiv').empty();
+                Array.from(this.files).forEach(file => {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        $('#frontPrev').attr('src', e.target.result);
+                        $('#previewDiv').append("<img class='img-fluid' src='"+e.target.result+"'>");
+                        console.log(file.name);
                     }
-                }
-                reader.readAsDataURL(this.files[0]);
-                $('#frontPrev').show();
-            });
-
-            $(document).on('change', '#backUpload', function(e) {
-                if (this.files && this.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        $('#backPrev').attr('src', e.target.result);
-                    }
-                }
-                reader.readAsDataURL(this.files[0]);
-                $('#backPrev').show();
-            });
-
-            $('input[type=radio][name=printScope]').change(function() {
-                if (this.value == 'frontback') {
-                    $('#frontUploadDiv').show();
-                    $('#frontUpload').prop('required', true);
-                    $('#backUploadDiv').show();
-                    $('#backUpload').attprop('required', true);
-                } else if (this.value == 'front') {
-                    $('#frontUploadDiv').show();
-                    $('#frontUpload').prop('required', true);
-                    $('#backUploadDiv').hide();
-                    $('#backUpload').prop('required', false);
-                } else if (this.value == 'back') {
-                    $('#frontUploadDiv').hide();
-                    $('#frontUpload').prop('required', false);
-                    $('#backUploadDiv').show();
-                    $('#backUpload').prop('required', true);
-                }
+                    reader.readAsDataURL(file);
+                });
             });
         });
         var submit = false;
         $(document).on('click', '#submitBtn', function(e) {
             submit = true
+        });
+
+        $(document).on('change', '#customSizeXS', function(e) {
+            if($('#customSizeXS').is(':checked')) {
+                $('#xsQty').show();
+                $('#xsQty').prop('disabled', false);
+            } else  {
+                $('#xsQty').hide();
+                $('#xsQty').prop('disabled', true);
+            }
+        });
+        $(document).on('change', '#customSizeS', function(e) {
+            if($('#sQty').is(':hidden')) {
+                $('#sQty').show();
+                $('#sQty').prop('disabled', false);
+            } else  {
+                $('#sQty').hide();
+                $('#sQty').prop('disabled', true);
+            }
+        });
+        $(document).on('change', '#customSizeM', function(e) {
+            if($('#mQty').is(':hidden')) {
+                $('#mQty').show();
+                $('#mQty').prop('disabled', false);
+            } else  {
+                $('#mQty').hide();
+                $('#mQty').prop('disabled', true);
+            }
+        });
+        $(document).on('change', '#customSizeL', function(e) {
+            if($('#lQty').is(':hidden')) {
+                $('#lQty').show();
+                $('#lQty').prop('disabled', false);
+            } else  {
+                $('#lQty').hide();
+                $('#lQty').prop('disabled', true);
+            }
+        });
+        $(document).on('change', '#customSizeXL', function(e) {
+            if($('#xlQty').is(':hidden')) {
+                $('#xlQty').show();
+                $('#xlQty').prop('disabled', false);
+            } else  {
+                $('#xlQty').hide();
+                $('#xlQty').prop('disabled', true);
+            }
         });
 
         window.onbeforeunload = function() {
@@ -457,9 +513,10 @@ if (isset($_SESSION["auth"])) {
     </script>
 <?php
 } else {
-    // header("Location: /loginpage.php");
 ?>
-    <script>window.location.replace("loginpage.php")</script>
+    <script>
+        window.location.replace("loginpage.php")
+    </script>
 <?php
 }
 ?>

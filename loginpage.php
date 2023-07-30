@@ -18,7 +18,7 @@ if (!isset($_SESSION["auth"])) {
                     <label for="emailAddress">
                       <h6>Email Address</h6>
                     </label>
-                    <input type="email" name="email_add" class="form-control" id="email_add" aria-describedby="emailHelp" placeholder="Enter email" autocomplete="off" required>
+                    <input type="email" name="email_add" class="form-control" id="email_add" aria-describedby="emailHelp" placeholder="example@gmail.com" autocomplete="off" required>
                   </div>
                   <br>
                   <div class="form-group">

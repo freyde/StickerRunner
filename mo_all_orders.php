@@ -52,7 +52,7 @@ if (isset($_SESSION['auth'])) {
                                 <td class="text-center"> <?= $item["order_date"] ?></td>
                                 <td class="text-center"> <?= $item["order_status"] ?></td>
                                 <?php
-                                if ($item["order_status"] == "To Ship" || $item["order_status"] == "Placed") {
+                                if ($item["order_status"] == "Placed") {
                                 ?>
                                     <td class="text-center">
                                         <input type="hidden" class="package_num" value='<?= $item['package_num'] ?>'>
@@ -63,7 +63,7 @@ if (isset($_SESSION['auth'])) {
                                 ?>
                                     <td class="text-center">
                                         <input type="hidden" class="package_num" value='<?= $item['package_num'] ?>'>
-                                        <button type="button" value='<?= $item['package_num'] ?>' name="receiveBtn" id="receiveBtn" class="btn btn-success">Received</button>
+                                        <button type="button" value='<?= $item['package_num'] ?>' name="receiveBtn" id="receiveBtn" class="btn btn-success block">Receive</button>
                                     </td>
                                 <?php
                                 }

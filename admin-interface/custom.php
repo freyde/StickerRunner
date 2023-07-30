@@ -41,8 +41,8 @@ include_once("../includes/functions.inc.php");
                 <tr>
                     <th>Custom No.</th>
                     <th>Customer Email</th>
-                    <th>Front Image</th>
-                    <th>Back Image</th>
+                    <th>Final Design</th>
+                    <th>Assets</th>
                     <th>Size</th>
                 </tr>
             </thead>
@@ -55,32 +55,18 @@ include_once("../includes/functions.inc.php");
                         <td class="text-center"><?php echo $row["custom_email"] ?></td>
                         <td class="text-center">
                             <?php
-                            if ($row['custom_front'] == NULL) {
-                            ?>
-                                No Front
-                            <?php
-                            } else {
-                            ?>
-                                <button type="button" class="btn preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $row['custom_front'] ?>">
-                                    <img src="../custom/<?= $row['custom_front'] ?>" height="50" width="70" alt="" />
-                                </button>
-                            <?php
-                            }
+                            $files = glob("../custom/" . $row['custom_path'] . "/*");
+                            echo "<button type='button' class='btn btn-sm' data-bs-toggle='modal' data-bs-target='#final" . $row['custom_id'] . "'>
+                                    <img style='height: 50px; width: 70px' src='" . $files[1] . "'>
+                                    </button>";
                             ?>
                         </td>
                         <td class="text-center">
                             <?php
-                            if ($row['custom_back'] == NULL) {
-                            ?>
-                                No Back
-                            <?php
-                            } else {
-                            ?>
-                                <button type="button" class="btn preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $row['custom_back'] ?>">
-                                    <img src="../custom/<?= $row['custom_back'] ?>" height="50" width="70" alt="" />
-                                </button>
-                            <?php
-                            }
+                            $files = glob("../custom/" . $row['custom_path'] . "/assets/*");
+                            echo "<button type='button' class='btn btn-sm' data-bs-toggle='modal' data-bs-target='#assets" . $row['custom_id'] . "'>
+                                    <img style='height: 50px; width: 70px' src='" . $files[0] . "'>
+                                    </button>";
                             ?>
                         </td>
                         <td class="text-center"><?php echo $row["custom_size"] ?></td>
@@ -98,7 +84,7 @@ include_once("../includes/functions.inc.php");
             ?>
         </table>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,11 +96,62 @@ include_once("../includes/functions.inc.php");
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <?php
+    $select_list = mysqli_query($conn, "SELECT * FROM custom_shirt ORDER BY custom_id DESC");
+    if (mysqli_num_rows($select_list) > 0) {
+        foreach ($select_list as $item) {
+            $files = glob("../custom/" . $item['custom_path'] . "/*");
+            echo "<div class='modal fade' id='final" . $item['custom_id'] . "' tabindex='-1' aria-labelledby='final" . $item['custom_id'] . "' aria-hidden='true'>
+                <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='exampleModalLabel'>Final Design Preview</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>";
+                        for ($g = 1; $g < count($files); $g++)
+                            echo "<img class='mx-auto d-block img-fluid preview' src='" . $files[$g] . "' alt='preview'>";
+                        echo "</div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                        <!-- <button type='button' class='btn btn-primary'>Save changes</button> -->
+                    </div>
+                    </div>
+                </div>
+                </div>
+                ";
+        }
+
+        foreach ($select_list as $item) {
+            $files = glob("../custom/" . $item['custom_path'] . "/assets/*");
+            echo "<div class='modal fade' id='assets" . $item['custom_id'] . "' tabindex='-1' aria-labelledby='assets" . $item['custom_id'] . "' aria-hidden='true'>
+                <div class='modal-dialog modal-fullscreen'>
+                    <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h1 class='modal-title fs-5' id='exampleModalLabel'>Assets</h1>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>";
+                        for ($g = 0; $g < count($files); $g++)
+                            echo "<img class='mx-auto d-block img-fluid preview' src='" . $files[$g] . "' alt='preview'>";
+                        echo "</div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                        <!-- <button type='button' class='btn btn-primary'>Save changes</button> -->
+                    </div>
+                    </div>
+                </div>
+                </div>
+                ";
+        }
+    }
+    ?>
 
 
     <script src="../jquery-3.6.3.js"></script>

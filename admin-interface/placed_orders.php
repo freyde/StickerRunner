@@ -79,8 +79,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];
@@ -169,8 +170,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];
@@ -209,35 +211,65 @@ include_once("../includes/functions.inc.php");
     <script src="../assets/paid_function.js"></script>
 
     <script>
+        var status;
+        var package_num;
+        var email;
         $(document).ready(function() {
             $('select[name="order_status_change"]').change(function() {
-                var status = $(this).val();
-                var package_num = $(this).attr("status-id");
-                var email = $(this).attr("status-email");
+                status = $(this).val();
+                package_num = $(this).attr("status-id");
+                email = $(this).attr("status-email");
 
-                // alert(status);
-                // alert(getid);
-                // alert(email);
+                if (status == "To Ship")
+                    $('#expectedDeliveryModal').modal('show');
+                else
+                    updateStatus(status, package_num, email);
+            });
 
-                $.ajax({
-                    method: "POST",
-                    url: "../includes/change_status.php",
-                    data: {
-                        status: status,
-                        package_num: package_num,
-                        email: email
-                    },
-                    success: function(response) {
-                        alert("Order status update successful!");
-                        location.reload();
-                    },
-                    error: function(response) {
-                        alert("Error");
-                    }
-                });
-
+            $("#updateDeliveryDateBtn").click(function() {
+                var delivery_date = $('#deliveryDate').val();
+                updateStatus(status, package_num, email, delivery_date);
             });
         });
+
+        function updateStatus(status, package_num, email) {
+            $.ajax({
+                method: "POST",
+                url: "../includes/change_status.php",
+                data: {
+                    status: status,
+                    package_num: package_num,
+                    email: email
+                },
+                success: function(response) {
+                    alert("Order status update successful!");
+                    location.reload();
+                },
+                error: function(response) {
+                    alert("Error");
+                }
+            });
+        }
+
+        function updateStatus(status, package_num, email, delivery_date) {
+            $.ajax({
+                method: "POST",
+                url: "../includes/change_status.php",
+                data: {
+                    status: status,
+                    package_num: package_num,
+                    email: email,
+                    delivery_date: delivery_date
+                },
+                success: function(response) {
+                    alert("Order status update successful!");
+                    location.reload();
+                },
+                error: function(response) {
+                    alert("Error");
+                }
+            });
+        }
     </script>
 
     <script>

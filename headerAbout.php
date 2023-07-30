@@ -92,6 +92,11 @@ include_once("includes/functions.inc.php");
                                     $sql = "SELECT * FROM cart_table WHERE email_add ='{$_SESSION["userEmailAdd"]}'";
                                     $mysqliStatus = mysqli_query($conn, $sql);
                                     $rows_count_value = mysqli_num_rows($mysqliStatus);
+
+                                    $sql = "SELECT * FROM custom_shirt WHERE custom_email ='{$_SESSION["userEmailAdd"]}' AND custom_status IS NULL";
+                                    $mysqliStatus = mysqli_query($conn, $sql);
+
+                                    $rows_count_value += mysqli_num_rows($mysqliStatus);
                                     ?>
                                     <a href="shoppingcartpage.php?email_add=<?php echo $email_add ?>">
                                         <img style="width: 35px; height: 50px;" src="shopping_cart.png" alt="">

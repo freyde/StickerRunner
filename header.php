@@ -87,7 +87,7 @@ include_once("includes/functions.inc.php");
                                     $mysqliStatus = mysqli_query($conn, $sql);
                                     $rows_count_value = mysqli_num_rows($mysqliStatus);
 
-                                    $sql = "SELECT * FROM custom_shirt WHERE custom_email ='{$_SESSION["userEmailAdd"]}'";
+                                    $sql = "SELECT * FROM custom_shirt WHERE custom_email ='{$_SESSION["userEmailAdd"]}' AND custom_status IS NULL";
                                     $mysqliStatus = mysqli_query($conn, $sql);
 
                                     $rows_count_value += mysqli_num_rows($mysqliStatus);

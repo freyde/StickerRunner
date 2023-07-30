@@ -432,8 +432,8 @@ function viewItemInformation()
                         <br>
                         
                         <div class='column right item_data' style='background-color: rgb(255, 255, 255); height: 500px; width: 47%;'>
-                            <h2 class='fw-light ps-4 pt-1 fs-2'>$item_name</h2>
-                            <h4 class='fw-light ps-4 pt-1 fs-3' style='color: darkblue;'>₱$item_price.00</h4>";
+                            <h2 class='fw-light ps-4 pt-1 fs-2'><b>$item_name</b></h2>
+                            <h4 class='fw-light ps-4 pt-1 fs-3'>₱$item_price.00</h4>";
 
                         if (!isset($_SESSION['auth'])) {
                             echo "<form id='loginform' class='loginform' action='./loginpage.php'>";
@@ -455,7 +455,10 @@ function viewItemInformation()
                         }
 
                         echo "
-                                        </div>
+                        <button type='button' class='btn btn-sm preview' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+                        view size chart
+                        </button>
+                        </div>
                                     <h4 class='fw-light ps-4 pt-3 fs-5'>Quantity</h4>
                                         <div class='wrapper' style='border: 1px solid #C0C0C0; height: 30px; width: 150px; margin-top: 10px; margin-left: 23px;
                                         text-align: center; justify-content: center; display: flex;'>
@@ -817,6 +820,6 @@ function getCustomCart()
     global $conn;
     $email = $_SESSION['userEmailAdd'];
 
-    $query = "SELECT * FROM custom_shirt WHERE custom_email = '$email'";
+    $query = "SELECT * FROM custom_shirt WHERE custom_email = '$email' AND custom_status IS NULL";
     return mysqli_query($conn, $query);
 }

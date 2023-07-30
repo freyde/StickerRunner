@@ -39,6 +39,7 @@ include_once("includes/functions.inc.php");
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Date Ordered</th>
+                            <th>Expected Delivery Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,10 +56,11 @@ include_once("includes/functions.inc.php");
                                     <td> <?= $item["order_item_quantity"] ?></td>
                                     <td> <?= $item["order_total_price"] ?></td>
                                     <td> <?= $item["order_date"] ?></td>
-                                    <td>
+                                    <td> <?= $item["expected_delivery"] ?></td>
+                                    <!-- <td>
                                         <input type="hidden" class="package_num" value='<?= $item['package_num'] ?>'>
                                         <button type="button" value='<?= $item['package_num'] ?>' name="cancel_orderBtn" id="cancel_orderBtn" class="btn btn-danger">Cancel Order</button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             <?php
                             }

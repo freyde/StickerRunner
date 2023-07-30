@@ -162,15 +162,17 @@ include_once("includes/functions.inc.php");
                               <?php
                               }
                               ?>
-                              <button type="button" class="btn btn-sm preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $item['custom_front'] ?>">
-                                <img class='ms-3 mt-3' style='height: 100px; width: 120px' src='custom/<?= $item['custom_front'] ?>' alt=''>
+                              <?php
+                              $files = glob("custom/" . $item['custom_path'] . "/*");
+                              echo "
+                                  <button type='button' class='btn btn-sm' data-bs-toggle='modal' data-bs-target='#" . $item['custom_id'] . "' value=''>
+                                  <img class='ms-3 mt-3' style='height: 100px; width: 120px' src='" . $files[1] . "'>
+                                  </button>";
+                              ?>
                               </button>
                             </div>
                             <input type="hidden" class="email" value='<?= $item['custom_email'] ?>'>
                             <input type="hidden" class="itemImage" value='<?= $item['custom_front'] ?>'>
-                            <!-- <button type="button" class="btn btn-sm preview" data-bs-toggle="modal" data-bs-target="#exampleModal" value="<?= $item['custom_front'] ?>">
-                              <img class='ms-3 mt-3' style='height: 100px; width: 120px' src='custom/<?= $item['custom_front'] ?>' alt=''>
-                            </button> -->
                             <div class="wrapper float-right">
                               <input type="hidden" class="itemName" value='<?= $item['custom_id'] ?>'>
                               <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 0px;'>Custom <?= $item['custom_id'] ?></h6>
@@ -264,7 +266,7 @@ include_once("includes/functions.inc.php");
     ?>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header">
@@ -276,22 +278,50 @@ include_once("includes/functions.inc.php");
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <?php
+  $customItems = getCustomCart();
+  if (mysqli_num_rows($customItems) > 0) {
+    foreach ($customItems as $item) {
+      $files = glob("custom/" . $item['custom_path'] . "/*");
+      echo "<div class='modal fade' id='" . $item['custom_id'] . "' tabindex='-1' aria-labelledby='" . $item['custom_id'] . "' aria-hidden='true'>
+      <div class='modal-dialog modal-fullscreen'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h1 class='modal-title fs-5' id='exampleModalLabel'>Preview</h1>
+            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+          </div>
+          <div class='modal-body'>";
+      for ($g = 1; $g < count($files); $g++)
+        echo "<img class='mx-auto d-block img-fluid preview' src='" . $files[$g] . "' alt='preview'>";
+      echo "</div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+            <!-- <button type='button' class='btn btn-primary'>Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    ";
+    }
+  }
+  ?>
 
 
   <script src="jquery-3.6.3.js"></script>
   <script src="assets/quantityFunction.js"></script>
 
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       $(".preview").click(function() {
         $("#previewImg").attr("src", "custom/" + this.value);
       });
     });
-  </script>
+  </script> -->
 
 </body>

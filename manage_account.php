@@ -3,9 +3,7 @@ include_once("header.php");
 ?>
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+    
     <style>
         body {
             background-color: #F0F0F0;
@@ -199,29 +197,6 @@ include_once("header.php");
             }) // forEach
         });
         // DOMContentLoaded  end
-    </script>
-
-
-    <script>
-        // When the user scrolls the page, execute myFunction
-        window.onscroll = function() {
-            myFunction()
-        };
-
-        // Get the header
-        var header = document.getElementById("myHeader");
-
-        // Get the offset position of the navbar
-        var sticky = header.offsetTop;
-
-        // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-            } else {
-                header.classList.remove("sticky");
-            }
-        }
     </script>
 
     <script>

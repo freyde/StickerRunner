@@ -79,8 +79,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];
@@ -169,8 +170,9 @@ include_once("../includes/functions.inc.php");
                                 <?php
                                 if ($row["order_item_code"] == $row["order_item_name"]) {
                                     $name = "Custom - " . $row["order_item_name"];
+                                    $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                 ?>
-                                    <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                    <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                 <?php
                                 } else {
                                     $name = $row["order_item_name"];
@@ -209,81 +211,81 @@ include_once("../includes/functions.inc.php");
     <script src="../assets/paid_function.js"></script>
 
     <script>
-    $(document).ready(function() {
-        $('select[name="order_status_change"]').change(function() {
-            var status = $(this).val();
-            var package_num = $(this).attr("status-id");
-            var email = $(this).attr("status-email");
+        $(document).ready(function() {
+            $('select[name="order_status_change"]').change(function() {
+                var status = $(this).val();
+                var package_num = $(this).attr("status-id");
+                var email = $(this).attr("status-email");
 
-            // alert(status);
-            // alert(getid);
-            // alert(email);
+                // alert(status);
+                // alert(getid);
+                // alert(email);
 
-            $.ajax({
-                method: "POST",
-                url: "../includes/change_status.php",
-                data: {
-                    status: status,
-                    package_num: package_num,
-                    email: email
-                },
-                success: function(response) {
-                    alert("Order status update successful!");
-                    location.reload();
-                },
-                error: function(response) {
-                    alert("Error");
-                }
+                $.ajax({
+                    method: "POST",
+                    url: "../includes/change_status.php",
+                    data: {
+                        status: status,
+                        package_num: package_num,
+                        email: email
+                    },
+                    success: function(response) {
+                        alert("Order status update successful!");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        alert("Error");
+                    }
+                });
+
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('select[name="payment_status_change"]').change(function() {
+                var Pstatus = $(this).val();
+                var package_num = $(this).attr("payment-id");
+                var email = $(this).attr("payment-email");
+
+                // alert(Pstatus);
+                // alert(getcode);
+                // alert(email);
+
+                $.ajax({
+                    method: "POST",
+                    url: "../includes/change_payment.php",
+                    data: {
+                        Pstatus: Pstatus,
+                        package_num: package_num,
+                        email: email
+                    },
+                    success: function(response) {
+                        alert("Payment status update successful!");
+                        location.reload();
+                    },
+                    error: function(response) {
+                        alert("Error");
+                    }
+                });
+
             });
 
-        });
-    });
-</script>
+            var $rows = $('#orderTable tr:not(:first)');
+            $('#searchString').keyup(function() {
 
-<script>
-    $(document).ready(function() {
-        $('select[name="payment_status_change"]').change(function() {
-            var Pstatus = $(this).val();
-            var package_num = $(this).attr("payment-id");
-            var email = $(this).attr("payment-email");
+                var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+                    reg = RegExp(val, 'i'),
+                    text;
 
-            // alert(Pstatus);
-            // alert(getcode);
-            // alert(email);
-
-            $.ajax({
-                method: "POST",
-                url: "../includes/change_payment.php",
-                data: {
-                    Pstatus: Pstatus,
-                    package_num: package_num,
-                    email: email
-                },
-                success: function(response) {
-                    alert("Payment status update successful!");
-                    location.reload();
-                },
-                error: function(response) {
-                    alert("Error");
-                }
+                $rows.show().filter(function() {
+                    text = $(this).text().replace(/\s+/g, ' ');
+                    return !reg.test(text);
+                }).hide();
             });
-
         });
-
-        var $rows = $('#orderTable tr:not(:first)');
-        $('#searchString').keyup(function() {
-
-            var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
-                reg = RegExp(val, 'i'),
-                text;
-
-            $rows.show().filter(function() {
-                text = $(this).text().replace(/\s+/g, ' ');
-                return !reg.test(text);
-            }).hide();
-        });
-    });
-</script>        
+    </script>
 
 
 </body>

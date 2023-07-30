@@ -54,9 +54,6 @@ include_once("includes/functions.inc.php");
                                     <td> <?= $item["order_item_quantity"] ?></td>
                                     <td> <?= $item["order_total_price"] ?></td>
                                     <td> <?= $item["order_date"] ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">RECEIVED</button>
-                                    </td>
                                 </tr>
                             <?php
                             }

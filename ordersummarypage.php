@@ -152,8 +152,11 @@ include_once("includes/functions.inc.php");
                               <input type="hidden" class="checkEmail" value='<?= $check_Items['custom_email'] ?>'>
                               <input type="hidden" class="checkName" value='<?= $check_Items['custom_id'] ?>'>
                               <input type="hidden" class="checkSize" value='<?= $check_Items['custom_size'] ?>'>
-                              <input type="hidden" class="checkImage" value='<?= $check_Items['custom_front'] ?>'>
-                              <img class='ms-3 mt-3' style='height: 100px; width: 150px; float: left;' src='custom/<?= $check_Items['custom_front'] ?>' alt=''>
+                              <?php
+                               $files = glob("custom/" . $check_Items['custom_path'] . "/*");
+                              ?>
+                              <img class='ms-3 mt-3' style='height: 100px; width: 150px; float: left;' src='<?= $files[1] ?>' alt=''>
+                              <input type="hidden" class="checkImage" value='<?= $files[1] ?>'>
                               <h6 class='fw-bold text-dark pt-3 ps-5' style='margin-left: 80px;'><?= $check_Items['custom_id'] ?></h6>
                               <h6 class='fw-bold ps-5' style='margin-left: 80px; color: orangered;'>₱<?= $check_Items['custom_price'] ?>.00</h6>
                               <input type="hidden" class="checkPrice" value='<?= $check_Items['custom_price'] ?>'>

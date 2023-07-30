@@ -4,9 +4,7 @@ include_once("includes/functions.inc.php");
 include("includes/dbh.inc.php");
 
 global $conn;
-$size = $_POST['customSize'];
 $email = $_SESSION['userEmailAdd'];
-
 $query = "SELECT user_id FROM users WHERE email_add = '$email'";
 $result = mysqli_query($conn, $query);
 
@@ -14,39 +12,54 @@ while ($row = mysqli_fetch_assoc($result)) {
     $userID = $row['user_id'];
 }
 
-if ($_FILES["frontUpload"]["name"] == "") {
-    $backImg = $userID . "-" . $_FILES["backUpload"]["name"];
+$query = "SELECT * FROM custom_shirt WHERE custom_email = '$email'";
+$result = mysqli_query($conn, $query);
 
-    $tmpBack = $_FILES["backUpload"]["tmp_name"];
+$customNo = mysqli_num_rows($result);
+if(isset($_POST['xsQty'])) $xs = $_POST['xsQty']; else $xs = null;
+if(isset($_POST['sQty'])) $s = $_POST['sQty']; else $s = null;
+if(isset($_POST['mQty'])) $m = $_POST['mQty']; else $m = null;
+if(isset($_POST['lQty'])) $l = $_POST['lQty']; else $l = null;
+if(isset($_POST['xlQty'])) $xl = $_POST['xlQty']; else $xl = null;
 
-    move_uploaded_file($tmpBack, "custom/$backImg");
+$timestamp = date('YmdHis');
+$path = "$userID/$timestamp";
 
-    $query = "INSERT INTO custom_shirt (custom_email, custom_back, custom_size)
-        VALUES  ('$email', '$backImg', '$size')";
-} else if ($_FILES["backUpload"]["name"] == "") {
-    $frontImg = $userID . "-" . $_FILES["frontUpload"]["name"];
-
-    $tmpFront = $_FILES["frontUpload"]["tmp_name"];
-
-    move_uploaded_file($tmpFront, "custom/$frontImg");
-
-    $query = "INSERT INTO custom_shirt (custom_email, custom_front, custom_size)
-        VALUES  ('$email', '$frontImg', '$size')";
+// echo "<script>alert($timestamp)</script>";
+// echo "<script>console.log($timestamp)</script>";
+if (mkdir("custom/$path", 0777, true)) {
+    $finalCount = count($_FILES["finalDesignUpload"]["name"]);
+    for ($a = 0; $a < $finalCount; $a++) {
+        $imgName = $_FILES["finalDesignUpload"]["name"][$a];
+        $tmp = $_FILES["finalDesignUpload"]["tmp_name"][$a];
+        // echo "<script>console.log('$finalCount')</script>";
+        move_uploaded_file($tmp, "custom/$path/$imgName");
+    }
 } else {
-    $frontImg = $userID . "-" . $_FILES["frontUpload"]["name"];
-    $backImg = $userID . "-" . $_FILES["backUpload"]["name"];
-
-    $tmpFront = $_FILES["frontUpload"]["tmp_name"];
-    $tmpBack = $_FILES["backUpload"]["tmp_name"];
-
-    move_uploaded_file($tmpFront, "custom/$frontImg");
-    move_uploaded_file($tmpBack, "custom/$backImg");
-
-    $query = "INSERT INTO custom_shirt (custom_email, custom_front, custom_back, custom_size)
-        VALUES  ('$email', '$frontImg', '$backImg', '$size')";
+    echo "<script>alert('Failed')</script>";
 }
-mysqli_query($conn, $query);
 
+if (mkdir("custom/$path/assets", 0777, true)) {
+    $finalCount = count($_FILES["assetsUpload"]["name"]);
+    for ($a = 0; $a < $finalCount; $a++) {
+        $imgName = $_FILES["assetsUpload"]["name"][$a];
+        $tmp = $_FILES["assetsUpload"]["tmp_name"][$a];
+        echo "<script>console.log('$finalCount')</script>";
+        move_uploaded_file($tmp, "custom/$path/assets/$imgName");
+    }
+} else {
+    echo "<script>alert('Failed')</script>";
+}
+
+$sizes = array("Extra Small", "Small", "Medium", "Large", "Extra Large");
+$values = array($xs, $s, $m, $l, $xl);
+for ($x = 0; $x < count($sizes); $x++) {
+    if (!($values[$x] == NULL || $values[$x] == "")) {
+        $query = "INSERT INTO custom_shirt (custom_email, custom_path, custom_size, custom_quantity)
+            VALUES  ('$email', '$path', '$sizes[$x]', '$values[$x]')";
+        mysqli_query($conn, $query);
+    }
+}
 ?>
 
 <body>

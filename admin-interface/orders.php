@@ -21,7 +21,7 @@ include_once("../includes/functions.inc.php");
 
 <body>
     <div class="container shadow-lg bg-white" style="margin-top: 50px; width:100%;">
-        
+
         <div class="row mx-auto">
             <div class="col-md-3">
                 <h1 class="text-start pt-3">Orders List</h1>
@@ -87,8 +87,9 @@ include_once("../includes/functions.inc.php");
                                         <?php
                                         if ($row["order_item_code"] == $row["order_item_name"]) {
                                             $name = "Custom - " . $row["order_item_name"];
+                                            $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                         ?>
-                                            <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                            <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                         <?php
                                         } else {
                                             $name = $row["order_item_name"];
@@ -177,8 +178,9 @@ include_once("../includes/functions.inc.php");
                                         <?php
                                         if ($row["order_item_code"] == $row["order_item_name"]) {
                                             $name = "Custom - " . $row["order_item_name"];
+                                            $files = glob("../custom/" . $row['order_item_image'] . "/*");
                                         ?>
-                                            <img src="../custom/<?= $row['order_item_image'] ?>" height="50" width="50" alt="" />
+                                            <img src="../custom/<?= $files[1] ?>" height="50" width="50" alt="" />
                                         <?php
                                         } else {
                                             $name = $row["order_item_name"];
@@ -213,43 +215,92 @@ include_once("../includes/functions.inc.php");
             </div>
         </div>
     </div>
+    <div class='modal fade' id='expectedDeliveryModal' tabindex='-1' aria-labelledby='expectedDeliveryModal' aria-hidden='true'>
+        <div class='modal-dialog modal-dialog-centered'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h1 class='modal-title fs-5' id='exampleModalLabel'>Expected Delivery Date</h1>
+                    <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                </div>
+                <div class='modal-body'>
+                    <input class="form-control" type="date" id="deliveryDate" name="deliveryDate">
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                    <button type='button' class='btn btn-primary' id="updateDeliveryDateBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 
 
-<script src="../jquery-3.6.3.js"></script>
+<script src=" ../jquery-3.6.3.js">
+</script>
 <script src="../assets/paid_function.js"></script>
 
 <script>
+    var status;
+    var package_num;
+    var email;
     $(document).ready(function() {
         $('select[name="order_status_change"]').change(function() {
-            var status = $(this).val();
-            var package_num = $(this).attr("status-id");
-            var email = $(this).attr("status-email");
+            status = $(this).val();
+            package_num = $(this).attr("status-id");
+            email = $(this).attr("status-email");
 
-            // alert(status);
-            // alert(getid);
-            // alert(email);
+            if (status == "To Ship")
+                $('#expectedDeliveryModal').modal('show');
+            else
+                updateStatus(status, package_num, email);
+        });
 
-            $.ajax({
-                method: "POST",
-                url: "../includes/change_status.php",
-                data: {
-                    status: status,
-                    package_num: package_num,
-                    email: email
-                },
-                success: function(response) {
-                    alert("Order status update successful!");
-                    location.reload();
-                },
-                error: function(response) {
-                    alert("Error");
-                }
-            });
-
+        $("#updateDeliveryDateBtn").click(function() {
+            var delivery_date = $('#deliveryDate').val();
+            updateStatus(status, package_num, email, delivery_date);
         });
     });
+
+    function updateStatus(status, package_num, email) {
+        $.ajax({
+            method: "POST",
+            url: "../includes/change_status.php",
+            data: {
+                status: status,
+                package_num: package_num,
+                email: email
+            },
+            success: function(response) {
+                alert("Order status update successful!");
+                location.reload();
+            },
+            error: function(response) {
+                alert("Error");
+            }
+        });
+    }
+
+    function updateStatus(status, package_num, email, delivery_date) {
+        $.ajax({
+            method: "POST",
+            url: "../includes/change_status.php",
+            data: {
+                status: status,
+                package_num: package_num,
+                email: email,
+                delivery_date: delivery_date
+            },
+            success: function(response) {
+                alert("Order status update successful!");
+                location.reload();
+            },
+            error: function(response) {
+                alert("Error");
+            }
+        });
+    }
 </script>
 
 <script>

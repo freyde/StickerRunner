@@ -56,7 +56,6 @@ if (isset($_SESSION["userEmailAdd"])) {
             }
             unset($_SESSION['checkout']);
         } else if (isset($_SESSION['custom'])) {
-           echo"asdasd";
             foreach ($ordersId as $order_id) {
                 $select = "SELECT * FROM `custom_shirt` WHERE custom_id = '$order_id' AND custom_email = '$email_add'";
 
@@ -69,10 +68,7 @@ if (isset($_SESSION["userEmailAdd"])) {
                     $item_price = $row["custom_price"];
                     $item_size = $row["custom_size"];
                     $item_quantity = $row["custom_quantity"];
-                    if ($row["custom_front"] != NULL)
-                        $item_image = $row["custom_front"];
-                    else
-                        $item_image = $row["custom_back"];
+                    $item_image = $row["custom_path"];
 
                     $total_price = ($item_price * $item_quantity);
 
@@ -87,11 +83,11 @@ if (isset($_SESSION["userEmailAdd"])) {
 
                     $result_place_item = mysqli_query($conn, $place_item);
 
-                    $query = "UPDATE ";
+                    
                 }
 
-                // $delete_items = "DELETE FROM `custom_shirt` WHERE custom_id = '$item_code'";
-                // $result = mysqli_query($conn, $delete_items);
+                $update_items = "UPDATE `custom_shirt` SET custom_status = 'ordered' WHERE custom_id = '$item_code'";
+                $result = mysqli_query($conn, $update_items);
             }
             unset($_SESSION['custom']);
         } else {

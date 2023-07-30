@@ -38,6 +38,7 @@ include_once("includes/functions.inc.php");
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Date Ordered</th>
+                            <th>Expected Delivery Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,8 +55,10 @@ include_once("includes/functions.inc.php");
                                     <td> <?= $item["order_item_quantity"] ?></td>
                                     <td> <?= $item["order_total_price"] ?></td>
                                     <td> <?= $item["order_date"] ?></td>
+                                    <td> <?= $item["expected_delivery"] ?></td>
+                                    <td></td>
                                     <td>
-                                        <button type="button" class="btn btn-danger">TO RECEIVE</button>
+                                        <button type="button" class="btn btn-success btn-block">Receive</button>
                                     </td>
                                 </tr>
                             <?php
